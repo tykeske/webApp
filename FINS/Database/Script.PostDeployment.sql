@@ -16,7 +16,7 @@ GO
 /* Reference Data */
 
 -- Role
-INSERT INTO [dbo].[role]
+INSERT INTO [dbo].[user_role]
            ([role_name]
            ,[permission])
      VALUES
@@ -24,7 +24,7 @@ INSERT INTO [dbo].[role]
            ,NULL);
 GO
 
-INSERT INTO [dbo].[role]
+INSERT INTO [dbo].[user_role]
            ([role_name]
            ,[permission])
      VALUES
@@ -32,7 +32,7 @@ INSERT INTO [dbo].[role]
            ,NULL);
 GO
 
-INSERT INTO [dbo].[role]
+INSERT INTO [dbo].[user_role]
            ([role_name]
            ,[permission])
      VALUES
@@ -41,25 +41,25 @@ INSERT INTO [dbo].[role]
 GO
 
 -- Location
-INSERT INTO [dbo].[location]
+INSERT INTO [dbo].[pantry_location]
            ([location_name])
      VALUES
            ('Cascade')
 GO
 
-INSERT INTO [dbo].[location]
+INSERT INTO [dbo].[pantry_location]
            ([location_name])
      VALUES
            ('Rock Creek')
 GO
 
-INSERT INTO [dbo].[location]
+INSERT INTO [dbo].[pantry_location]
            ([location_name])
      VALUES
            ('Southeast')
 GO
 
-INSERT INTO [dbo].[location]
+INSERT INTO [dbo].[pantry_location]
            ([location_name])
      VALUES
            ('Sylvania')

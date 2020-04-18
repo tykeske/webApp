@@ -61,13 +61,13 @@
     <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\role.sql" />
-    <Build Include="Tables\user.sql" />
-    <Build Include="Tables\location.sql" />
+    <Build Include="Tables\user_role.sql" />
+    <Build Include="Tables\user_account.sql" />
+    <Build Include="Tables\pantry_location.sql" />
     <Build Include="Tables\user_location.sql" />
-    <Build Include="Tables\tag.sql" />
-    <Build Include="Tables\template.sql" />
-    <Build Include="Tables\message.sql" />
+    <Build Include="Tables\template_tag.sql" />
+    <Build Include="Tables\message_template.sql" />
+    <Build Include="Tables\message_log.sql" />
     <Build Include="Tables\message_tag.sql" />
   </ItemGroup>
   <ItemGroup>

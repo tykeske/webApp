@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[user] (
+﻿CREATE TABLE [dbo].[user_account] (
     [user_id]       INT           IDENTITY (1, 1) NOT NULL,
     [user_name]     VARCHAR (30)  NOT NULL,
     [password_hash] VARCHAR (50)  NOT NULL,
@@ -6,7 +6,9 @@
     [email_address] VARCHAR (50)  NOT NULL,
     [role_id]       INT           NOT NULL,
     [is_active]     BIT           NOT NULL,
+    [created_date] SMALLDATETIME NOT NULL, 
+    [updated_date] SMALLDATETIME NULL, 
     PRIMARY KEY CLUSTERED ([user_id] ASC),
-    CONSTRAINT [FK_User_RoleID] FOREIGN KEY ([role_id]) REFERENCES [dbo].[role] ([role_id])
+    CONSTRAINT [FK_User_RoleID] FOREIGN KEY ([role_id]) REFERENCES [dbo].[user_role] ([role_id])
 );
 

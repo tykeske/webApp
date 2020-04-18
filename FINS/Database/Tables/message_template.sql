@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[template]
+﻿CREATE TABLE [dbo].[message_template]
 (
 	[template_id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [template_name] VARCHAR(50) NOT NULL, 
