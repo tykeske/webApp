@@ -18,6 +18,7 @@ namespace TemplateCreation
             InitializeComponent();
         }
 
+        //saveButton click event validates whether inputs from user conform to template name and message content fields
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
@@ -30,6 +31,10 @@ namespace TemplateCreation
             }
 
         }
+        
+        //create template grabs values for required dbo.message_template fields
+        //values are passed into rows with proper sql formating
+        //try-catch statement to handle any exceptions
         private void createTemplate()
         {
             try
@@ -70,6 +75,7 @@ namespace TemplateCreation
             }
         }
 
+        //insert tag buttons append standard and user created tags into form
         private void insertTagButton1_Click(object sender, EventArgs e)
         {
             string tagValue = "<" + tagTextBox1.Text + ">";
