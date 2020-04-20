@@ -17,27 +17,33 @@ GO
 
 -- Role
 INSERT INTO [dbo].[user_role]
-           ([role_name]
-           ,[permission])
+           ([role_name])
      VALUES
-           ('subscriber'
+           ('Subscriber'
            ,NULL);
 GO
 
 INSERT INTO [dbo].[user_role]
            ([role_name]
-           ,[permission])
+           ,[can_create_template]
+           ,[can_send_notification]
+           ,[can_view_log])
      VALUES
-           ('manager'
-           ,NULL);
+           ('Manager'
+           ,1
+           ,1
+           ,1);
 GO
 
 INSERT INTO [dbo].[user_role]
            ([role_name]
-           ,[permission])
+           ,[permission]
+           ,[can_send_notification]
+           ,[can_view_log])
      VALUES
-           ('worker'
-           ,NULL);
+           ('Staff Member'
+           ,1
+           ,1);
 GO
 
 -- Location
