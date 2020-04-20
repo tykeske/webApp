@@ -1,0 +1,66 @@
+﻿@page
+@model AccountManagement.Pages.Accounts.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.account[0].userName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.account[0].passwordHash)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.account[0].fullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.account[0].emailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.account[0].isActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.account[0].createdDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.account) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.passwordHash)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.userId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.userId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.userId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
