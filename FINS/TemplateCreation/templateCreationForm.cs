@@ -9,6 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+/*
+Author: Vince Amela
+Date: 4/19/20
+Class: CIS 234A
+Assignment: 3
+Bugs: 
+      *  none at this time 
+*/
+
+
 namespace TemplateCreation
 {
     public partial class templateCreationForm : Form
