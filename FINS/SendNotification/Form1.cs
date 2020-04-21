@@ -10,6 +10,13 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Mail;
 
+/*
+Author: Becca Menefee-Scheets
+Date: 4/21/20
+Class: CIS 234A
+Assignment: 3
+Bugs: none
+*/
 namespace SendNotification
 {
     public partial class Form1 : Form
