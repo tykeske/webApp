@@ -45,6 +45,7 @@
             // messageTextBox
             // 
             this.messageTextBox.Location = new System.Drawing.Point(97, 108);
+            this.messageTextBox.MaxLength = 1000;
             this.messageTextBox.Multiline = true;
             this.messageTextBox.Name = "messageTextBox";
             this.messageTextBox.Size = new System.Drawing.Size(436, 234);
