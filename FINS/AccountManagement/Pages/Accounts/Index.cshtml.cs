@@ -19,7 +19,7 @@ namespace AccountManagement.Pages.Accounts
             _context = context;
         }
 
-        public IList<account> account { get;set; }
+        public IList<user_account> account { get;set; }
 
         public async Task OnGetAsync()
         {

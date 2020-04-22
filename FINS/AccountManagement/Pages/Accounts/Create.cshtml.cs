@@ -25,7 +25,7 @@ namespace AccountManagement.Pages.Accounts
         }
 
         [BindProperty]
-        public account account { get; set; }
+        public user_account account { get; set; }
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.

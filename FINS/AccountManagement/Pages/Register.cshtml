@@ -1,5 +1,5 @@
 ﻿@page
-@model AccountManagement.Pages.RegisterModel
+@model AccountManagement.Pages.Accounts.registerModel
 @{
     ViewData["Title"] = "Register";
 }
@@ -32,7 +32,7 @@
             <div class="form-group row">
                 <label for="inputPhone" class="col-sm-3 col-form-label font-weight-bold text-right">Telephone</label>
                 <div class="col-sm-6">
-                    <input type="tel" class="form-control" id="inputPhone" placeholder="555-555-5555" minlength="10" maxlength="14" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
+                    <input type="tel" class="form-control" id="inputPhone" placeholder="555-555-5555" minlength="10" maxlength="14" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
                 </div>
                 <span class="text-danger"></span>
             </div>
@@ -97,6 +97,7 @@
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <input type="submit" value="Register" class="btn btn-primary" />
+                    <a href="/Index" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
                 </div>
             </div>
         </form>

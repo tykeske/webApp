@@ -21,7 +21,7 @@ namespace AccountManagement.Pages.Accounts
         }
 
         [BindProperty]
-        public account account { get; set; }
+        public user_account account { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

@@ -14,6 +14,6 @@ namespace AccountManagement.Data
         {
         }
 
-        public DbSet<AccountManagement.Models.account> account { get; set; }
+        public DbSet<AccountManagement.Models.user_account> account { get; set; }
     }
 }

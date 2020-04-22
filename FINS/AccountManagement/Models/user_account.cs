@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AccountManagement.Models
 {
-    public class account
+    public class user_account
     {
         [Key]
         public int userId { get; set; }
@@ -18,5 +18,8 @@ namespace AccountManagement.Models
         public string emailAddress { get; set; }
         public int isActive { get; set; }
         public DateTime createdDate { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        public string telePhone { get; set; }
     }
 }
