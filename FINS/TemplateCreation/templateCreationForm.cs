@@ -133,6 +133,7 @@ namespace TemplateCreation
         private void templateCreationForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the '_234a_TeamApexDataSet.message_template' table. You can move, or remove it, as needed.
+            // adding a line
             this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);
         }
 

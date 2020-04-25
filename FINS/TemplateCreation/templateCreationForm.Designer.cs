@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.tempNameLabel = new System.Windows.Forms.Label();
             this.tempNameTextBox = new System.Windows.Forms.TextBox();
+            this.aTeamApexDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._234a_TeamApexDataSet = new TemplateCreation._234a_TeamApexDataSet();
             this.tagTextBox3 = new System.Windows.Forms.TextBox();
             this.tagTextBox1 = new System.Windows.Forms.TextBox();
             this.tagTextBox2 = new System.Windows.Forms.TextBox();
@@ -46,9 +48,6 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.templatesGroupBox = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.aTeamApexDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._234a_TeamApexDataSet = new TemplateCreation._234a_TeamApexDataSet();
-            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
             this.template_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.template_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.message_content = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,11 +62,12 @@
             this.updateddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.tagGroupBox.SuspendLayout();
             this.templatesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tempNameLabel
@@ -87,6 +87,17 @@
             this.tempNameTextBox.Name = "tempNameTextBox";
             this.tempNameTextBox.Size = new System.Drawing.Size(177, 20);
             this.tempNameTextBox.TabIndex = 1;
+            // 
+            // aTeamApexDataSetBindingSource
+            // 
+            this.aTeamApexDataSetBindingSource.AllowNew = true;
+            this.aTeamApexDataSetBindingSource.DataMember = "message_template";
+            this.aTeamApexDataSetBindingSource.DataSource = this._234a_TeamApexDataSet;
+            // 
+            // _234a_TeamApexDataSet
+            // 
+            this._234a_TeamApexDataSet.DataSetName = "_234a_TeamApexDataSet";
+            this._234a_TeamApexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tagTextBox3
             // 
@@ -133,7 +144,7 @@
             this.tagGroupBox.Controls.Add(this.tagTextBox2);
             this.tagGroupBox.Controls.Add(this.tagTextBox1);
             this.tagGroupBox.Controls.Add(this.tagTextBox3);
-            this.tagGroupBox.Location = new System.Drawing.Point(504, 334);
+            this.tagGroupBox.Location = new System.Drawing.Point(547, 334);
             this.tagGroupBox.Name = "tagGroupBox";
             this.tagGroupBox.Size = new System.Drawing.Size(362, 134);
             this.tagGroupBox.TabIndex = 6;
@@ -256,26 +267,12 @@
             this.dataGridView1.Size = new System.Drawing.Size(743, 174);
             this.dataGridView1.TabIndex = 9;
             // 
-            // aTeamApexDataSetBindingSource
-            // 
-            this.aTeamApexDataSetBindingSource.AllowNew = true;
-            this.aTeamApexDataSetBindingSource.DataMember = "message_template";
-            this.aTeamApexDataSetBindingSource.DataSource = this._234a_TeamApexDataSet;
-            // 
-            // _234a_TeamApexDataSet
-            // 
-            this._234a_TeamApexDataSet.DataSetName = "_234a_TeamApexDataSet";
-            this._234a_TeamApexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // message_templateTableAdapter1
-            // 
-            this.message_templateTableAdapter1.ClearBeforeFill = true;
-            // 
             // template_id
             // 
             this.template_id.DataPropertyName = "template_id";
             this.template_id.HeaderText = "template_id";
             this.template_id.Name = "template_id";
+            this.template_id.ReadOnly = true;
             // 
             // template_name
             // 
@@ -356,6 +353,10 @@
             this.updatedbyDataGridViewTextBoxColumn.HeaderText = "updated_by";
             this.updatedbyDataGridViewTextBoxColumn.Name = "updatedbyDataGridViewTextBoxColumn";
             // 
+            // message_templateTableAdapter1
+            // 
+            this.message_templateTableAdapter1.ClearBeforeFill = true;
+            // 
             // templateCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,13 +369,13 @@
             this.Name = "templateCreationForm";
             this.Text = "Template Creation";
             this.Load += new System.EventHandler(this.templateCreationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).EndInit();
             this.tagGroupBox.ResumeLayout(false);
             this.tagGroupBox.PerformLayout();
             this.templatesGroupBox.ResumeLayout(false);
             this.templatesGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
