@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tempNameLabel = new System.Windows.Forms.Label();
             this.tempNameTextBox = new System.Windows.Forms.TextBox();
             this.tagTextBox3 = new System.Windows.Forms.TextBox();
@@ -35,22 +36,45 @@
             this.tagTextBox2 = new System.Windows.Forms.TextBox();
             this.msgBodyTextBox = new System.Windows.Forms.TextBox();
             this.tagGroupBox = new System.Windows.Forms.GroupBox();
-            this.messageLabel = new System.Windows.Forms.Label();
-            this.insertTagButton1 = new System.Windows.Forms.Button();
-            this.insertTagButton3 = new System.Windows.Forms.Button();
-            this.deleteTagButton3 = new System.Windows.Forms.Button();
-            this.deleteTagButton2 = new System.Windows.Forms.Button();
-            this.insertTagButton2 = new System.Windows.Forms.Button();
             this.deleteTagButton1 = new System.Windows.Forms.Button();
+            this.insertTagButton2 = new System.Windows.Forms.Button();
+            this.deleteTagButton2 = new System.Windows.Forms.Button();
+            this.deleteTagButton3 = new System.Windows.Forms.Button();
+            this.insertTagButton3 = new System.Windows.Forms.Button();
+            this.insertTagButton1 = new System.Windows.Forms.Button();
+            this.messageLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
+            this.templatesGroupBox = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.aTeamApexDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._234a_TeamApexDataSet = new TemplateCreation._234a_TeamApexDataSet();
+            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
+            this.template_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.template_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.message_content = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.created_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updated_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.created_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updated_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.templateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.templatenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.messagecontentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updateddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updatedbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tagGroupBox.SuspendLayout();
+            this.templatesGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tempNameLabel
             // 
             this.tempNameLabel.AutoSize = true;
             this.tempNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempNameLabel.Location = new System.Drawing.Point(31, 41);
+            this.tempNameLabel.Location = new System.Drawing.Point(17, 212);
             this.tempNameLabel.Name = "tempNameLabel";
             this.tempNameLabel.Size = new System.Drawing.Size(99, 15);
             this.tempNameLabel.TabIndex = 0;
@@ -58,14 +82,15 @@
             // 
             // tempNameTextBox
             // 
-            this.tempNameTextBox.Location = new System.Drawing.Point(145, 41);
+            this.tempNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_name", true));
+            this.tempNameTextBox.Location = new System.Drawing.Point(147, 212);
             this.tempNameTextBox.Name = "tempNameTextBox";
             this.tempNameTextBox.Size = new System.Drawing.Size(177, 20);
             this.tempNameTextBox.TabIndex = 1;
             // 
             // tagTextBox3
             // 
-            this.tagTextBox3.Location = new System.Drawing.Point(111, 115);
+            this.tagTextBox3.Location = new System.Drawing.Point(19, 87);
             this.tagTextBox3.Name = "tagTextBox3";
             this.tagTextBox3.Size = new System.Drawing.Size(114, 20);
             this.tagTextBox3.TabIndex = 2;
@@ -73,7 +98,7 @@
             // tagTextBox1
             // 
             this.tagTextBox1.Enabled = false;
-            this.tagTextBox1.Location = new System.Drawing.Point(111, 35);
+            this.tagTextBox1.Location = new System.Drawing.Point(19, 32);
             this.tagTextBox1.Name = "tagTextBox1";
             this.tagTextBox1.Size = new System.Drawing.Size(114, 20);
             this.tagTextBox1.TabIndex = 3;
@@ -82,7 +107,7 @@
             // tagTextBox2
             // 
             this.tagTextBox2.Enabled = false;
-            this.tagTextBox2.Location = new System.Drawing.Point(111, 79);
+            this.tagTextBox2.Location = new System.Drawing.Point(19, 61);
             this.tagTextBox2.Name = "tagTextBox2";
             this.tagTextBox2.Size = new System.Drawing.Size(114, 20);
             this.tagTextBox2.TabIndex = 4;
@@ -90,10 +115,11 @@
             // 
             // msgBodyTextBox
             // 
-            this.msgBodyTextBox.Location = new System.Drawing.Point(34, 336);
+            this.msgBodyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "message_content", true));
+            this.msgBodyTextBox.Location = new System.Drawing.Point(45, 334);
             this.msgBodyTextBox.Multiline = true;
             this.msgBodyTextBox.Name = "msgBodyTextBox";
-            this.msgBodyTextBox.Size = new System.Drawing.Size(571, 292);
+            this.msgBodyTextBox.Size = new System.Drawing.Size(453, 292);
             this.msgBodyTextBox.TabIndex = 5;
             // 
             // tagGroupBox
@@ -107,64 +133,25 @@
             this.tagGroupBox.Controls.Add(this.tagTextBox2);
             this.tagGroupBox.Controls.Add(this.tagTextBox1);
             this.tagGroupBox.Controls.Add(this.tagTextBox3);
-            this.tagGroupBox.Location = new System.Drawing.Point(34, 92);
+            this.tagGroupBox.Location = new System.Drawing.Point(504, 334);
             this.tagGroupBox.Name = "tagGroupBox";
-            this.tagGroupBox.Size = new System.Drawing.Size(571, 167);
+            this.tagGroupBox.Size = new System.Drawing.Size(362, 134);
             this.tagGroupBox.TabIndex = 6;
             this.tagGroupBox.TabStop = false;
             this.tagGroupBox.Text = "Tags";
             // 
-            // messageLabel
+            // deleteTagButton1
             // 
-            this.messageLabel.AutoSize = true;
-            this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageLabel.Location = new System.Drawing.Point(31, 301);
-            this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(156, 15);
-            this.messageLabel.TabIndex = 7;
-            this.messageLabel.Text = "Please Type Your Message";
-            // 
-            // insertTagButton1
-            // 
-            this.insertTagButton1.Location = new System.Drawing.Point(284, 32);
-            this.insertTagButton1.Name = "insertTagButton1";
-            this.insertTagButton1.Size = new System.Drawing.Size(75, 23);
-            this.insertTagButton1.TabIndex = 5;
-            this.insertTagButton1.Text = "Insert Tag";
-            this.insertTagButton1.UseVisualStyleBackColor = true;
-            this.insertTagButton1.Click += new System.EventHandler(this.insertTagButton1_Click);
-            // 
-            // insertTagButton3
-            // 
-            this.insertTagButton3.Location = new System.Drawing.Point(284, 112);
-            this.insertTagButton3.Name = "insertTagButton3";
-            this.insertTagButton3.Size = new System.Drawing.Size(75, 23);
-            this.insertTagButton3.TabIndex = 6;
-            this.insertTagButton3.Text = "Insert Tag";
-            this.insertTagButton3.UseVisualStyleBackColor = true;
-            this.insertTagButton3.Click += new System.EventHandler(this.insertTagButton3_Click);
-            // 
-            // deleteTagButton3
-            // 
-            this.deleteTagButton3.Location = new System.Drawing.Point(406, 112);
-            this.deleteTagButton3.Name = "deleteTagButton3";
-            this.deleteTagButton3.Size = new System.Drawing.Size(75, 23);
-            this.deleteTagButton3.TabIndex = 7;
-            this.deleteTagButton3.Text = "Delete Tag";
-            this.deleteTagButton3.UseVisualStyleBackColor = true;
-            // 
-            // deleteTagButton2
-            // 
-            this.deleteTagButton2.Location = new System.Drawing.Point(406, 76);
-            this.deleteTagButton2.Name = "deleteTagButton2";
-            this.deleteTagButton2.Size = new System.Drawing.Size(75, 23);
-            this.deleteTagButton2.TabIndex = 8;
-            this.deleteTagButton2.Text = "Delete Tag";
-            this.deleteTagButton2.UseVisualStyleBackColor = true;
+            this.deleteTagButton1.Location = new System.Drawing.Point(274, 29);
+            this.deleteTagButton1.Name = "deleteTagButton1";
+            this.deleteTagButton1.Size = new System.Drawing.Size(75, 23);
+            this.deleteTagButton1.TabIndex = 10;
+            this.deleteTagButton1.Text = "Delete Tag";
+            this.deleteTagButton1.UseVisualStyleBackColor = true;
             // 
             // insertTagButton2
             // 
-            this.insertTagButton2.Location = new System.Drawing.Point(284, 76);
+            this.insertTagButton2.Location = new System.Drawing.Point(160, 58);
             this.insertTagButton2.Name = "insertTagButton2";
             this.insertTagButton2.Size = new System.Drawing.Size(75, 23);
             this.insertTagButton2.TabIndex = 9;
@@ -172,18 +159,58 @@
             this.insertTagButton2.UseVisualStyleBackColor = true;
             this.insertTagButton2.Click += new System.EventHandler(this.insertTagButton2_Click);
             // 
-            // deleteTagButton1
+            // deleteTagButton2
             // 
-            this.deleteTagButton1.Location = new System.Drawing.Point(406, 32);
-            this.deleteTagButton1.Name = "deleteTagButton1";
-            this.deleteTagButton1.Size = new System.Drawing.Size(75, 23);
-            this.deleteTagButton1.TabIndex = 10;
-            this.deleteTagButton1.Text = "Delete Tag";
-            this.deleteTagButton1.UseVisualStyleBackColor = true;
+            this.deleteTagButton2.Location = new System.Drawing.Point(274, 58);
+            this.deleteTagButton2.Name = "deleteTagButton2";
+            this.deleteTagButton2.Size = new System.Drawing.Size(75, 23);
+            this.deleteTagButton2.TabIndex = 8;
+            this.deleteTagButton2.Text = "Delete Tag";
+            this.deleteTagButton2.UseVisualStyleBackColor = true;
+            // 
+            // deleteTagButton3
+            // 
+            this.deleteTagButton3.Location = new System.Drawing.Point(274, 87);
+            this.deleteTagButton3.Name = "deleteTagButton3";
+            this.deleteTagButton3.Size = new System.Drawing.Size(75, 23);
+            this.deleteTagButton3.TabIndex = 7;
+            this.deleteTagButton3.Text = "Delete Tag";
+            this.deleteTagButton3.UseVisualStyleBackColor = true;
+            // 
+            // insertTagButton3
+            // 
+            this.insertTagButton3.Location = new System.Drawing.Point(160, 87);
+            this.insertTagButton3.Name = "insertTagButton3";
+            this.insertTagButton3.Size = new System.Drawing.Size(75, 23);
+            this.insertTagButton3.TabIndex = 6;
+            this.insertTagButton3.Text = "Insert Tag";
+            this.insertTagButton3.UseVisualStyleBackColor = true;
+            this.insertTagButton3.Click += new System.EventHandler(this.insertTagButton3_Click);
+            // 
+            // insertTagButton1
+            // 
+            this.insertTagButton1.Location = new System.Drawing.Point(160, 29);
+            this.insertTagButton1.Name = "insertTagButton1";
+            this.insertTagButton1.Size = new System.Drawing.Size(75, 23);
+            this.insertTagButton1.TabIndex = 5;
+            this.insertTagButton1.Text = "Insert Tag";
+            this.insertTagButton1.UseVisualStyleBackColor = true;
+            this.insertTagButton1.Click += new System.EventHandler(this.insertTagButton1_Click);
+            // 
+            // messageLabel
+            // 
+            this.messageLabel.AutoSize = true;
+            this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.messageLabel.Location = new System.Drawing.Point(42, 300);
+            this.messageLabel.Name = "messageLabel";
+            this.messageLabel.Size = new System.Drawing.Size(156, 15);
+            this.messageLabel.TabIndex = 7;
+            this.messageLabel.Text = "Please Type Your Message";
+            this.messageLabel.Click += new System.EventHandler(this.messageLabel_Click);
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(247, 655);
+            this.saveButton.Location = new System.Drawing.Point(688, 209);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 8;
@@ -191,21 +218,163 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // templatesGroupBox
+            // 
+            this.templatesGroupBox.Controls.Add(this.dataGridView1);
+            this.templatesGroupBox.Controls.Add(this.saveButton);
+            this.templatesGroupBox.Controls.Add(this.tempNameTextBox);
+            this.templatesGroupBox.Controls.Add(this.tempNameLabel);
+            this.templatesGroupBox.Location = new System.Drawing.Point(45, 31);
+            this.templatesGroupBox.Name = "templatesGroupBox";
+            this.templatesGroupBox.Size = new System.Drawing.Size(821, 241);
+            this.templatesGroupBox.TabIndex = 9;
+            this.templatesGroupBox.TabStop = false;
+            this.templatesGroupBox.Text = "Templates";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.template_id,
+            this.template_name,
+            this.message_content,
+            this.created_date,
+            this.updated_date,
+            this.created_by,
+            this.updated_by,
+            this.templateidDataGridViewTextBoxColumn,
+            this.templatenameDataGridViewTextBoxColumn,
+            this.messagecontentDataGridViewTextBoxColumn,
+            this.createddateDataGridViewTextBoxColumn,
+            this.updateddateDataGridViewTextBoxColumn,
+            this.createdbyDataGridViewTextBoxColumn,
+            this.updatedbyDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.aTeamApexDataSetBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(20, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(743, 174);
+            this.dataGridView1.TabIndex = 9;
+            // 
+            // aTeamApexDataSetBindingSource
+            // 
+            this.aTeamApexDataSetBindingSource.AllowNew = true;
+            this.aTeamApexDataSetBindingSource.DataMember = "message_template";
+            this.aTeamApexDataSetBindingSource.DataSource = this._234a_TeamApexDataSet;
+            // 
+            // _234a_TeamApexDataSet
+            // 
+            this._234a_TeamApexDataSet.DataSetName = "_234a_TeamApexDataSet";
+            this._234a_TeamApexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // message_templateTableAdapter1
+            // 
+            this.message_templateTableAdapter1.ClearBeforeFill = true;
+            // 
+            // template_id
+            // 
+            this.template_id.DataPropertyName = "template_id";
+            this.template_id.HeaderText = "template_id";
+            this.template_id.Name = "template_id";
+            // 
+            // template_name
+            // 
+            this.template_name.DataPropertyName = "template_name";
+            this.template_name.HeaderText = "template_name";
+            this.template_name.Name = "template_name";
+            // 
+            // message_content
+            // 
+            this.message_content.DataPropertyName = "message_content";
+            this.message_content.HeaderText = "message_content";
+            this.message_content.Name = "message_content";
+            // 
+            // created_date
+            // 
+            this.created_date.DataPropertyName = "created_date";
+            this.created_date.HeaderText = "created_date";
+            this.created_date.Name = "created_date";
+            // 
+            // updated_date
+            // 
+            this.updated_date.DataPropertyName = "updated_date";
+            this.updated_date.HeaderText = "updated_date";
+            this.updated_date.Name = "updated_date";
+            // 
+            // created_by
+            // 
+            this.created_by.DataPropertyName = "created_by";
+            this.created_by.HeaderText = "created_by";
+            this.created_by.Name = "created_by";
+            // 
+            // updated_by
+            // 
+            this.updated_by.DataPropertyName = "updated_by";
+            this.updated_by.HeaderText = "updated_by";
+            this.updated_by.Name = "updated_by";
+            // 
+            // templateidDataGridViewTextBoxColumn
+            // 
+            this.templateidDataGridViewTextBoxColumn.DataPropertyName = "template_id";
+            this.templateidDataGridViewTextBoxColumn.HeaderText = "template_id";
+            this.templateidDataGridViewTextBoxColumn.Name = "templateidDataGridViewTextBoxColumn";
+            this.templateidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // templatenameDataGridViewTextBoxColumn
+            // 
+            this.templatenameDataGridViewTextBoxColumn.DataPropertyName = "template_name";
+            this.templatenameDataGridViewTextBoxColumn.HeaderText = "template_name";
+            this.templatenameDataGridViewTextBoxColumn.Name = "templatenameDataGridViewTextBoxColumn";
+            // 
+            // messagecontentDataGridViewTextBoxColumn
+            // 
+            this.messagecontentDataGridViewTextBoxColumn.DataPropertyName = "message_content";
+            this.messagecontentDataGridViewTextBoxColumn.HeaderText = "message_content";
+            this.messagecontentDataGridViewTextBoxColumn.Name = "messagecontentDataGridViewTextBoxColumn";
+            // 
+            // createddateDataGridViewTextBoxColumn
+            // 
+            this.createddateDataGridViewTextBoxColumn.DataPropertyName = "created_date";
+            this.createddateDataGridViewTextBoxColumn.HeaderText = "created_date";
+            this.createddateDataGridViewTextBoxColumn.Name = "createddateDataGridViewTextBoxColumn";
+            // 
+            // updateddateDataGridViewTextBoxColumn
+            // 
+            this.updateddateDataGridViewTextBoxColumn.DataPropertyName = "updated_date";
+            this.updateddateDataGridViewTextBoxColumn.HeaderText = "updated_date";
+            this.updateddateDataGridViewTextBoxColumn.Name = "updateddateDataGridViewTextBoxColumn";
+            // 
+            // createdbyDataGridViewTextBoxColumn
+            // 
+            this.createdbyDataGridViewTextBoxColumn.DataPropertyName = "created_by";
+            this.createdbyDataGridViewTextBoxColumn.HeaderText = "created_by";
+            this.createdbyDataGridViewTextBoxColumn.Name = "createdbyDataGridViewTextBoxColumn";
+            // 
+            // updatedbyDataGridViewTextBoxColumn
+            // 
+            this.updatedbyDataGridViewTextBoxColumn.DataPropertyName = "updated_by";
+            this.updatedbyDataGridViewTextBoxColumn.HeaderText = "updated_by";
+            this.updatedbyDataGridViewTextBoxColumn.Name = "updatedbyDataGridViewTextBoxColumn";
+            // 
             // templateCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 703);
-            this.Controls.Add(this.saveButton);
+            this.ClientSize = new System.Drawing.Size(921, 666);
+            this.Controls.Add(this.templatesGroupBox);
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.tagGroupBox);
             this.Controls.Add(this.msgBodyTextBox);
-            this.Controls.Add(this.tempNameTextBox);
-            this.Controls.Add(this.tempNameLabel);
             this.Name = "templateCreationForm";
             this.Text = "Template Creation";
+            this.Load += new System.EventHandler(this.templateCreationForm_Load);
             this.tagGroupBox.ResumeLayout(false);
             this.tagGroupBox.PerformLayout();
+            this.templatesGroupBox.ResumeLayout(false);
+            this.templatesGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,6 +397,25 @@
         private System.Windows.Forms.Button insertTagButton1;
         private System.Windows.Forms.Label messageLabel;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.GroupBox templatesGroupBox;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private _234a_TeamApexDataSet _234a_TeamApexDataSet;
+        private System.Windows.Forms.BindingSource aTeamApexDataSetBindingSource;
+        private _234a_TeamApexDataSetTableAdapters.message_templateTableAdapter message_templateTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn template_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn template_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn message_content;
+        private System.Windows.Forms.DataGridViewTextBoxColumn created_date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updated_date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn created_by;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updated_by;
+        private System.Windows.Forms.DataGridViewTextBoxColumn templateidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn templatenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn messagecontentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createddateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updateddateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdbyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updatedbyDataGridViewTextBoxColumn;
     }
 }
 

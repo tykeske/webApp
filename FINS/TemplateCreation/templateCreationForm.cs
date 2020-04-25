@@ -41,7 +41,33 @@ namespace TemplateCreation
             }
 
         }
-        
+
+        private void templateReader()
+        {
+
+          
+            /*
+            try
+            {
+               SqlConnection templateConnection = new SqlConnection();
+                SqlCommand templateCommand = new SqlCommand();
+                SqlDataReader templateDataReader;
+               templateConnection.ConnectionString = "Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex";
+                templateConnection.Open();
+                templateCommand.Connection = templateConnection;
+               templateCommand.CommandText = "Select template_name, message_content from dbo.message_template";
+                templateDataReader = templateCommand.ExecuteReader();
+                while (templateDataReader.Read())
+                    templateListBox.Items.Add(templateDataReader["template_name"]);
+                templateDataReader.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong");
+            }
+            */
+        }
+
         //create template grabs values for required dbo.message_template fields
         //values are passed into rows with proper sql formating
         //try-catch statement to handle any exceptions
@@ -102,6 +128,17 @@ namespace TemplateCreation
         {
             string tagValue = "<" + tagTextBox3.Text + ">";
             msgBodyTextBox.AppendText(tagValue);
+        }
+
+        private void templateCreationForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the '_234a_TeamApexDataSet.message_template' table. You can move, or remove it, as needed.
+            this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);
+        }
+
+        private void messageLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
