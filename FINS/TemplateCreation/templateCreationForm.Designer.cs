@@ -63,6 +63,10 @@
             this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
+            this.tempID_Label = new System.Windows.Forms.Label();
+            this.tempID_TextBox = new System.Windows.Forms.TextBox();
+            this.saveAsButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.tagGroupBox.SuspendLayout();
@@ -74,7 +78,7 @@
             // 
             this.tempNameLabel.AutoSize = true;
             this.tempNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempNameLabel.Location = new System.Drawing.Point(45, 216);
+            this.tempNameLabel.Location = new System.Drawing.Point(508, 218);
             this.tempNameLabel.Name = "tempNameLabel";
             this.tempNameLabel.Size = new System.Drawing.Size(99, 15);
             this.tempNameLabel.TabIndex = 0;
@@ -83,7 +87,7 @@
             // tempNameTextBox
             // 
             this.tempNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_name", true));
-            this.tempNameTextBox.Location = new System.Drawing.Point(178, 216);
+            this.tempNameTextBox.Location = new System.Drawing.Point(614, 217);
             this.tempNameTextBox.Name = "tempNameTextBox";
             this.tempNameTextBox.Size = new System.Drawing.Size(177, 20);
             this.tempNameTextBox.TabIndex = 1;
@@ -221,7 +225,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(716, 216);
+            this.saveButton.Location = new System.Drawing.Point(405, 632);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 8;
@@ -231,13 +235,16 @@
             // 
             // templatesGroupBox
             // 
+            this.templatesGroupBox.Controls.Add(this.clearButton);
+            this.templatesGroupBox.Controls.Add(this.saveAsButton);
+            this.templatesGroupBox.Controls.Add(this.tempID_TextBox);
+            this.templatesGroupBox.Controls.Add(this.tempID_Label);
             this.templatesGroupBox.Controls.Add(this.dataGridView1);
-            this.templatesGroupBox.Controls.Add(this.saveButton);
             this.templatesGroupBox.Controls.Add(this.tempNameTextBox);
             this.templatesGroupBox.Controls.Add(this.tempNameLabel);
             this.templatesGroupBox.Location = new System.Drawing.Point(27, 31);
             this.templatesGroupBox.Name = "templatesGroupBox";
-            this.templatesGroupBox.Size = new System.Drawing.Size(836, 263);
+            this.templatesGroupBox.Size = new System.Drawing.Size(836, 282);
             this.templatesGroupBox.TabIndex = 9;
             this.templatesGroupBox.TabStop = false;
             this.templatesGroupBox.Text = "Templates";
@@ -264,6 +271,7 @@
             this.dataGridView1.DataSource = this.aTeamApexDataSetBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(48, 29);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(743, 174);
             this.dataGridView1.TabIndex = 9;
             // 
@@ -279,36 +287,42 @@
             this.template_name.DataPropertyName = "template_name";
             this.template_name.HeaderText = "template_name";
             this.template_name.Name = "template_name";
+            this.template_name.ReadOnly = true;
             // 
             // message_content
             // 
             this.message_content.DataPropertyName = "message_content";
             this.message_content.HeaderText = "message_content";
             this.message_content.Name = "message_content";
+            this.message_content.ReadOnly = true;
             // 
             // created_date
             // 
             this.created_date.DataPropertyName = "created_date";
             this.created_date.HeaderText = "created_date";
             this.created_date.Name = "created_date";
+            this.created_date.ReadOnly = true;
             // 
             // updated_date
             // 
             this.updated_date.DataPropertyName = "updated_date";
             this.updated_date.HeaderText = "updated_date";
             this.updated_date.Name = "updated_date";
+            this.updated_date.ReadOnly = true;
             // 
             // created_by
             // 
             this.created_by.DataPropertyName = "created_by";
             this.created_by.HeaderText = "created_by";
             this.created_by.Name = "created_by";
+            this.created_by.ReadOnly = true;
             // 
             // updated_by
             // 
             this.updated_by.DataPropertyName = "updated_by";
             this.updated_by.HeaderText = "updated_by";
             this.updated_by.Name = "updated_by";
+            this.updated_by.ReadOnly = true;
             // 
             // templateidDataGridViewTextBoxColumn
             // 
@@ -322,40 +336,85 @@
             this.templatenameDataGridViewTextBoxColumn.DataPropertyName = "template_name";
             this.templatenameDataGridViewTextBoxColumn.HeaderText = "template_name";
             this.templatenameDataGridViewTextBoxColumn.Name = "templatenameDataGridViewTextBoxColumn";
+            this.templatenameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // messagecontentDataGridViewTextBoxColumn
             // 
             this.messagecontentDataGridViewTextBoxColumn.DataPropertyName = "message_content";
             this.messagecontentDataGridViewTextBoxColumn.HeaderText = "message_content";
             this.messagecontentDataGridViewTextBoxColumn.Name = "messagecontentDataGridViewTextBoxColumn";
+            this.messagecontentDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // createddateDataGridViewTextBoxColumn
             // 
             this.createddateDataGridViewTextBoxColumn.DataPropertyName = "created_date";
             this.createddateDataGridViewTextBoxColumn.HeaderText = "created_date";
             this.createddateDataGridViewTextBoxColumn.Name = "createddateDataGridViewTextBoxColumn";
+            this.createddateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // updateddateDataGridViewTextBoxColumn
             // 
             this.updateddateDataGridViewTextBoxColumn.DataPropertyName = "updated_date";
             this.updateddateDataGridViewTextBoxColumn.HeaderText = "updated_date";
             this.updateddateDataGridViewTextBoxColumn.Name = "updateddateDataGridViewTextBoxColumn";
+            this.updateddateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // createdbyDataGridViewTextBoxColumn
             // 
             this.createdbyDataGridViewTextBoxColumn.DataPropertyName = "created_by";
             this.createdbyDataGridViewTextBoxColumn.HeaderText = "created_by";
             this.createdbyDataGridViewTextBoxColumn.Name = "createdbyDataGridViewTextBoxColumn";
+            this.createdbyDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // updatedbyDataGridViewTextBoxColumn
             // 
             this.updatedbyDataGridViewTextBoxColumn.DataPropertyName = "updated_by";
             this.updatedbyDataGridViewTextBoxColumn.HeaderText = "updated_by";
             this.updatedbyDataGridViewTextBoxColumn.Name = "updatedbyDataGridViewTextBoxColumn";
+            this.updatedbyDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // message_templateTableAdapter1
             // 
             this.message_templateTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tempID_Label
+            // 
+            this.tempID_Label.AutoSize = true;
+            this.tempID_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tempID_Label.Location = new System.Drawing.Point(307, 218);
+            this.tempID_Label.Name = "tempID_Label";
+            this.tempID_Label.Size = new System.Drawing.Size(74, 15);
+            this.tempID_Label.TabIndex = 10;
+            this.tempID_Label.Text = "Template ID";
+            // 
+            // tempID_TextBox
+            // 
+            this.tempID_TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_id", true));
+            this.tempID_TextBox.Location = new System.Drawing.Point(404, 217);
+            this.tempID_TextBox.Name = "tempID_TextBox";
+            this.tempID_TextBox.ReadOnly = true;
+            this.tempID_TextBox.Size = new System.Drawing.Size(75, 20);
+            this.tempID_TextBox.TabIndex = 11;
+            // 
+            // saveAsButton
+            // 
+            this.saveAsButton.Location = new System.Drawing.Point(48, 214);
+            this.saveAsButton.Name = "saveAsButton";
+            this.saveAsButton.Size = new System.Drawing.Size(75, 23);
+            this.saveAsButton.TabIndex = 12;
+            this.saveAsButton.Text = "&Save As";
+            this.saveAsButton.UseVisualStyleBackColor = true;
+            this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(716, 243);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 13;
+            this.clearButton.Text = "&Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // templateCreationForm
             // 
@@ -365,6 +424,7 @@
             this.Controls.Add(this.templatesGroupBox);
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.tagGroupBox);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.msgBodyTextBox);
             this.Name = "templateCreationForm";
             this.Text = "Template Creation";
@@ -417,6 +477,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn updateddateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdbyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn updatedbyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox tempID_TextBox;
+        private System.Windows.Forms.Label tempID_Label;
+        private System.Windows.Forms.Button saveAsButton;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 

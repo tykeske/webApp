@@ -31,7 +31,11 @@ namespace TemplateCreation
         //saveButton click event validates whether inputs from user conform to template name and message content fields
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
+            if (tempID_TextBox.TextLength > 0 && tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
+            {
+                 templateSaveAs();
+            }
+            else if (tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
             {
                 createTemplate();
             }
@@ -43,10 +47,24 @@ namespace TemplateCreation
         }
 
 
-        private void templateSave()
+        private void templateSaveAs()
         {
+            string tempID = tempID_Label.Text;
+            string templateName = tempNameTextBox.Text;
+            string msgContent = msgBodyTextBox.Text;
+            string createDate = DateTime.Now.ToString();
+            string upDated = DateTime.Now.ToString();
+            int createdBy = 1;
+            int updatedBy = 1;
 
-
+            if (tempID.Length > 0 && templateName.Length > 0)
+            {
+                MessageBox.Show("tempid and templatename are full");
+            }
+            else
+            {
+                MessageBox.Show("tempid and name are NOT full");
+            }
 
         }
 
@@ -153,6 +171,17 @@ namespace TemplateCreation
         private void messageLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void saveAsButton_Click(object sender, EventArgs e)
+        {
+            templateSaveAs();
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            tempID_TextBox.Text = string.Empty;
+            tempNameTextBox.Text = string.Empty;
         }
     }
 }
