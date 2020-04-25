@@ -74,7 +74,7 @@
             // 
             this.tempNameLabel.AutoSize = true;
             this.tempNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempNameLabel.Location = new System.Drawing.Point(17, 212);
+            this.tempNameLabel.Location = new System.Drawing.Point(45, 216);
             this.tempNameLabel.Name = "tempNameLabel";
             this.tempNameLabel.Size = new System.Drawing.Size(99, 15);
             this.tempNameLabel.TabIndex = 0;
@@ -83,7 +83,7 @@
             // tempNameTextBox
             // 
             this.tempNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_name", true));
-            this.tempNameTextBox.Location = new System.Drawing.Point(147, 212);
+            this.tempNameTextBox.Location = new System.Drawing.Point(178, 216);
             this.tempNameTextBox.Name = "tempNameTextBox";
             this.tempNameTextBox.Size = new System.Drawing.Size(177, 20);
             this.tempNameTextBox.TabIndex = 1;
@@ -127,7 +127,7 @@
             // msgBodyTextBox
             // 
             this.msgBodyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "message_content", true));
-            this.msgBodyTextBox.Location = new System.Drawing.Point(45, 334);
+            this.msgBodyTextBox.Location = new System.Drawing.Point(27, 334);
             this.msgBodyTextBox.Multiline = true;
             this.msgBodyTextBox.Name = "msgBodyTextBox";
             this.msgBodyTextBox.Size = new System.Drawing.Size(453, 292);
@@ -144,7 +144,7 @@
             this.tagGroupBox.Controls.Add(this.tagTextBox2);
             this.tagGroupBox.Controls.Add(this.tagTextBox1);
             this.tagGroupBox.Controls.Add(this.tagTextBox3);
-            this.tagGroupBox.Location = new System.Drawing.Point(547, 334);
+            this.tagGroupBox.Location = new System.Drawing.Point(501, 334);
             this.tagGroupBox.Name = "tagGroupBox";
             this.tagGroupBox.Size = new System.Drawing.Size(362, 134);
             this.tagGroupBox.TabIndex = 6;
@@ -212,7 +212,7 @@
             // 
             this.messageLabel.AutoSize = true;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageLabel.Location = new System.Drawing.Point(42, 300);
+            this.messageLabel.Location = new System.Drawing.Point(24, 316);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(156, 15);
             this.messageLabel.TabIndex = 7;
@@ -221,7 +221,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(688, 209);
+            this.saveButton.Location = new System.Drawing.Point(716, 216);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 8;
@@ -235,9 +235,9 @@
             this.templatesGroupBox.Controls.Add(this.saveButton);
             this.templatesGroupBox.Controls.Add(this.tempNameTextBox);
             this.templatesGroupBox.Controls.Add(this.tempNameLabel);
-            this.templatesGroupBox.Location = new System.Drawing.Point(45, 31);
+            this.templatesGroupBox.Location = new System.Drawing.Point(27, 31);
             this.templatesGroupBox.Name = "templatesGroupBox";
-            this.templatesGroupBox.Size = new System.Drawing.Size(821, 241);
+            this.templatesGroupBox.Size = new System.Drawing.Size(836, 263);
             this.templatesGroupBox.TabIndex = 9;
             this.templatesGroupBox.TabStop = false;
             this.templatesGroupBox.Text = "Templates";
@@ -262,7 +262,7 @@
             this.createdbyDataGridViewTextBoxColumn,
             this.updatedbyDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.aTeamApexDataSetBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 19);
+            this.dataGridView1.Location = new System.Drawing.Point(48, 29);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(743, 174);
             this.dataGridView1.TabIndex = 9;

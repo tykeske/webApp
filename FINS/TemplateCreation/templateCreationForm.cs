@@ -42,6 +42,19 @@ namespace TemplateCreation
 
         }
 
+
+        private void templateSave()
+        {
+
+
+
+        }
+
+
+
+
+
+
         private void templateReader()
         {
 
@@ -94,7 +107,7 @@ namespace TemplateCreation
                         command.Parameters.Add("@updated_date", SqlDbType.SmallDateTime, 19).Value = upDated;
                         command.Parameters.Add("@created_by", SqlDbType.Int, 50).Value = createdBy;
                         command.Parameters.Add("@updated_by", SqlDbType.Int, 50).Value = updatedBy;
-                        connection.Open();
+                        connection.Open();                      
                         int result = command.ExecuteNonQuery();
 
                         // Check Error
