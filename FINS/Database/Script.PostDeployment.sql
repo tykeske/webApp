@@ -16,50 +16,56 @@ GO
 /* Reference Data */
 
 -- Role
-INSERT INTO [dbo].[role]
-           ([role_name]
-           ,[permission])
+INSERT INTO [dbo].[user_role]
+           ([role_name])
      VALUES
-           ('subscriber'
+           ('Subscriber'
            ,NULL);
 GO
 
-INSERT INTO [dbo].[role]
+INSERT INTO [dbo].[user_role]
            ([role_name]
-           ,[permission])
+           ,[can_create_template]
+           ,[can_send_notification]
+           ,[can_view_log])
      VALUES
-           ('manager'
-           ,NULL);
+           ('Manager'
+           ,1
+           ,1
+           ,1);
 GO
 
-INSERT INTO [dbo].[role]
+INSERT INTO [dbo].[user_role]
            ([role_name]
-           ,[permission])
+           ,[permission]
+           ,[can_send_notification]
+           ,[can_view_log])
      VALUES
-           ('worker'
-           ,NULL);
+           ('Staff Member'
+           ,1
+           ,1);
 GO
 
 -- Location
-INSERT INTO [dbo].[location]
+INSERT INTO [dbo].[pantry_location]
            ([location_name])
      VALUES
            ('Cascade')
 GO
 
-INSERT INTO [dbo].[location]
+INSERT INTO [dbo].[pantry_location]
            ([location_name])
      VALUES
            ('Rock Creek')
 GO
 
-INSERT INTO [dbo].[location]
+INSERT INTO [dbo].[pantry_location]
            ([location_name])
      VALUES
            ('Southeast')
 GO
 
-INSERT INTO [dbo].[location]
+INSERT INTO [dbo].[pantry_location]
            ([location_name])
      VALUES
            ('Sylvania')
