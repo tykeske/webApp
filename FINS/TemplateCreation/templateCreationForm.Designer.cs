@@ -48,6 +48,11 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.templatesGroupBox = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
+            this.tempID_Label = new System.Windows.Forms.Label();
+            this.tempID_TextBox = new System.Windows.Forms.TextBox();
+            this.saveAsButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.template_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.template_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.message_content = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,18 +60,6 @@
             this.updated_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.created_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updated_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.templateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.templatenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.messagecontentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updatedbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
-            this.tempID_Label = new System.Windows.Forms.Label();
-            this.tempID_TextBox = new System.Windows.Forms.TextBox();
-            this.saveAsButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.tagGroupBox.SuspendLayout();
@@ -252,6 +245,7 @@
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.template_id,
@@ -260,118 +254,13 @@
             this.created_date,
             this.updated_date,
             this.created_by,
-            this.updated_by,
-            this.templateidDataGridViewTextBoxColumn,
-            this.templatenameDataGridViewTextBoxColumn,
-            this.messagecontentDataGridViewTextBoxColumn,
-            this.createddateDataGridViewTextBoxColumn,
-            this.updateddateDataGridViewTextBoxColumn,
-            this.createdbyDataGridViewTextBoxColumn,
-            this.updatedbyDataGridViewTextBoxColumn});
+            this.updated_by});
             this.dataGridView1.DataSource = this.aTeamApexDataSetBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(48, 29);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(743, 174);
             this.dataGridView1.TabIndex = 9;
-            // 
-            // template_id
-            // 
-            this.template_id.DataPropertyName = "template_id";
-            this.template_id.HeaderText = "template_id";
-            this.template_id.Name = "template_id";
-            this.template_id.ReadOnly = true;
-            // 
-            // template_name
-            // 
-            this.template_name.DataPropertyName = "template_name";
-            this.template_name.HeaderText = "template_name";
-            this.template_name.Name = "template_name";
-            this.template_name.ReadOnly = true;
-            // 
-            // message_content
-            // 
-            this.message_content.DataPropertyName = "message_content";
-            this.message_content.HeaderText = "message_content";
-            this.message_content.Name = "message_content";
-            this.message_content.ReadOnly = true;
-            // 
-            // created_date
-            // 
-            this.created_date.DataPropertyName = "created_date";
-            this.created_date.HeaderText = "created_date";
-            this.created_date.Name = "created_date";
-            this.created_date.ReadOnly = true;
-            // 
-            // updated_date
-            // 
-            this.updated_date.DataPropertyName = "updated_date";
-            this.updated_date.HeaderText = "updated_date";
-            this.updated_date.Name = "updated_date";
-            this.updated_date.ReadOnly = true;
-            // 
-            // created_by
-            // 
-            this.created_by.DataPropertyName = "created_by";
-            this.created_by.HeaderText = "created_by";
-            this.created_by.Name = "created_by";
-            this.created_by.ReadOnly = true;
-            // 
-            // updated_by
-            // 
-            this.updated_by.DataPropertyName = "updated_by";
-            this.updated_by.HeaderText = "updated_by";
-            this.updated_by.Name = "updated_by";
-            this.updated_by.ReadOnly = true;
-            // 
-            // templateidDataGridViewTextBoxColumn
-            // 
-            this.templateidDataGridViewTextBoxColumn.DataPropertyName = "template_id";
-            this.templateidDataGridViewTextBoxColumn.HeaderText = "template_id";
-            this.templateidDataGridViewTextBoxColumn.Name = "templateidDataGridViewTextBoxColumn";
-            this.templateidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // templatenameDataGridViewTextBoxColumn
-            // 
-            this.templatenameDataGridViewTextBoxColumn.DataPropertyName = "template_name";
-            this.templatenameDataGridViewTextBoxColumn.HeaderText = "template_name";
-            this.templatenameDataGridViewTextBoxColumn.Name = "templatenameDataGridViewTextBoxColumn";
-            this.templatenameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // messagecontentDataGridViewTextBoxColumn
-            // 
-            this.messagecontentDataGridViewTextBoxColumn.DataPropertyName = "message_content";
-            this.messagecontentDataGridViewTextBoxColumn.HeaderText = "message_content";
-            this.messagecontentDataGridViewTextBoxColumn.Name = "messagecontentDataGridViewTextBoxColumn";
-            this.messagecontentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // createddateDataGridViewTextBoxColumn
-            // 
-            this.createddateDataGridViewTextBoxColumn.DataPropertyName = "created_date";
-            this.createddateDataGridViewTextBoxColumn.HeaderText = "created_date";
-            this.createddateDataGridViewTextBoxColumn.Name = "createddateDataGridViewTextBoxColumn";
-            this.createddateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updateddateDataGridViewTextBoxColumn
-            // 
-            this.updateddateDataGridViewTextBoxColumn.DataPropertyName = "updated_date";
-            this.updateddateDataGridViewTextBoxColumn.HeaderText = "updated_date";
-            this.updateddateDataGridViewTextBoxColumn.Name = "updateddateDataGridViewTextBoxColumn";
-            this.updateddateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // createdbyDataGridViewTextBoxColumn
-            // 
-            this.createdbyDataGridViewTextBoxColumn.DataPropertyName = "created_by";
-            this.createdbyDataGridViewTextBoxColumn.HeaderText = "created_by";
-            this.createdbyDataGridViewTextBoxColumn.Name = "createdbyDataGridViewTextBoxColumn";
-            this.createdbyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updatedbyDataGridViewTextBoxColumn
-            // 
-            this.updatedbyDataGridViewTextBoxColumn.DataPropertyName = "updated_by";
-            this.updatedbyDataGridViewTextBoxColumn.HeaderText = "updated_by";
-            this.updatedbyDataGridViewTextBoxColumn.Name = "updatedbyDataGridViewTextBoxColumn";
-            this.updatedbyDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // message_templateTableAdapter1
             // 
@@ -415,6 +304,62 @@
             this.clearButton.Text = "&Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // template_id
+            // 
+            this.template_id.DataPropertyName = "template_id";
+            this.template_id.HeaderText = "template_id";
+            this.template_id.Name = "template_id";
+            this.template_id.ReadOnly = true;
+            this.template_id.Width = 86;
+            // 
+            // template_name
+            // 
+            this.template_name.DataPropertyName = "template_name";
+            this.template_name.HeaderText = "template_name";
+            this.template_name.Name = "template_name";
+            this.template_name.ReadOnly = true;
+            this.template_name.Width = 104;
+            // 
+            // message_content
+            // 
+            this.message_content.DataPropertyName = "message_content";
+            this.message_content.HeaderText = "message_content";
+            this.message_content.Name = "message_content";
+            this.message_content.ReadOnly = true;
+            this.message_content.Width = 116;
+            // 
+            // created_date
+            // 
+            this.created_date.DataPropertyName = "created_date";
+            this.created_date.HeaderText = "created_date";
+            this.created_date.Name = "created_date";
+            this.created_date.ReadOnly = true;
+            this.created_date.Width = 95;
+            // 
+            // updated_date
+            // 
+            this.updated_date.DataPropertyName = "updated_date";
+            this.updated_date.HeaderText = "updated_date";
+            this.updated_date.Name = "updated_date";
+            this.updated_date.ReadOnly = true;
+            this.updated_date.Width = 98;
+            // 
+            // created_by
+            // 
+            this.created_by.DataPropertyName = "created_by";
+            this.created_by.HeaderText = "created_by";
+            this.created_by.Name = "created_by";
+            this.created_by.ReadOnly = true;
+            this.created_by.Width = 85;
+            // 
+            // updated_by
+            // 
+            this.updated_by.DataPropertyName = "updated_by";
+            this.updated_by.HeaderText = "updated_by";
+            this.updated_by.Name = "updated_by";
+            this.updated_by.ReadOnly = true;
+            this.updated_by.Width = 88;
             // 
             // templateCreationForm
             // 
@@ -463,6 +408,10 @@
         private _234a_TeamApexDataSet _234a_TeamApexDataSet;
         private System.Windows.Forms.BindingSource aTeamApexDataSetBindingSource;
         private _234a_TeamApexDataSetTableAdapters.message_templateTableAdapter message_templateTableAdapter1;
+        private System.Windows.Forms.TextBox tempID_TextBox;
+        private System.Windows.Forms.Label tempID_Label;
+        private System.Windows.Forms.Button saveAsButton;
+        private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn template_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn template_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn message_content;
@@ -470,17 +419,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn updated_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn created_by;
         private System.Windows.Forms.DataGridViewTextBoxColumn updated_by;
-        private System.Windows.Forms.DataGridViewTextBoxColumn templateidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn templatenameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn messagecontentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createddateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updateddateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdbyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updatedbyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox tempID_TextBox;
-        private System.Windows.Forms.Label tempID_Label;
-        private System.Windows.Forms.Button saveAsButton;
-        private System.Windows.Forms.Button clearButton;
     }
 }
 

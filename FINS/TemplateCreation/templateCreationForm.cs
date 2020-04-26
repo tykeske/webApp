@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 /*
 Author: Vince Amela
 Date: 4/19/20
@@ -16,11 +17,20 @@ Class: CIS 234A
 Assignment: 3
 Bugs: 
       *  none at this time 
+      *  
+command.Parameters.Add("@templateName", SqlDbType.NVarChar, 50).Value = templateName;
+                        command.Parameters.Add("@msgContent", SqlDbType.NVarChar, 1000).Value = msgContent;
+                        command.Parameters.Add("@created_date", SqlDbType.SmallDateTime, 19).Value = createDate;
+                        command.Parameters.Add("@updated_date", SqlDbType.SmallDateTime, 19).Value = upDated;
+                        command.Parameters.Add("@created_by", SqlDbType.Int, 50).Value = createdBy;
+                        command.Parameters.Add("@updated_by", SqlDbType.Int, 50).Value = updatedBy;      * 
 */
 
 
 namespace TemplateCreation
 {
+   
+
     public partial class templateCreationForm : Form
     {
         public templateCreationForm()
@@ -28,12 +38,13 @@ namespace TemplateCreation
             InitializeComponent();
         }
 
+
         //saveButton click event validates whether inputs from user conform to template name and message content fields
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (tempID_TextBox.TextLength > 0 && tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
             {
-                 templateSaveAs();
+                 saveCheck();
             }
             else if (tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
             {
@@ -45,29 +56,43 @@ namespace TemplateCreation
             }
 
         }
-
-
-        private void templateSaveAs()
+        private void linqTest()
         {
-            string tempID = tempID_Label.Text;
-            string templateName = tempNameTextBox.Text;
-            string msgContent = msgBodyTextBox.Text;
-            string createDate = DateTime.Now.ToString();
-            string upDated = DateTime.Now.ToString();
-            int createdBy = 1;
-            int updatedBy = 1;
+            /*
+            tApex db = new tApex(@"Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex");
 
-            if (tempID.Length > 0 && templateName.Length > 0)
+            // Query for a specific customer.
+            var tID =
+            (from Table in db.tApex
+            where Table.template_id == tempID_TextBox.Text
+            select Table);template_id();
+
+            // Change the name of the contact.
+            tID.template_id == tempID_TextBox.Text;          
+            // Ask the DataContext to save all the changes.
+            db.SubmitChanges();
+            */
+        }
+
+        private void saveCheck()
+        {
+
+            DialogResult dialogResult = MessageBox.Show("Sure", "Some Title", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("tempid and templatename are full");
+                templateOverwrite();
             }
-            else
+            else if (dialogResult == DialogResult.No)
             {
-                MessageBox.Show("tempid and name are NOT full");
+                MessageBox.Show("Nope");
             }
 
         }
 
+        private void templateOverwrite()
+        {
+            
+        }
 
 
 
@@ -131,6 +156,7 @@ namespace TemplateCreation
                         // Check Error
                         if (result < 0)
                             Console.WriteLine("Error inserting data into Database!");
+                        
                     }
                 }
                 MessageBox.Show("Template Created!");
@@ -166,6 +192,8 @@ namespace TemplateCreation
             // TODO: This line of code loads data into the '_234a_TeamApexDataSet.message_template' table. You can move, or remove it, as needed.
             // adding a line
             this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);
+            dataGridView1.ClearSelection();
+
         }
 
         private void messageLabel_Click(object sender, EventArgs e)
@@ -175,13 +203,20 @@ namespace TemplateCreation
 
         private void saveAsButton_Click(object sender, EventArgs e)
         {
-            templateSaveAs();
+            linqTest();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            tempID_TextBox.Text = string.Empty;
-            tempNameTextBox.Text = string.Empty;
+            clearMethod();
+        }
+
+        private void clearMethod()
+        {
+            dataGridView1.ClearSelection();
+            //tempID_TextBox.Text = string.Empty;
+            //tempNameTextBox.Text = string.Empty;
+            //msgBodyTextBox.Text = string.Empty;           
         }
     }
 }
