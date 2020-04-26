@@ -58,6 +58,29 @@ namespace TemplateCreation
         }
         private void linqTest()
         {
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             /*
             tApex db = new tApex(@"Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex");
 

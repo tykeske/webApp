@@ -1,6 +1,6 @@
 ﻿using System;
 
-class templateData
+class sampleClass
 {
 	private string _templateID;
 	private string _templateName;
@@ -47,18 +47,3 @@ class templateData
 
 }
 
-/*
-Author: Vince Amela
-Date: 4/19/20
-Class: CIS 234A
-Assignment: 3
-Bugs: 
-      *  none at this time 
-      *  
-command.Parameters.Add("@templateName", SqlDbType.NVarChar, 50).Value = templateName;
-                        command.Parameters.Add("@msgContent", SqlDbType.NVarChar, 1000).Value = msgContent;
-                        command.Parameters.Add("@created_date", SqlDbType.SmallDateTime, 19).Value = createDate;
-                        command.Parameters.Add("@updated_date", SqlDbType.SmallDateTime, 19).Value = upDated;
-                        command.Parameters.Add("@created_by", SqlDbType.Int, 50).Value = createdBy;
-                        command.Parameters.Add("@updated_by", SqlDbType.Int, 50).Value = updatedBy;      * 
-*/
