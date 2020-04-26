@@ -18,12 +18,7 @@ Assignment: 3
 Bugs: 
       *  none at this time 
       *  
-command.Parameters.Add("@templateName", SqlDbType.NVarChar, 50).Value = templateName;
-                        command.Parameters.Add("@msgContent", SqlDbType.NVarChar, 1000).Value = msgContent;
-                        command.Parameters.Add("@created_date", SqlDbType.SmallDateTime, 19).Value = createDate;
-                        command.Parameters.Add("@updated_date", SqlDbType.SmallDateTime, 19).Value = upDated;
-                        command.Parameters.Add("@created_by", SqlDbType.Int, 50).Value = createdBy;
-                        command.Parameters.Add("@updated_by", SqlDbType.Int, 50).Value = updatedBy;      * 
+ * 
 */
 
 
@@ -48,7 +43,7 @@ namespace TemplateCreation
             }
             else if (tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
             {
-                createTemplate();
+                 createTemplate();
             }
             else
             {
@@ -57,49 +52,23 @@ namespace TemplateCreation
 
         }
 
-
-        /*
-
-                         command.Parameters.Add("@templateName", SqlDbType.NVarChar, 50).Value = templateName;
-                        command.Parameters.Add("@msgContent", SqlDbType.NVarChar, 1000).Value = msgContent;
-                        command.Parameters.Add("@created_date", SqlDbType.SmallDateTime, 19).Value = createDate;
-                        command.Parameters.Add("@updated_date", SqlDbType.SmallDateTime, 19).Value = upDated;
-                        command.Parameters.Add("@created_by", SqlDbType.Int, 50).Value = createdBy;
-                        command.Parameters.Add("@updated_by", SqlDbType.Int, 50).Value = updatedBy;      * 
-*/
-
-        private void linqTest()
+        private void saveCheck()
         {
 
-
-            
-            /*
-            try
+            DialogResult dialogResult = MessageBox.Show("Confirmation", "Sure you want?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-            
-                string templateID = tempID_TextBox.Text;
-                string templateName = tempNameTextBox.Text;
-                string msgContent = msgBodyTextBox.Text;                
-                string upDated = DateTime.Now.ToString();
-                int upDatedBy = 1;
+                modifyTemplate();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                MessageBox.Show("Row cleared from memory, you can save a new row now or select another to edit");
+            }
+        }
 
-                
-               
 
-                SqlConnection connection = new SqlConnection("Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex");
-               
-                String query = "UPDATE dbo.message_template" + "(template_id, template_name, message_content, updated_date, updated_by) " + "SET template_id=@templateID,template_name=@templateName,message_content=@msgContent,updated_date=@upDated,updated_by=@upDatedBy)" + "(WHERE template_id = @templateID)";
-
-                SqlCommand command = new SqlCommand(query, connection);
-                 
-                command.Parameters.Add("@templateID", SqlDbType.NVarChar, 50).Value = templateID;
-                command.Parameters.Add("@templateName", SqlDbType.NVarChar, 50).Value = templateName;
-                command.Parameters.Add("@msgContent", SqlDbType.NVarChar, 1000).Value = msgContent;
-                command.Parameters.Add("@upDated", SqlDbType.SmallDateTime, 19).Value = upDated;
-                command.Parameters.Add("@upDatedBy", SqlDbType.Int, 50).Value = upDatedBy;
-                connection.Open();                      
-                int result = command.ExecuteNonQuery();
-                 */
+        private void modifyTemplate()
+        {           
             int templateID = int.Parse(tempID_TextBox.Text); 
             string templateName = tempNameTextBox.Text;
             string msgContent = msgBodyTextBox.Text;                
@@ -111,14 +80,11 @@ namespace TemplateCreation
             using (SqlConnection connection = new SqlConnection(connectionString))
                 using (SqlCommand command = connection.CreateCommand())
                 { 
-                command.CommandText = "UPDATE dbo.message_template SET template_name=@templateName, message_content=@msgContent, updated_date=@upDated, updated_by=@upDatedBy WHERE template_name = @templateName";
-                //command.Parameters.IsReadOnly("@templateID");                                
-                //command.Parameters.AddWithValue("@templateID", templateID);
+                command.CommandText = "UPDATE dbo.message_template SET template_name=@templateName, message_content=@msgContent, updated_date=@upDated, updated_by=@upDatedBy WHERE template_name = @templateName";                
                 command.Parameters.AddWithValue("@templateName",  templateName);
                 command.Parameters.AddWithValue("@msgContent", msgContent);
                 command.Parameters.AddWithValue("@upDated", upDated);
-                command.Parameters.AddWithValue("@upDatedBy", upDatedBy);
-                
+                command.Parameters.AddWithValue("@upDatedBy", upDatedBy);                
                 connection.Open();
 
                 command.ExecuteNonQuery();
@@ -126,116 +92,13 @@ namespace TemplateCreation
                 connection.Close();
 
                 }
-  
-
-
-            /*
-            try
-            {
-            
-                string templateID = tempID_TextBox.Text;
-                string templateName = tempNameTextBox.Text;
-                string msgContent = msgBodyTextBox.Text;                
-                string upDated = DateTime.Now.ToString();
-                int upDatedBy = 1;
-
-                
-               
-
-                SqlConnection connection = new SqlConnection("Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex");
-               
-                String query = "UPDATE dbo.message_template" + "(template_id, template_name, message_content, updated_date, updated_by) " + "SET template_id=@templateID,template_name=@templateName,message_content=@msgContent,updated_date=@upDated,updated_by=@upDatedBy)" + "(WHERE template_id = @templateID)";
-
-                SqlCommand command = new SqlCommand(query, connection);
-                 
-                command.Parameters.Add("@templateID", SqlDbType.NVarChar, 50).Value = templateID;
-                command.Parameters.Add("@templateName", SqlDbType.NVarChar, 50).Value = templateName;
-                command.Parameters.Add("@msgContent", SqlDbType.NVarChar, 1000).Value = msgContent;
-                command.Parameters.Add("@upDated", SqlDbType.SmallDateTime, 19).Value = upDated;
-                command.Parameters.Add("@upDatedBy", SqlDbType.Int, 50).Value = upDatedBy;
-                connection.Open();                      
-                int result = command.ExecuteNonQuery();
-
-                // Check Error
-                if (result < 0)
-                Console.WriteLine("Error inserting data into Database!");
-              
-                
-                MessageBox.Show("Template Created!");
-                }
-            
-            catch
-            {
-            
-                MessageBox.Show("something went wrong"); 
-            
-            }
-           */
-           
-            /*
-            tApex db = new tApex(@"Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex");
-
-            // Query for a specific customer.
-            var tID =
-            (from Table in db.tApex
-            where Table.template_id == tempID_TextBox.Text
-            select Table);template_id();
-
-            // Change the name of the contact.
-            tID.template_id == tempID_TextBox.Text;          
-            // Ask the DataContext to save all the changes.
-            db.SubmitChanges();
-            */
-        }
-
-        private void saveCheck()
-        {
-
-            DialogResult dialogResult = MessageBox.Show("Sure", "Some Title", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                templateOverwrite();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                MessageBox.Show("Nope");
-            }
-
-        }
-
-        private void templateOverwrite()
-        {
             
         }
 
-
-
-
-
+    
         private void templateReader()
-        {
-
-          
-            /*
-            try
-            {
-               SqlConnection templateConnection = new SqlConnection();
-                SqlCommand templateCommand = new SqlCommand();
-                SqlDataReader templateDataReader;
-               templateConnection.ConnectionString = "Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex";
-                templateConnection.Open();
-                templateCommand.Connection = templateConnection;
-               templateCommand.CommandText = "Select template_name, message_content from dbo.message_template";
-                templateDataReader = templateCommand.ExecuteReader();
-                while (templateDataReader.Read())
-                    templateListBox.Items.Add(templateDataReader["template_name"]);
-                templateDataReader.Close();
-            }
-            catch
-            {
-                MessageBox.Show("Something went wrong");
-            }
-            */
+        {      
+            
         }
 
         //create template grabs values for required dbo.message_template fields
@@ -317,7 +180,7 @@ namespace TemplateCreation
 
         private void saveAsButton_Click(object sender, EventArgs e)
         {
-            linqTest();
+            MessageBox.Show("Nothing here");
         }
 
         private void clearButton_Click(object sender, EventArgs e)
