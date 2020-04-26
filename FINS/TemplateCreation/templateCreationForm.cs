@@ -37,33 +37,35 @@ namespace TemplateCreation
         //saveButton click event validates whether inputs from user conform to template name and message content fields
         private void saveButton_Click(object sender, EventArgs e)
         {
+            saveCheck();
+
+        }
+
+        private void saveCheck()
+        {
             if (tempID_TextBox.TextLength > 0 && tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
             {
-                 saveCheck();
+                DialogResult dialogResult = MessageBox.Show("Confirmation", "Sure you want to modify template?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    modifyTemplate();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("Row cleared from memory, you can save a new row now or select another to edit");
+                }
             }
             else if (tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
             {
-                 createTemplate();
+                createTemplate();
             }
             else
             {
                 MessageBox.Show("You must enter a template name, 1-50 characters.  Msg body field has 1000 character limit.");
             }
 
-        }
 
-        private void saveCheck()
-        {
-
-            DialogResult dialogResult = MessageBox.Show("Confirmation", "Sure you want?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                modifyTemplate();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                MessageBox.Show("Row cleared from memory, you can save a new row now or select another to edit");
-            }
+            
         }
 
 
@@ -92,7 +94,7 @@ namespace TemplateCreation
                 connection.Close();
 
                 }
-            
+             loadDataGrid();
         }
 
     
@@ -137,7 +139,7 @@ namespace TemplateCreation
                     }
                 }
                 MessageBox.Show("Template Created!");
-
+                loadDataGrid();
             }
             catch
             {
@@ -170,7 +172,12 @@ namespace TemplateCreation
             // adding a line
             this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);
             dataGridView1.ClearSelection();
+        }
 
+        private void loadDataGrid()
+        {
+            this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);            
+            dataGridView1.ClearSelection();           
         }
 
         private void messageLabel_Click(object sender, EventArgs e)
@@ -180,7 +187,8 @@ namespace TemplateCreation
 
         private void saveAsButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nothing here");
+            tempID_TextBox.Text = string.Empty;
+            //saveCheck();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -189,11 +197,10 @@ namespace TemplateCreation
         }
 
         private void clearMethod()
-        {
-            dataGridView1.ClearSelection();
-            //tempID_TextBox.Text = string.Empty;
-            //tempNameTextBox.Text = string.Empty;
-            //msgBodyTextBox.Text = string.Empty;           
+        {            
+            tempID_TextBox.Text = string.Empty;
+            tempNameTextBox.Text = string.Empty;
+            msgBodyTextBox.Text = string.Empty;           
         }
     }
 }

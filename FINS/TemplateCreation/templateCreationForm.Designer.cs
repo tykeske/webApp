@@ -47,12 +47,11 @@
             this.messageLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.templatesGroupBox = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
-            this.tempID_Label = new System.Windows.Forms.Label();
-            this.tempID_TextBox = new System.Windows.Forms.TextBox();
-            this.saveAsButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
+            this.saveAsButton = new System.Windows.Forms.Button();
+            this.tempID_TextBox = new System.Windows.Forms.TextBox();
+            this.tempID_Label = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.template_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.template_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.message_content = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +59,14 @@
             this.updated_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.created_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updated_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
+            this.templateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.templatenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.messagecontentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updateddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updatedbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.tagGroupBox.SuspendLayout();
@@ -71,7 +78,7 @@
             // 
             this.tempNameLabel.AutoSize = true;
             this.tempNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempNameLabel.Location = new System.Drawing.Point(508, 218);
+            this.tempNameLabel.Location = new System.Drawing.Point(6, 283);
             this.tempNameLabel.Name = "tempNameLabel";
             this.tempNameLabel.Size = new System.Drawing.Size(99, 15);
             this.tempNameLabel.TabIndex = 0;
@@ -79,8 +86,8 @@
             // 
             // tempNameTextBox
             // 
-            this.tempNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_name", true));
-            this.tempNameTextBox.Location = new System.Drawing.Point(614, 217);
+            this.tempNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tempNameTextBox.Location = new System.Drawing.Point(111, 278);
             this.tempNameTextBox.Name = "tempNameTextBox";
             this.tempNameTextBox.Size = new System.Drawing.Size(177, 20);
             this.tempNameTextBox.TabIndex = 1;
@@ -124,10 +131,10 @@
             // msgBodyTextBox
             // 
             this.msgBodyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "message_content", true));
-            this.msgBodyTextBox.Location = new System.Drawing.Point(27, 334);
+            this.msgBodyTextBox.Location = new System.Drawing.Point(27, 441);
             this.msgBodyTextBox.Multiline = true;
             this.msgBodyTextBox.Name = "msgBodyTextBox";
-            this.msgBodyTextBox.Size = new System.Drawing.Size(453, 292);
+            this.msgBodyTextBox.Size = new System.Drawing.Size(836, 292);
             this.msgBodyTextBox.TabIndex = 5;
             // 
             // tagGroupBox
@@ -141,7 +148,7 @@
             this.tagGroupBox.Controls.Add(this.tagTextBox2);
             this.tagGroupBox.Controls.Add(this.tagTextBox1);
             this.tagGroupBox.Controls.Add(this.tagTextBox3);
-            this.tagGroupBox.Location = new System.Drawing.Point(501, 334);
+            this.tagGroupBox.Location = new System.Drawing.Point(429, 217);
             this.tagGroupBox.Name = "tagGroupBox";
             this.tagGroupBox.Size = new System.Drawing.Size(362, 134);
             this.tagGroupBox.TabIndex = 6;
@@ -209,7 +216,7 @@
             // 
             this.messageLabel.AutoSize = true;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageLabel.Location = new System.Drawing.Point(24, 316);
+            this.messageLabel.Location = new System.Drawing.Point(24, 400);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(156, 15);
             this.messageLabel.TabIndex = 7;
@@ -218,7 +225,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(405, 632);
+            this.saveButton.Location = new System.Drawing.Point(177, 318);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 8;
@@ -230,17 +237,58 @@
             // 
             this.templatesGroupBox.Controls.Add(this.clearButton);
             this.templatesGroupBox.Controls.Add(this.saveAsButton);
+            this.templatesGroupBox.Controls.Add(this.tagGroupBox);
             this.templatesGroupBox.Controls.Add(this.tempID_TextBox);
             this.templatesGroupBox.Controls.Add(this.tempID_Label);
             this.templatesGroupBox.Controls.Add(this.dataGridView1);
+            this.templatesGroupBox.Controls.Add(this.saveButton);
             this.templatesGroupBox.Controls.Add(this.tempNameTextBox);
             this.templatesGroupBox.Controls.Add(this.tempNameLabel);
             this.templatesGroupBox.Location = new System.Drawing.Point(27, 31);
             this.templatesGroupBox.Name = "templatesGroupBox";
-            this.templatesGroupBox.Size = new System.Drawing.Size(836, 282);
+            this.templatesGroupBox.Size = new System.Drawing.Size(836, 366);
             this.templatesGroupBox.TabIndex = 9;
             this.templatesGroupBox.TabStop = false;
             this.templatesGroupBox.Text = "Templates";
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(6, 318);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(153, 23);
+            this.clearButton.TabIndex = 13;
+            this.clearButton.Text = "New Template(&Clear)";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // saveAsButton
+            // 
+            this.saveAsButton.Location = new System.Drawing.Point(277, 318);
+            this.saveAsButton.Name = "saveAsButton";
+            this.saveAsButton.Size = new System.Drawing.Size(121, 23);
+            this.saveAsButton.TabIndex = 12;
+            this.saveAsButton.Text = "Save &As";
+            this.saveAsButton.UseVisualStyleBackColor = true;
+            this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
+            // 
+            // tempID_TextBox
+            // 
+            this.tempID_TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tempID_TextBox.Location = new System.Drawing.Point(111, 254);
+            this.tempID_TextBox.Name = "tempID_TextBox";
+            this.tempID_TextBox.ReadOnly = true;
+            this.tempID_TextBox.Size = new System.Drawing.Size(54, 20);
+            this.tempID_TextBox.TabIndex = 11;
+            // 
+            // tempID_Label
+            // 
+            this.tempID_Label.AutoSize = true;
+            this.tempID_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tempID_Label.Location = new System.Drawing.Point(6, 254);
+            this.tempID_Label.Name = "tempID_Label";
+            this.tempID_Label.Size = new System.Drawing.Size(74, 15);
+            this.tempID_Label.TabIndex = 10;
+            this.tempID_Label.Text = "Template ID";
             // 
             // dataGridView1
             // 
@@ -254,56 +302,20 @@
             this.created_date,
             this.updated_date,
             this.created_by,
-            this.updated_by});
+            this.updated_by,
+            this.templateidDataGridViewTextBoxColumn,
+            this.templatenameDataGridViewTextBoxColumn,
+            this.messagecontentDataGridViewTextBoxColumn,
+            this.createddateDataGridViewTextBoxColumn,
+            this.updateddateDataGridViewTextBoxColumn,
+            this.createdbyDataGridViewTextBoxColumn,
+            this.updatedbyDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.aTeamApexDataSetBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(48, 29);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(743, 174);
             this.dataGridView1.TabIndex = 9;
-            // 
-            // message_templateTableAdapter1
-            // 
-            this.message_templateTableAdapter1.ClearBeforeFill = true;
-            // 
-            // tempID_Label
-            // 
-            this.tempID_Label.AutoSize = true;
-            this.tempID_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempID_Label.Location = new System.Drawing.Point(307, 218);
-            this.tempID_Label.Name = "tempID_Label";
-            this.tempID_Label.Size = new System.Drawing.Size(74, 15);
-            this.tempID_Label.TabIndex = 10;
-            this.tempID_Label.Text = "Template ID";
-            // 
-            // tempID_TextBox
-            // 
-            this.tempID_TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_id", true));
-            this.tempID_TextBox.Location = new System.Drawing.Point(404, 217);
-            this.tempID_TextBox.Name = "tempID_TextBox";
-            this.tempID_TextBox.ReadOnly = true;
-            this.tempID_TextBox.Size = new System.Drawing.Size(75, 20);
-            this.tempID_TextBox.TabIndex = 11;
-            // 
-            // saveAsButton
-            // 
-            this.saveAsButton.Location = new System.Drawing.Point(48, 214);
-            this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(75, 23);
-            this.saveAsButton.TabIndex = 12;
-            this.saveAsButton.Text = "&Save As";
-            this.saveAsButton.UseVisualStyleBackColor = true;
-            this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
-            // 
-            // clearButton
-            // 
-            this.clearButton.Location = new System.Drawing.Point(716, 243);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 23);
-            this.clearButton.TabIndex = 13;
-            this.clearButton.Text = "&Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // template_id
             // 
@@ -361,15 +373,73 @@
             this.updated_by.ReadOnly = true;
             this.updated_by.Width = 88;
             // 
+            // message_templateTableAdapter1
+            // 
+            this.message_templateTableAdapter1.ClearBeforeFill = true;
+            // 
+            // templateidDataGridViewTextBoxColumn
+            // 
+            this.templateidDataGridViewTextBoxColumn.DataPropertyName = "template_id";
+            this.templateidDataGridViewTextBoxColumn.HeaderText = "template_id";
+            this.templateidDataGridViewTextBoxColumn.Name = "templateidDataGridViewTextBoxColumn";
+            this.templateidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.templateidDataGridViewTextBoxColumn.Width = 86;
+            // 
+            // templatenameDataGridViewTextBoxColumn
+            // 
+            this.templatenameDataGridViewTextBoxColumn.DataPropertyName = "template_name";
+            this.templatenameDataGridViewTextBoxColumn.HeaderText = "template_name";
+            this.templatenameDataGridViewTextBoxColumn.Name = "templatenameDataGridViewTextBoxColumn";
+            this.templatenameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.templatenameDataGridViewTextBoxColumn.Width = 104;
+            // 
+            // messagecontentDataGridViewTextBoxColumn
+            // 
+            this.messagecontentDataGridViewTextBoxColumn.DataPropertyName = "message_content";
+            this.messagecontentDataGridViewTextBoxColumn.HeaderText = "message_content";
+            this.messagecontentDataGridViewTextBoxColumn.Name = "messagecontentDataGridViewTextBoxColumn";
+            this.messagecontentDataGridViewTextBoxColumn.ReadOnly = true;
+            this.messagecontentDataGridViewTextBoxColumn.Width = 116;
+            // 
+            // createddateDataGridViewTextBoxColumn
+            // 
+            this.createddateDataGridViewTextBoxColumn.DataPropertyName = "created_date";
+            this.createddateDataGridViewTextBoxColumn.HeaderText = "created_date";
+            this.createddateDataGridViewTextBoxColumn.Name = "createddateDataGridViewTextBoxColumn";
+            this.createddateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createddateDataGridViewTextBoxColumn.Width = 95;
+            // 
+            // updateddateDataGridViewTextBoxColumn
+            // 
+            this.updateddateDataGridViewTextBoxColumn.DataPropertyName = "updated_date";
+            this.updateddateDataGridViewTextBoxColumn.HeaderText = "updated_date";
+            this.updateddateDataGridViewTextBoxColumn.Name = "updateddateDataGridViewTextBoxColumn";
+            this.updateddateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.updateddateDataGridViewTextBoxColumn.Width = 98;
+            // 
+            // createdbyDataGridViewTextBoxColumn
+            // 
+            this.createdbyDataGridViewTextBoxColumn.DataPropertyName = "created_by";
+            this.createdbyDataGridViewTextBoxColumn.HeaderText = "created_by";
+            this.createdbyDataGridViewTextBoxColumn.Name = "createdbyDataGridViewTextBoxColumn";
+            this.createdbyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createdbyDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // updatedbyDataGridViewTextBoxColumn
+            // 
+            this.updatedbyDataGridViewTextBoxColumn.DataPropertyName = "updated_by";
+            this.updatedbyDataGridViewTextBoxColumn.HeaderText = "updated_by";
+            this.updatedbyDataGridViewTextBoxColumn.Name = "updatedbyDataGridViewTextBoxColumn";
+            this.updatedbyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.updatedbyDataGridViewTextBoxColumn.Width = 88;
+            // 
             // templateCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 666);
+            this.ClientSize = new System.Drawing.Size(921, 747);
             this.Controls.Add(this.templatesGroupBox);
             this.Controls.Add(this.messageLabel);
-            this.Controls.Add(this.tagGroupBox);
-            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.msgBodyTextBox);
             this.Name = "templateCreationForm";
             this.Text = "Template Creation";
@@ -419,6 +489,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn updated_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn created_by;
         private System.Windows.Forms.DataGridViewTextBoxColumn updated_by;
+        private System.Windows.Forms.DataGridViewTextBoxColumn templateidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn templatenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn messagecontentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createddateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updateddateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdbyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updatedbyDataGridViewTextBoxColumn;
     }
 }
 
