@@ -21,7 +21,7 @@ namespace TemplateCreation
         public static SqlConnection GetConnection()
         {
             string connectionString =
-                   "Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\registration.mdf;Integrated Security=SSPI";
+                   "Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex";
 
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;

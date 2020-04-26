@@ -11,28 +11,28 @@ namespace TemplateCreation
 
     public static class templateReadWrite
     {
-        public static bool Load(ref List<Student> myStudentList,
+        public static bool Load(ref List<coreTemplate> myTemplateList,
                                 ref string error)
         {
 
-            SqlConnection myStudentConnection = new SqlConnection();
-            SqlDataReader myStudentDataReader;
-            SqlCommand myStudentCommand;
-            Student myStudent;
+            SqlConnection myTemplateConnection = new SqlConnection();
+            SqlDataReader myTemplateDataReader;
+            SqlCommand myTemplateCommand;
+            coreTemplate myTemplate;
             try
             {
-                myStudentConnection = RegistrationDB.GetConnection();
-                myStudentConnection.Open();
+                myTemplateConnection = templateDataBase.GetConnection();
+                myTemplateConnection.Open();
 
                 //setup Command
-                myStudentCommand = new SqlCommand();
-                myStudentCommand.Connection = myStudentConnection;
-                myStudentCommand.CommandText = "Select StudentID, StudentName, StudentMidterm, StudentFinal, StudentMajor from Students";
+                myTemplateCommand = new SqlCommand();
+                myTemplateCommand.Connection = myStudentConnection;
+                myTemplateCommand.CommandText = "Select template_id, template_name, message_content, created_date, updated_date, created_by, updated_by FROM dbo.message_template";
 
                 //exceute the command to produce a DataReader
-                myStudentDataReader = myStudentCommand.ExecuteReader();
+                myTemplateDataReader = myTemplateCommand.ExecuteReader();
 
-                while (myStudentDataReader.Read())
+                while (myTemplateDataReader.Read())
                 {
                     //create a new student based on the student record just read
                     //  0 is StudentID
@@ -40,14 +40,15 @@ namespace TemplateCreation
                     //  2 is StudentMidterm
                     //  3 is StudentFinal
                     //  4 is StudentMajor
-                    myStudent = new Student();
-                    myStudent.ID = myStudentDataReader.GetInt32(0);
-                    myStudent.Name = myStudentDataReader.GetString(1);
-                    myStudent.Midterm = myStudentDataReader.GetInt32(2);
-                    myStudent.Final = myStudentDataReader.GetInt32(3);
-                    myStudent.Major = myStudentDataReader.GetString(4);
+                    myTemplate = new coreTemplate();
+                    myTemplate.templateID = myTemplateDataReader.GetInt32(0);
+                    myTemplate.templateName = myTemplateDataReader.GetString(1);
+                    myTemplate.createDate= myTemplateDataReader.GetString(2);
+                    myTemplate.upDated = myTemplateDataReader.GetString(3);
+                    myTemplate.createdBy = myTemplateDataReader.GetInt(4);
+                    myTemplate.updatedBy = myTemplateDataReader.GetInt(4);
 
-                    myStudentList.Add(myStudent);
+                    myTemplateList.Add(myStudent);
                 }
 
                 myStudentDataReader.Close();
