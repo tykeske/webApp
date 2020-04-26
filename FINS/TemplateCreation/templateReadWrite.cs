@@ -11,14 +11,14 @@ namespace TemplateCreation
 
     public static class templateReadWrite
     {
-        public static bool Load(ref List<coreTemplate> myTemplateList,
+        public static bool Load(ref List<Class1> myTemplateList,
                                 ref string error)
         {
 
             SqlConnection myTemplateConnection = new SqlConnection();
             SqlDataReader myTemplateDataReader;
             SqlCommand myTemplateCommand;
-            coreTemplate myTemplate;
+            Class1 myTemplate;
             try
             {
                 myTemplateConnection = templateDataBase.GetConnection();
