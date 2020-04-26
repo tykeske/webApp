@@ -9,19 +9,19 @@ using Microsoft.EntityFrameworkCore;
 using AccountManagement.Data;
 using AccountManagement.Models;
 
-namespace AccountManagement.Pages.Accounts
+namespace AccountManagement.Pages.AccountCreation
 {
     public class EditModel : PageModel
     {
-        private readonly AccountManagement.Data.AccountManagementContext _context;
+        private readonly AccountManagement.Data.AccountContext _context;
 
-        public EditModel(AccountManagement.Data.AccountManagementContext context)
+        public EditModel(AccountManagement.Data.AccountContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public user_account account { get; set; }
+        public userAccount userAccount { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,17 +30,17 @@ namespace AccountManagement.Pages.Accounts
                 return NotFound();
             }
 
-            account = await _context.account.FirstOrDefaultAsync(m => m.userId == id);
+            userAccount = await _context.userAccounts.FirstOrDefaultAsync(m => m.userId == id);
 
-            if (account == null)
+            if (userAccount == null)
             {
                 return NotFound();
             }
             return Page();
         }
 
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -48,7 +48,7 @@ namespace AccountManagement.Pages.Accounts
                 return Page();
             }
 
-            _context.Attach(account).State = EntityState.Modified;
+            _context.Attach(userAccount).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace AccountManagement.Pages.Accounts
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!accountExists(account.userId))
+                if (!userAccountExists(userAccount.userId))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace AccountManagement.Pages.Accounts
             return RedirectToPage("./Index");
         }
 
-        private bool accountExists(int id)
+        private bool userAccountExists(int id)
         {
-            return _context.account.Any(e => e.userId == id);
+            return _context.userAccounts.Any(e => e.userId == id);
         }
     }
 }

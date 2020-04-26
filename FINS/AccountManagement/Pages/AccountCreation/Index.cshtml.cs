@@ -8,22 +8,27 @@ using Microsoft.EntityFrameworkCore;
 using AccountManagement.Data;
 using AccountManagement.Models;
 
-namespace AccountManagement.Pages.Accounts
+namespace AccountManagement.Pages.AccountCreation
 {
     public class IndexModel : PageModel
     {
-        private readonly AccountManagement.Data.AccountManagementContext _context;
+        private readonly AccountManagement.Data.AccountContext _context;
 
-        public IndexModel(AccountManagement.Data.AccountManagementContext context)
+        public IndexModel(AccountManagement.Data.AccountContext context)
         {
             _context = context;
+
+            if (context.userAccounts.Any())
+            {
+                return;   // DB has been seeded
+            }
         }
 
-        public IList<user_account> account { get;set; }
+        public IList<userAccount> userAccount { get;set; }
 
         public async Task OnGetAsync()
         {
-            account = await _context.account.ToListAsync();
+            userAccount = await _context.userAccounts.ToListAsync();
         }
     }
 }

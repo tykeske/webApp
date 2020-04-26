@@ -4,34 +4,38 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using AccountManagement.Data;
 using AccountManagement.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace AccountManagement.Pages.Accounts
+namespace AccountManagement.Pages.AccountCreation
 {
     public class registerModel : PageModel
     {
-        private readonly AccountManagement.Data.AccountManagementContext _context;
+        private readonly AccountManagement.Data.AccountContext _context;
 
-        public registerModel(AccountManagement.Data.AccountManagementContext context)
+        public registerModel(AccountManagement.Data.AccountContext context)
         {
             _context = context;
         }
+
         public IActionResult OnGet()
         {
             return Page();
         }
 
         [BindProperty]
-        public user_account account { get; set; }
+        public userAccount userAccount { get; set; }
 
-        public async Task<IActionResult> onPostAsync()
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.account.Add(account);
+            _context.userAccounts.Add(userAccount);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -8,18 +8,18 @@ using Microsoft.EntityFrameworkCore;
 using AccountManagement.Data;
 using AccountManagement.Models;
 
-namespace AccountManagement.Pages.Accounts
+namespace AccountManagement.Pages.AccountCreation
 {
     public class DetailsModel : PageModel
     {
-        private readonly AccountManagement.Data.AccountManagementContext _context;
+        private readonly AccountManagement.Data.AccountContext _context;
 
-        public DetailsModel(AccountManagement.Data.AccountManagementContext context)
+        public DetailsModel(AccountManagement.Data.AccountContext context)
         {
             _context = context;
         }
 
-        public user_account account { get; set; }
+        public userAccount userAccount { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,9 @@ namespace AccountManagement.Pages.Accounts
                 return NotFound();
             }
 
-            account = await _context.account.FirstOrDefaultAsync(m => m.userId == id);
+            userAccount = await _context.userAccounts.FirstOrDefaultAsync(m => m.userId == id);
 
-            if (account == null)
+            if (userAccount == null)
             {
                 return NotFound();
             }

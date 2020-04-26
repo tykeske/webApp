@@ -1,5 +1,5 @@
 ﻿@page
-@model AccountManagement.Pages.Accounts.IndexModel
+@model AccountManagement.Pages.AccountCreation.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,28 +14,34 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.account[0].userName)
+                @Html.DisplayNameFor(model => model.userAccount[0].userName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.account[0].passwordHash)
+                @Html.DisplayNameFor(model => model.userAccount[0].passwordHash)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.account[0].fullName)
+                @Html.DisplayNameFor(model => model.userAccount[0].fullName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.account[0].emailAddress)
+                @Html.DisplayNameFor(model => model.userAccount[0].emailAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.account[0].isActive)
+                @Html.DisplayNameFor(model => model.userAccount[0].isActive)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.account[0].createdDate)
+                @Html.DisplayNameFor(model => model.userAccount[0].createdDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userAccount[0].roleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userAccount[0].telePhone)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.account) {
+@foreach (var item in Model.userAccount) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.userName)
@@ -54,6 +60,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.createdDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.roleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telePhone)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.userId">Edit</a> |

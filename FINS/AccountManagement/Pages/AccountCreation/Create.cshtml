@@ -1,0 +1,64 @@
+﻿@page
+@model AccountManagement.Pages.AccountCreation.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>userAccount</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="userAccount.userName" class="control-label"></label>
+                <input asp-for="userAccount.userName" class="form-control" />
+                <span asp-validation-for="userAccount.userName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userAccount.passwordHash" class="control-label"></label>
+                <input asp-for="userAccount.passwordHash" class="form-control" />
+                <span asp-validation-for="userAccount.passwordHash" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userAccount.fullName" class="control-label"></label>
+                <input asp-for="userAccount.fullName" class="form-control" />
+                <span asp-validation-for="userAccount.fullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userAccount.emailAddress" class="control-label"></label>
+                <input asp-for="userAccount.emailAddress" class="form-control" />
+                <span asp-validation-for="userAccount.emailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userAccount.isActive" class="control-label"></label>
+                <input asp-for="userAccount.isActive" class="form-control" />
+                <span asp-validation-for="userAccount.isActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userAccount.roleId" class="control-label"></label>
+                <input asp-for="userAccount.roleId" class="form-control" />
+                <span asp-validation-for="userAccount.roleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userAccount.telePhone" class="control-label"></label>
+                <input asp-for="userAccount.telePhone" class="form-control" />
+                <span asp-validation-for="userAccount.telePhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

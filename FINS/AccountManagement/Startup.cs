@@ -27,8 +27,8 @@ namespace AccountManagement
         {
             services.AddRazorPages();
 
-            services.AddDbContext<AccountManagementContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("AccountManagementContext")));
+            services.AddDbContext<AccountContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AccountContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
