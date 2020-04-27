@@ -12,13 +12,12 @@ using System.Data.SqlClient;
 
 /*
 Author: Vince Amela
-Date: 4/19/20
+Date: 4/26/20
 Class: CIS 234A
-Assignment: 3
+Assignment: 4
 Bugs: 
-      *  none at this time 
-      *  
- * 
+
+
 */
 
 namespace TemplateCreation
@@ -44,14 +43,15 @@ namespace TemplateCreation
         {
             if (tempID_TextBox.TextLength > 0 && tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
             {
-                DialogResult dialogResult = MessageBox.Show("Confirmation", "Sure you want to modify template?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to save changes?", "Confirm", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    MessageBox.Show("New Template created, scroll down the list to find your new entry");
                     modifyTemplate();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    MessageBox.Show("Row cleared from memory, you can save a new row now or select another to edit");
+                    MessageBox.Show("Okay then, you can save a new row or select another to edit");
                 }
             }
             else if (tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
@@ -61,71 +61,28 @@ namespace TemplateCreation
             else
             {
                 MessageBox.Show("You must enter a template name, 1-50 characters.  Msg body field has 1000 character limit.");
-            }
-
-
-            
+            }            
         }
-        
-            /*
-        private void findID()
-        {
-            int templateID = tempID_TextBox.Text;
-            string templateName;
 
-            string sql = "SELECT * FROM YOURTABLE WHERE month(startdate) = month(@startdate) and year(startdate) = year(@startdate)";
-
-            SqlParameter templateID = new SqlParameter("@templateID");
-            templateID.Value = templateID;
-
-
-            SqlParameter templateName = new SqlParameter("@templateName");
-            templateName.Value = templateName;
-
-            SqlCommand cmd= new SqlCommand(sql);
-            command.Parameters.AddWithValue(startdate);
-
-
-
-
-
-
-            SqlConnection con=new SqlConnection("Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex");               
-            SqlCommand SelectCommand = new SqlCommand("SELECT templateName FROM dbo.message_template WHERE", con);
-            SqlDataReader myreader;
-            con.Open();
-
-            myreader = SelectCommand.ExecuteReader();
-
-            List<String> lstEmails=new List<String>();
-            while (myreader.Read())
-            {
-             lstEmails.Add(myreader[0].ToString());
-             //strValue=myreader["email"].ToString();
-            //strValue=myreader.GetString(0);
-            }
-            con.Close();
-            */
-        
 
 
         private void modifyTemplate()
-        {           
-            int templateID = int.Parse(tempID_TextBox.Text); 
-            string templateName = tempNameTextBox.Text;
-            string msgContent = msgBodyTextBox.Text;                
-            string upDated = DateTime.Now.ToString();
-            int upDatedBy = 1;
+        {
+            try
+            {   
+                int templateID = int.Parse(tempID_TextBox.Text); 
+                string templateName = tempNameTextBox.Text;
+                string msgContent = msgBodyTextBox.Text;                
+                string upDated = DateTime.Now.ToString();
+                int upDatedBy = 1;
 
-            string connectionString = "Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex";
+                string connectionString = "Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 using (SqlCommand command = connection.CreateCommand())
                 { 
                 command.CommandText = "UPDATE dbo.message_template SET template_name=@templateName, message_content=@msgContent, updated_date=@upDated, updated_by=@upDatedBy WHERE template_id = @template_ID";                
-                //SqlParameter template_ID = new SqlParameter("@template_ID", templateID);
-                //template_ID.Value = templateID;
-                command.Parameters.Add("@template_ID", SqlDbType.Int).Value = templateID;
+                command.Parameters.Add("@template_ID", SqlDbType.Int).Value = templateID; //adds templateID variable as a parameter for the WHERE clause
                 command.Parameters.AddWithValue("@templateName",  templateName);
                 command.Parameters.AddWithValue("@msgContent", msgContent);
                 command.Parameters.AddWithValue("@upDated", upDated);
@@ -136,9 +93,14 @@ namespace TemplateCreation
                 command.ExecuteNonQuery();
 
                 connection.Close();
-
                 }
              loadDataGrid();
+            }
+            catch
+            {
+            MessageBox.Show("Something went wrong");
+            }
+            
         }
 
     
@@ -226,13 +188,12 @@ namespace TemplateCreation
 
         private void messageLabel_Click(object sender, EventArgs e)
         {
-
+           //remove this
         }
 
         private void saveAsButton_Click(object sender, EventArgs e)
         {
-            tempID_TextBox.Text = string.Empty;
-            //saveCheck();
+            MessageBox.Show("saveAsButton disabled");
         }
 
         private void clearButton_Click(object sender, EventArgs e)
