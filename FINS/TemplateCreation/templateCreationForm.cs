@@ -21,7 +21,6 @@ Bugs:
  * 
 */
 
-
 namespace TemplateCreation
 {
    
@@ -67,6 +66,47 @@ namespace TemplateCreation
 
             
         }
+        
+            /*
+        private void findID()
+        {
+            int templateID = tempID_TextBox.Text;
+            string templateName;
+
+            string sql = "SELECT * FROM YOURTABLE WHERE month(startdate) = month(@startdate) and year(startdate) = year(@startdate)";
+
+            SqlParameter templateID = new SqlParameter("@templateID");
+            templateID.Value = templateID;
+
+
+            SqlParameter templateName = new SqlParameter("@templateName");
+            templateName.Value = templateName;
+
+            SqlCommand cmd= new SqlCommand(sql);
+            command.Parameters.AddWithValue(startdate);
+
+
+
+
+
+
+            SqlConnection con=new SqlConnection("Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex");               
+            SqlCommand SelectCommand = new SqlCommand("SELECT templateName FROM dbo.message_template WHERE", con);
+            SqlDataReader myreader;
+            con.Open();
+
+            myreader = SelectCommand.ExecuteReader();
+
+            List<String> lstEmails=new List<String>();
+            while (myreader.Read())
+            {
+             lstEmails.Add(myreader[0].ToString());
+             //strValue=myreader["email"].ToString();
+            //strValue=myreader.GetString(0);
+            }
+            con.Close();
+            */
+        
 
 
         private void modifyTemplate()
@@ -82,11 +122,15 @@ namespace TemplateCreation
             using (SqlConnection connection = new SqlConnection(connectionString))
                 using (SqlCommand command = connection.CreateCommand())
                 { 
-                command.CommandText = "UPDATE dbo.message_template SET template_name=@templateName, message_content=@msgContent, updated_date=@upDated, updated_by=@upDatedBy WHERE template_name = @templateName";                
+                command.CommandText = "UPDATE dbo.message_template SET template_name=@templateName, message_content=@msgContent, updated_date=@upDated, updated_by=@upDatedBy WHERE template_id = @template_ID";                
+                //SqlParameter template_ID = new SqlParameter("@template_ID", templateID);
+                //template_ID.Value = templateID;
+                command.Parameters.Add("@template_ID", SqlDbType.Int).Value = templateID;
                 command.Parameters.AddWithValue("@templateName",  templateName);
                 command.Parameters.AddWithValue("@msgContent", msgContent);
                 command.Parameters.AddWithValue("@upDated", upDated);
-                command.Parameters.AddWithValue("@upDatedBy", upDatedBy);                
+                command.Parameters.AddWithValue("@upDatedBy", upDatedBy); 
+                
                 connection.Open();
 
                 command.ExecuteNonQuery();
