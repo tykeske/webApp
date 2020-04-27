@@ -46,7 +46,7 @@ namespace TemplateCreation
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to save changes?", "Confirm", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("New Template created, scroll down the list to find your new entry");
+                    MessageBox.Show("Changes saved.");
                     modifyTemplate();
                 }
                 else if (dialogResult == DialogResult.No)
@@ -186,15 +186,6 @@ namespace TemplateCreation
             dataGridView1.ClearSelection();           
         }
 
-        private void messageLabel_Click(object sender, EventArgs e)
-        {
-           //remove this
-        }
-
-        private void saveAsButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("saveAsButton disabled");
-        }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
