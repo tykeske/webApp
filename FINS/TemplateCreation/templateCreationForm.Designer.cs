@@ -48,7 +48,6 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.templatesGroupBox = new System.Windows.Forms.GroupBox();
             this.clearButton = new System.Windows.Forms.Button();
-            this.saveAsButton = new System.Windows.Forms.Button();
             this.tempID_TextBox = new System.Windows.Forms.TextBox();
             this.tempID_Label = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -59,7 +58,6 @@
             this.updated_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.created_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updated_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
             this.templateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.templatenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.messagecontentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +65,7 @@
             this.updateddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.tagGroupBox.SuspendLayout();
@@ -221,7 +220,7 @@
             this.messageLabel.Size = new System.Drawing.Size(156, 15);
             this.messageLabel.TabIndex = 7;
             this.messageLabel.Text = "Please Type Your Message";
-            this.messageLabel.Click += new System.EventHandler(this.messageLabel_Click);
+            
             // 
             // saveButton
             // 
@@ -236,7 +235,6 @@
             // templatesGroupBox
             // 
             this.templatesGroupBox.Controls.Add(this.clearButton);
-            this.templatesGroupBox.Controls.Add(this.saveAsButton);
             this.templatesGroupBox.Controls.Add(this.tagGroupBox);
             this.templatesGroupBox.Controls.Add(this.tempID_TextBox);
             this.templatesGroupBox.Controls.Add(this.tempID_Label);
@@ -260,16 +258,6 @@
             this.clearButton.Text = "New Template(&Clear)";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
-            // 
-            // saveAsButton
-            // 
-            this.saveAsButton.Location = new System.Drawing.Point(277, 318);
-            this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(121, 23);
-            this.saveAsButton.TabIndex = 12;
-            this.saveAsButton.Text = "Save &As";
-            this.saveAsButton.UseVisualStyleBackColor = true;
-            this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
             // 
             // tempID_TextBox
             // 
@@ -373,10 +361,6 @@
             this.updated_by.ReadOnly = true;
             this.updated_by.Width = 88;
             // 
-            // message_templateTableAdapter1
-            // 
-            this.message_templateTableAdapter1.ClearBeforeFill = true;
-            // 
             // templateidDataGridViewTextBoxColumn
             // 
             this.templateidDataGridViewTextBoxColumn.DataPropertyName = "template_id";
@@ -433,6 +417,10 @@
             this.updatedbyDataGridViewTextBoxColumn.ReadOnly = true;
             this.updatedbyDataGridViewTextBoxColumn.Width = 88;
             // 
+            // message_templateTableAdapter1
+            // 
+            this.message_templateTableAdapter1.ClearBeforeFill = true;
+            // 
             // templateCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,7 +468,6 @@
         private _234a_TeamApexDataSetTableAdapters.message_templateTableAdapter message_templateTableAdapter1;
         private System.Windows.Forms.TextBox tempID_TextBox;
         private System.Windows.Forms.Label tempID_Label;
-        private System.Windows.Forms.Button saveAsButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn template_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn template_name;
