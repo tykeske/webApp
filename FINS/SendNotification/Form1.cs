@@ -78,9 +78,11 @@ namespace SendNotification
                     string createdDate = DateTime.Now.ToString();
                     int createdBy = 1;
                     int subCount = 0;
+                    // will be adding location functionality soon
                     int locationID = 1;
                     //calls GetSubscribers method
-                    GetSubscribers(subCount);
+                    // *doesn't work* need to figure out another way
+                    //GetSubscribers(subCount);
 
                     //DATABASE ENTRY
                     String insQuery = "INSERT INTO dbo.message_log (message_content, created_date, created_by, subscriber_count, location_id) VALUES (@messageContent, @createdDate, @createdBy, @subCount, @locationID)";
@@ -90,6 +92,8 @@ namespace SendNotification
                     {
                         try
                         { //inserts values into the correct fields
+
+                            //need to add template and location functionality as well as fix the subcount
                             insCommand.Parameters.Add("@messageContent", SqlDbType.NVarChar, 1000).Value = messageContent;
                             insCommand.Parameters.Add("@createdDate", SqlDbType.SmallDateTime, 19).Value = createdDate;
                             insCommand.Parameters.Add("@createdBy", SqlDbType.Int).Value = createdBy;
@@ -142,7 +146,7 @@ namespace SendNotification
             }
         }
         private int GetSubscribers(int subCount)
-        {
+        {   // method doesnt work as I intended will be fixing
             String subQuery = "SELECT COUNT(email_address) FROM dbo.user_account WHERE role_id = 2";
             SqlConnection conn = new SqlConnection(connString);
             using (SqlCommand subCommand = new SqlCommand(subQuery, conn))
@@ -159,6 +163,84 @@ namespace SendNotification
                 }
                 return subCount;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {   
+            //adds option to select none or all for the comboboxes if they have not template or location preference
+            locationComboBox.Items.Add("All Locations");
+            templateComboBox.Items.Add("No Template");
+            try
+            {
+                String tempQuery = "SELECT template_name FROM message_template ORDER BY template_name ASC; ";
+                SqlConnection conn = new SqlConnection(connString);
+                conn.Open();
+                using (SqlCommand tempComm = new SqlCommand(tempQuery, conn))
+                {
+                    SqlDataReader dataReader = tempComm.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        templateComboBox.Items.Add(dataReader.GetString(0));
+                    }
+                    conn.Close();
+                }
+                //searches database for locatins and adds them to the comboBox
+                String locQuery = "SELECT location_name FROM pantry_location; ";
+                using (SqlCommand locComm = new SqlCommand(locQuery, conn))
+                {
+                    conn.Open();
+                    SqlDataReader dataReaderLoc = locComm.ExecuteReader();
+                    while (dataReaderLoc.Read())
+                    {
+                        //adds locations to combobox
+                        locationComboBox.Items.Add(dataReaderLoc.GetString(0));
+
+                    }
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void templateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {   //searches the database and adds templates to the combobox
+                string item = templateComboBox.SelectedItem.ToString();
+                SqlConnection conn = new SqlConnection(connString);
+                conn.Open();
+                String msgQuery = "SELECT message_content FROM message_template WHERE template_name = '" + item + "'; ";
+                using (SqlCommand command = new SqlCommand(msgQuery, conn))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        //adds the selected template text to the textbox
+                        messageTextBox.Text = reader.GetString(0);
+                    }
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {   
+            //clears the textbox and combo boxes
+            messageTextBox.Text = string.Empty;
+            locationComboBox.SelectedIndex = 0;
+            templateComboBox.SelectedIndex = 0;
+        }
+
+        private void viewLogButton_Click(object sender, EventArgs e)
+        {
+            //button brings us to Notification Log form
         }
     }
 }
