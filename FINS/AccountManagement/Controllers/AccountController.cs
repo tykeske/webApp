@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This controller handles user account interaction and any CRUD operations
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,11 +22,6 @@ using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
-/*
-    Author: Nick Dechativong
-    Class: CIS 234A
-    Objective: This controller handles user account interaction and any CRUD operations
-*/
 
 namespace AccountManagement.Controllers
 {
@@ -289,11 +291,22 @@ namespace AccountManagement.Controllers
         }
 
         //
+        // GET: /Account/Logout
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Logout(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        //
         // POST: /Account/Logout
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
+            // Sign out user and delete their cookie
             await HttpContext.SignOutAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -321,19 +334,6 @@ namespace AccountManagement.Controllers
             if (_context.userAccount.Any(e => e.userName == userName))
             {
                 return Json($"A user {userName} already exists.");
-            }
-
-            return Json(true);
-        }
-
-        //
-        // validate PCC password policy
-        [AcceptVerbs("GET", "POST")]
-        public IActionResult VerifyPassword(string password)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Json($"Phone {password} has an invalid format. Format: ###-###-####");
             }
 
             return Json(true);

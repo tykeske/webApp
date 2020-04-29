@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This mandatory class is used to configure services at start up of the application
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,6 +62,7 @@ namespace AccountManagement
 
             app.UseRouting();
 
+            // Use authentication for session management
             app.UseAuthentication();
             app.UseAuthorization();
 

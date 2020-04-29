@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This model is used to manage pantry location data
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

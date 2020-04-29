@@ -1,71 +1,24 @@
-﻿@model IEnumerable<AccountManagement.Models.userAccount>
+﻿@{ 
+/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This razor page presents the landing page after user registration process
+*/
+}
+
+@model IEnumerable<AccountManagement.Models.userAccount>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.userName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.passwordHash)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.emailAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.isActive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.roleId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.telePhone)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.userName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.passwordHash)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.emailAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.isActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.roleId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.telePhone)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.userId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.userId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.userId">Delete</a>
-            </td>
-        </tr>
+<h1>Congratulations! </h1>
+<hr>
+<p>You have successfully registered to our notification system.</p>
+<p>You can now login to manage your profile.</p>
+
+
+@{ // TODO: Sprint 2 - update greeting message 
 }
-    </tbody>
-</table>

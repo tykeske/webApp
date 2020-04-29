@@ -1,15 +1,36 @@
-﻿@model AccountManagement.Models.userAccount
+﻿@{
+/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This razor page presents user profile data for user to reveiw and submit for changes
+*/
+}
+
+@model AccountManagement.Models.userAccount
 
 @{
     ViewData["Title"] = "Profile";
 }
 
-<h1>Welcome back, @Html.DisplayFor(model => model.userName)</h1>
-
+<h1>Welcome back, @Html.DisplayFor(model => model.fullName)</h1>
+<br />
 <div>
     <h4>User Profile</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.passwordHash)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.passwordHash)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.fullName)
         </dt>
@@ -43,7 +64,8 @@
     </dl>
 </div>
 
-
+@{ // TODO: Sprint 2 - add form submission logic for updating user profile
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

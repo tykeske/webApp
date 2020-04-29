@@ -1,16 +1,17 @@
-﻿using System;
+﻿/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      Utility classes for account management
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
-
-/*
-    Author: Nick Dechativong
-    Class: CIS 234A
-    Objective: utility classes for account management
-*/
 
 namespace AccountManagement.Services
 {

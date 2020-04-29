@@ -1,4 +1,13 @@
-﻿@using AccountManagement.Models
+﻿@{
+/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This razor page is used to manage navigation functions based on user session
+*/
+}
+
+@using AccountManagement.Models
 @using System.Security.Claims;
 
 
@@ -18,14 +27,12 @@
 }
 else
 {
-    <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item pr-3">
-            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
-                <button type="submit" class="btn navbar-btn text-white text-justify">Log out</button>
-            </form>
-        </li>
-        <li class="nav-item pr-3">
-            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="About">About</a>
-        </li>
-    </ul>
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item pr-3">
+        <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+    </li>
+    <li class="nav-item pr-3">
+        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="About">About</a>
+    </li>
+</ul>
 }

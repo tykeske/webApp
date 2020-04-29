@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>AccountManagement.Program</StartupObject>
+    <Authors>Nick Dechativong</Authors>
+    <Company>PCC</Company>
+    <Description>CIS-234A-0-22641 - Real-World Programming</Description>
+    <Product>Food Insecurity Notification System Project</Product>
   </PropertyGroup>
 
   <ItemGroup>

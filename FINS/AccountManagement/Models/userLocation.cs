@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This model is used to encapsulate user-location relationship data
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +20,7 @@ namespace AccountManagement.Models
     {
         [Column("user_id"), Key]
         public int userId { get; set; }
+
         [Column("location_id"), Key]
         public int locationId { get; set; }
     }

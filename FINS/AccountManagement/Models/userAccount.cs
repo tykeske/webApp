@@ -1,16 +1,17 @@
-﻿using System;
+﻿/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This model is used to encapsulate the user account data and some validation logics
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
-/*
-    Author: Nick Dechativong
-    Class: CIS 234A
-    Objective: This model is used to encapsulate the user account data and some validation logics
-*/
 
 namespace AccountManagement.Models
 {
@@ -40,12 +41,14 @@ namespace AccountManagement.Models
         public string emailAddress { get; set; }
 
         [Column("is_active")]
-        public Boolean isActive { get; set; } = true;
+        [Display(Name = "Account Activated")]
+        public Boolean isActive { get; set; } = true;  // Set to default as Active
 
         [Column("created_date")]
         public DateTime createdDate { get; }
 
         [Column("role_id")]
+        [Display(Name = "User Role")]
         public int roleId { get; set; } = 1;  // Set to default Subscriber role
 
         [Column("phone_number")]

@@ -1,5 +1,6 @@
 using System;
 
+
 namespace AccountManagement.Models
 {
     public class ErrorViewModel

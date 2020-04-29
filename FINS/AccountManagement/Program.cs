@@ -1,3 +1,10 @@
+/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This class represents the main entry point of the application
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
