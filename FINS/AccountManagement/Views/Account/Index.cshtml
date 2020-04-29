@@ -1,5 +1,4 @@
-﻿@page
-@model AccountManagement.Pages.AccountCreation.IndexModel
+﻿@model IEnumerable<AccountManagement.Models.userAccount>
 
 @{
     ViewData["Title"] = "Index";
@@ -8,40 +7,37 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.userAccount[0].userName)
+                @Html.DisplayNameFor(model => model.userName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.userAccount[0].passwordHash)
+                @Html.DisplayNameFor(model => model.passwordHash)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.userAccount[0].fullName)
+                @Html.DisplayNameFor(model => model.fullName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.userAccount[0].emailAddress)
+                @Html.DisplayNameFor(model => model.emailAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.userAccount[0].isActive)
+                @Html.DisplayNameFor(model => model.isActive)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.userAccount[0].createdDate)
+                @Html.DisplayNameFor(model => model.roleId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.userAccount[0].roleId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.userAccount[0].telePhone)
+                @Html.DisplayNameFor(model => model.telePhone)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.userAccount) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.userName)
@@ -59,18 +55,15 @@
                 @Html.DisplayFor(modelItem => item.isActive)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.createdDate)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.roleId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.telePhone)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.userId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.userId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.userId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.userId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.userId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.userId">Delete</a>
             </td>
         </tr>
 }

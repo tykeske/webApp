@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AccountManagement.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 namespace AccountManagement
 {
@@ -25,10 +27,14 @@ namespace AccountManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddControllersWithViews();
 
-            services.AddDbContext<AccountContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("AccountContext")));
+            services.AddDbContext<accountContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("accountContext")));
+
+            // Create authentication middleware service
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,22 +46,26 @@ namespace AccountManagement
             }
             else
             {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            
         }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model AccountManagement.ViewModels.userLogin
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+<br />
+<h4>Please enter your username and password.</h4>
+
+<hr />
+<div class="row">
+    <div class="col-sm-10">
+        <form asp-controller="Account" asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <label asp-for="userName" class="col-sm-3 col-form-label font-weight-bold text-right"></label>
+                <div class="col-sm-6">
+                    <input asp-for="userName" class="form-control" />
+                    <span asp-validation-for="userName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="password" class="col-sm-3 col-form-label font-weight-bold text-right"></label>
+                <div class="col-sm-6">
+                    <input asp-for="password" class="form-control" />
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                    <a href="../Home/Index" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

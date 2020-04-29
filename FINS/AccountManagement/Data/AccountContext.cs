@@ -7,19 +7,13 @@ using AccountManagement.Models;
 
 namespace AccountManagement.Data
 {
-    public class AccountContext : DbContext
+    public class accountContext : DbContext
     {
-        public AccountContext(DbContextOptions<AccountContext> options)
+        public accountContext (DbContextOptions<accountContext> options)
             : base(options)
         {
         }
 
-        public DbSet<userAccount> userAccounts { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<userAccount>()
-                .ToTable("user_account");
-        }
+        public DbSet<AccountManagement.Models.userAccount> userAccount { get; set; }
     }
 }
