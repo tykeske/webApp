@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 
 /*
 Author: Becca Menefee-Scheets
-Date: 4/21/20
+Date: 4/29/20
 Class: CIS 234A
 Assignment: 4
 Bugs: none
@@ -79,11 +79,11 @@ namespace SendNotification
                     int createdBy = 1;
                     int subCount = 0;
                     // will be adding location functionality soon
-                    int locationID = 1;
+
                     //calls GetSubscribers method
                     // *doesn't work* need to figure out another way
                     //GetSubscribers(subCount);
-
+                    int locationID = Int32.Parse(locationLabel.Text);
                     //DATABASE ENTRY
                     String insQuery = "INSERT INTO dbo.message_log (message_content, created_date, created_by, subscriber_count, location_id) VALUES (@messageContent, @createdDate, @createdBy, @subCount, @locationID)";
                     //reopens connection
@@ -95,10 +95,18 @@ namespace SendNotification
 
                             //need to add template and location functionality as well as fix the subcount
                             insCommand.Parameters.Add("@messageContent", SqlDbType.NVarChar, 1000).Value = messageContent;
+                            //still need to add template_id
                             insCommand.Parameters.Add("@createdDate", SqlDbType.SmallDateTime, 19).Value = createdDate;
                             insCommand.Parameters.Add("@createdBy", SqlDbType.Int).Value = createdBy;
                             insCommand.Parameters.Add("@subCount", SqlDbType.SmallInt).Value = subCount;
-                            insCommand.Parameters.Add("@locationID", SqlDbType.Int).Value = locationID;
+                            if (locationID > 0)
+                            {
+                                insCommand.Parameters.Add("@locationID", SqlDbType.Int).Value = locationID;
+                            }
+                            else
+                            {
+                                insCommand.Parameters.Add("@locationID", SqlDbType.Int).Value = null;
+                            }
                             int result = insCommand.ExecuteNonQuery();
 
                             // Check Error
@@ -171,7 +179,7 @@ namespace SendNotification
             locationComboBox.Items.Add("All Locations");
             templateComboBox.Items.Add("No Template");
             try
-            {
+            {   //adds templates to combo box
                 String tempQuery = "SELECT template_name FROM message_template ORDER BY template_name ASC; ";
                 SqlConnection conn = new SqlConnection(connString);
                 conn.Open();
@@ -207,6 +215,7 @@ namespace SendNotification
 
         private void templateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             try
             {   //searches the database and adds templates to the combobox
                 string item = templateComboBox.SelectedItem.ToString();
@@ -223,11 +232,13 @@ namespace SendNotification
                     }
                 }
                 conn.Close();
+                tempLabel.Text = templateComboBox.SelectedIndex.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -241,6 +252,31 @@ namespace SendNotification
         private void viewLogButton_Click(object sender, EventArgs e)
         {
             //button brings us to Notification Log form
+        }
+
+        private void locationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {   
+            //assigns id numbers to the combobox items
+            string location = locationComboBox.SelectedItem.ToString();
+
+            switch (location)
+            {
+                case "All Locations":
+                    locationLabel.Text = "0";
+                    break;
+                case "Cascade":
+                    locationLabel.Text = "1";
+                    break;
+                case "Rock Creek":
+                    locationLabel.Text = "2";
+                    break;
+                case "Southeast":
+                    locationLabel.Text = "3";
+                    break;
+                case "Sylvania":
+                    locationLabel.Text = "4"; 
+                    break;
+            }
         }
     }
 }
