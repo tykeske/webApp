@@ -2,7 +2,7 @@
     [message_id]        INT             IDENTITY (1, 1) NOT NULL,
     [message_content]   NVARCHAR (1000) NOT NULL,
     [template_id]       INT             NULL,
-    [created_date]      SMALLDATETIME   NOT NULL,
+    [created_date]      SMALLDATETIME   NOT NULL DEFAULT GETDATE(),
     [created_by]        INT             NOT NULL,
     [subscriber_count]  SMALLINT        NULL,
     [status]            VARCHAR (20)    NULL,
