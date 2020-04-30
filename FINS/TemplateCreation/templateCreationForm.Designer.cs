@@ -66,6 +66,8 @@
             this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.tagGroupBox.SuspendLayout();
@@ -421,11 +423,33 @@
             // 
             this.message_templateTableAdapter1.ClearBeforeFill = true;
             // 
+            // exitButton
+            // 
+            this.exitButton.Location = new System.Drawing.Point(746, 786);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(117, 23);
+            this.exitButton.TabIndex = 10;
+            this.exitButton.Text = "&Exit Application";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(636, 786);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(78, 23);
+            this.backButton.TabIndex = 11;
+            this.backButton.Text = "Go &Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // templateCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 761);
+            this.ClientSize = new System.Drawing.Size(928, 821);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.templatesGroupBox);
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.msgBodyTextBox);
@@ -483,6 +507,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn updateddateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdbyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn updatedbyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button backButton;
     }
 }
 

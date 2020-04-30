@@ -177,6 +177,7 @@ namespace TemplateCreation
             this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);
             dataGridView1.ClearSelection();
         }
+        
         //loadDataGrid is called by template creation/modification methods after successful execution of sql commands, thus displaying new row or edits to user
         private void loadDataGrid()
         {
@@ -202,7 +203,17 @@ namespace TemplateCreation
 
         private void deleteTagButton1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Must discuss with team what the functionality of this should be.");
+        }
 
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This button will navigate user to previous form (in the future)");
         }
     }
 }
