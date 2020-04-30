@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Runtime.InteropServices;
 
 
 /*
@@ -21,7 +20,7 @@ Bugs:
 
 namespace TemplateCreation
 {
-
+   
 
     public partial class templateCreationForm : Form
     {
@@ -36,8 +35,6 @@ namespace TemplateCreation
         {
             saveCheck();
         }
-
-
 
         //saveCheck evalutes whether the user is trying to save a new template or edit an existing template based on the text length of tempID_TextBox.Text
         //if there is a value present in tempID_TextBox, the user is asked to confirm that they want to save changes
@@ -180,7 +177,7 @@ namespace TemplateCreation
         //loadDataGrid is called by template creation/modification methods after successful execution of sql commands, thus displaying new row or edits to user
         private void loadDataGrid()
         {
-           this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);            
+            this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);            
             dataGridView1.ClearSelection();           
         }
 
@@ -198,11 +195,6 @@ namespace TemplateCreation
             tempID_TextBox.Text = string.Empty;
             tempNameTextBox.Text = string.Empty;
             msgBodyTextBox.Text = string.Empty;           
-        }
-
-        private void templateCreationForm_Load_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
