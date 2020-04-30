@@ -12,10 +12,12 @@ using System.Data.SqlClient;
 
 /*
 Author: Vince Amela
-Date: 4/26/20
+Date: 4/29/20
 Class: CIS 234A
 Assignment: 4
-Bugs: * Inability to reference classes (VS 2019 bug)
+Bugs: 
+        * None that I'm aware of however I have experienced so many IDE issues on this assignment it's really hard to be sure. 
+        * I wanted to use classes but I haven't had time to address the VS2019 Caret bug, yet. 
       
 */
 
