@@ -162,6 +162,7 @@
             this.deleteTagButton1.TabIndex = 10;
             this.deleteTagButton1.Text = "Delete Tag";
             this.deleteTagButton1.UseVisualStyleBackColor = true;
+            this.deleteTagButton1.Click += new System.EventHandler(this.deleteTagButton1_Click);
             // 
             // insertTagButton2
             // 
@@ -220,7 +221,6 @@
             this.messageLabel.Size = new System.Drawing.Size(156, 15);
             this.messageLabel.TabIndex = 7;
             this.messageLabel.Text = "Please Type Your Message";
-            
             // 
             // saveButton
             // 

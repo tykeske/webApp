@@ -15,7 +15,8 @@ Author: Vince Amela
 Date: 4/26/20
 Class: CIS 234A
 Assignment: 4
-Bugs: committing again
+Bugs: * Inability to reference classes (VS 2019 bug)
+      
 */
 
 namespace TemplateCreation
@@ -195,6 +196,11 @@ namespace TemplateCreation
             tempID_TextBox.Text = string.Empty;
             tempNameTextBox.Text = string.Empty;
             msgBodyTextBox.Text = string.Empty;           
+        }
+
+        private void deleteTagButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
