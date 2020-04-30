@@ -48,7 +48,6 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.templatesGroupBox = new System.Windows.Forms.GroupBox();
             this.clearButton = new System.Windows.Forms.Button();
-            this.saveAsButton = new System.Windows.Forms.Button();
             this.tempID_TextBox = new System.Windows.Forms.TextBox();
             this.tempID_Label = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -59,7 +58,6 @@
             this.updated_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.created_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updated_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
             this.templateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.templatenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.messagecontentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +65,9 @@
             this.updateddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.tagGroupBox.SuspendLayout();
@@ -163,6 +164,7 @@
             this.deleteTagButton1.TabIndex = 10;
             this.deleteTagButton1.Text = "Delete Tag";
             this.deleteTagButton1.UseVisualStyleBackColor = true;
+            this.deleteTagButton1.Click += new System.EventHandler(this.deleteTagButton1_Click);
             // 
             // insertTagButton2
             // 
@@ -221,7 +223,6 @@
             this.messageLabel.Size = new System.Drawing.Size(156, 15);
             this.messageLabel.TabIndex = 7;
             this.messageLabel.Text = "Please Type Your Message";
-            this.messageLabel.Click += new System.EventHandler(this.messageLabel_Click);
             // 
             // saveButton
             // 
@@ -236,7 +237,6 @@
             // templatesGroupBox
             // 
             this.templatesGroupBox.Controls.Add(this.clearButton);
-            this.templatesGroupBox.Controls.Add(this.saveAsButton);
             this.templatesGroupBox.Controls.Add(this.tagGroupBox);
             this.templatesGroupBox.Controls.Add(this.tempID_TextBox);
             this.templatesGroupBox.Controls.Add(this.tempID_Label);
@@ -260,16 +260,6 @@
             this.clearButton.Text = "New Template(&Clear)";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
-            // 
-            // saveAsButton
-            // 
-            this.saveAsButton.Location = new System.Drawing.Point(277, 318);
-            this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(121, 23);
-            this.saveAsButton.TabIndex = 12;
-            this.saveAsButton.Text = "Save &As";
-            this.saveAsButton.UseVisualStyleBackColor = true;
-            this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
             // 
             // tempID_TextBox
             // 
@@ -373,10 +363,6 @@
             this.updated_by.ReadOnly = true;
             this.updated_by.Width = 88;
             // 
-            // message_templateTableAdapter1
-            // 
-            this.message_templateTableAdapter1.ClearBeforeFill = true;
-            // 
             // templateidDataGridViewTextBoxColumn
             // 
             this.templateidDataGridViewTextBoxColumn.DataPropertyName = "template_id";
@@ -433,11 +419,37 @@
             this.updatedbyDataGridViewTextBoxColumn.ReadOnly = true;
             this.updatedbyDataGridViewTextBoxColumn.Width = 88;
             // 
+            // message_templateTableAdapter1
+            // 
+            this.message_templateTableAdapter1.ClearBeforeFill = true;
+            // 
+            // exitButton
+            // 
+            this.exitButton.Location = new System.Drawing.Point(746, 786);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(117, 23);
+            this.exitButton.TabIndex = 10;
+            this.exitButton.Text = "&Exit Application";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(636, 786);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(78, 23);
+            this.backButton.TabIndex = 11;
+            this.backButton.Text = "Go &Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // templateCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 747);
+            this.ClientSize = new System.Drawing.Size(893, 842);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.templatesGroupBox);
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.msgBodyTextBox);
@@ -480,7 +492,6 @@
         private _234a_TeamApexDataSetTableAdapters.message_templateTableAdapter message_templateTableAdapter1;
         private System.Windows.Forms.TextBox tempID_TextBox;
         private System.Windows.Forms.Label tempID_Label;
-        private System.Windows.Forms.Button saveAsButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn template_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn template_name;
@@ -496,6 +507,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn updateddateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdbyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn updatedbyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button backButton;
     }
 }
 

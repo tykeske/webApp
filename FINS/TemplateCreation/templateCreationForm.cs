@@ -12,12 +12,13 @@ using System.Data.SqlClient;
 
 /*
 Author: Vince Amela
-Date: 4/26/20
+Date: 4/29/20
 Class: CIS 234A
 Assignment: 4
 Bugs: 
-
-
+        * None that I'm aware of however I have experienced so many IDE issues on this assignment it's really hard to be sure. 
+        * I wanted to use classes but I haven't had time to address the VS2019 Caret bug, yet. 
+      
 */
 
 namespace TemplateCreation
@@ -32,13 +33,15 @@ namespace TemplateCreation
         }
 
 
-        //saveButton click event validates whether inputs from user conform to template name and message content fields
+        //saveButton click event calls saveCheck, a method for determining whethere save is new or an edit, also confirms with user
         private void saveButton_Click(object sender, EventArgs e)
         {
             saveCheck();
-
         }
 
+        //saveCheck evalutes whether the user is trying to save a new template or edit an existing template based on the text length of tempID_TextBox.Text
+        //if there is a value present in tempID_TextBox, the user is asked to confirm that they want to save changes
+        //if there is no value present in tempID_TextBox then the program simply creates a new template/row
         private void saveCheck()
         {
             if (tempID_TextBox.TextLength > 0 && tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
@@ -46,7 +49,7 @@ namespace TemplateCreation
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to save changes?", "Confirm", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("New Template created, scroll down the list to find your new entry");
+                    MessageBox.Show("Changes saved.");
                     modifyTemplate();
                 }
                 else if (dialogResult == DialogResult.No)
@@ -65,7 +68,9 @@ namespace TemplateCreation
         }
 
 
-
+        //modifyTemplate is very similar to createTemplate however it uses the update command to edit rows based on template_id value
+        //the template_id  valueis stored in a read-only textbox and that is pulled in as a parameter in the WHERE clause
+        //this method only adds content to template_name, message_content, updated_date and updated_by
         private void modifyTemplate()
         {
             try
@@ -103,15 +108,9 @@ namespace TemplateCreation
             
         }
 
-    
-        private void templateReader()
-        {      
-            
-        }
 
-        //create template grabs values for required dbo.message_template fields
-        //values are passed into rows with proper sql formating
-        //try-catch statement to handle any exceptions
+        //create template creates a brand new row in dbo.message_template
+        //try-catch statement for exceptions
         private void createTemplate()
         {
             try
@@ -172,40 +171,49 @@ namespace TemplateCreation
             msgBodyTextBox.AppendText(tagValue);
         }
 
+        //form load fills the datagrid
         private void templateCreationForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the '_234a_TeamApexDataSet.message_template' table. You can move, or remove it, as needed.
-            // adding a line
             this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);
             dataGridView1.ClearSelection();
         }
-
+        
+        //loadDataGrid is called by template creation/modification methods after successful execution of sql commands, thus displaying new row or edits to user
         private void loadDataGrid()
         {
             this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);            
             dataGridView1.ClearSelection();           
         }
 
-        private void messageLabel_Click(object sender, EventArgs e)
-        {
-           //remove this
-        }
-
-        private void saveAsButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("saveAsButton disabled");
-        }
-
+        //clearButton calls the clear method, the primary mechanism for creating a brand new form
+        //the user sees a button called "New Template(clear)"
         private void clearButton_Click(object sender, EventArgs e)
         {
             clearMethod();
         }
 
+        //clearMethod removes text values from all textboxes including tempID_TextBox
+        //once called, tempID_TextBox is set to string.Empty
         private void clearMethod()
         {            
             tempID_TextBox.Text = string.Empty;
             tempNameTextBox.Text = string.Empty;
             msgBodyTextBox.Text = string.Empty;           
+        }
+
+        private void deleteTagButton1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Must discuss with team what the functionality of this should be.");
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This button will navigate user to previous form (in the future)");
         }
     }
 }
