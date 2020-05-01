@@ -13,9 +13,9 @@ using System.Data.SqlClient;
 
 /*
 Author: Becca Menefee-Scheets
-Date: 4/29/20
+Date: 4/30/20
 Class: CIS 234A
-Assignment: 4
+Assignment: 5
 Bugs: none
 */
 namespace SendNotification
@@ -29,7 +29,10 @@ namespace SendNotification
 
         //connection string
         private string connString = "Data Source=cisdbss.pcc.edu;Initial Catalog=234a_TeamApex;Persist Security Info=True;User ID=234a_TeamApex;Password=^&%_2020_Spring_TeamApex";
-
+        public int subCount = 0;
+        public int createdBy = 0;
+        public int location = 0;
+        public string eList = "";
         private void submitButton_Click(object sender, EventArgs e)
         {
             //checks if message box is empty before proceeding
@@ -43,46 +46,24 @@ namespace SendNotification
 
                     //address to be sent by
                     msg.From = new MailAddress("PortlandCCPantry@gmail.com");
-
+                    eList = GetQuery(eList);
                     //creates the connection
                     SqlConnection conn = new SqlConnection(connString);
 
                     //creates a query string to search the database
                     string emailQuery = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 1 SELECT @listStr;";
+
                     //opens the connection
                     conn.Open();
                     //command to execute query
-                    using (SqlCommand command = new SqlCommand(emailQuery, conn))
-                    {
-
-                        //creates a data reader object
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        // If there is data to read, set it to string
-                        if (reader.Read())
-                        {
-
-                            string eList = reader.GetString(0);
-                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
-                            msg.CC.Add(eList);
-                        }
-                        else
-                        {
-                            MessageBox.Show("There was an error reading data");
-                        }
-                    }
+                   
                     //closes the connection
                     conn.Close();
                     //assigning variables
                     string messageContent = messageTextBox.Text;
                     string createdDate = DateTime.Now.ToString();
-                    int createdBy = 1;
-                    int subCount = 0;
-                    // will be adding location functionality soon
-
-                    //calls GetSubscribers method
-                    // *doesn't work* need to figure out another way
-                    //GetSubscribers(subCount);
+                    msg.CC.Add(eList);
+                    int count =  GetSubscribers(subCount);
                     int locationID = Int32.Parse(locationLabel.Text);
                     //DATABASE ENTRY
                     String insQuery = "INSERT INTO dbo.message_log (message_content, created_date, created_by, subscriber_count, location_id) VALUES (@messageContent, @createdDate, @createdBy, @subCount, @locationID)";
@@ -98,14 +79,14 @@ namespace SendNotification
                             //still need to add template_id
                             insCommand.Parameters.Add("@createdDate", SqlDbType.SmallDateTime, 19).Value = createdDate;
                             insCommand.Parameters.Add("@createdBy", SqlDbType.Int).Value = createdBy;
-                            insCommand.Parameters.Add("@subCount", SqlDbType.SmallInt).Value = subCount;
+                            insCommand.Parameters.Add("@subCount", SqlDbType.SmallInt).Value = count;
                             if (locationID > 0)
                             {
                                 insCommand.Parameters.Add("@locationID", SqlDbType.Int).Value = locationID;
                             }
                             else
                             {
-                                insCommand.Parameters.Add("@locationID", SqlDbType.Int).Value = null;
+                                insCommand.Parameters.AddWithValue("@locationID", DBNull.Value);
                             }
                             int result = insCommand.ExecuteNonQuery();
 
@@ -153,24 +134,98 @@ namespace SendNotification
                 MessageBox.Show("Cannot send blank email. Please enter Text.");
             }
         }
-        private int GetSubscribers(int subCount)
-        {   // method doesnt work as I intended will be fixing
-            String subQuery = "SELECT COUNT(email_address) FROM dbo.user_account WHERE role_id = 2";
-            SqlConnection conn = new SqlConnection(connString);
+        public int GetSubscribers(int subCount)
+        {   SqlConnection conn = new SqlConnection(connString);
+            // method doesnt work as I intended will be fixing
+            switch (locationComboBox.SelectedIndex) 
+            {
+                case 0:
+            String subQuery = "SELECT COUNT(email_address) FROM dbo.user_account WHERE role_id = 1";
             using (SqlCommand subCommand = new SqlCommand(subQuery, conn))
             {
                 conn.Open();
                 SqlDataReader subReader = subCommand.ExecuteReader();
                 if (subReader.Read())
                 {
-                    subCount = subReader.GetInt32(0);
+                    int subscribers = subReader.GetInt32(0);
+                    subCount = subscribers;
 
                     //message box for testing 
                     MessageBox.Show(subCount.ToString());
                     return subCount;
                 }
-                return subCount;
             }
+                    break;
+                case 1:
+                    String sub1Query = "SELECT COUNT(email_address) FROM dbo.user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND location_id = 1";
+                    using (SqlCommand subCommand = new SqlCommand(sub1Query, conn))
+                    {
+                        conn.Open();
+                        SqlDataReader subReader = subCommand.ExecuteReader();
+                        if (subReader.Read())
+                        {
+                            int subscribers = subReader.GetInt32(0);
+                            subCount = subscribers;
+
+                            //message box for testing 
+                            MessageBox.Show(subCount.ToString());
+                            return subCount;
+                        }
+                    }
+                    break;
+                case 2:
+                    String sub2Query = "SELECT COUNT(email_address) FROM dbo.user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND location_id = 2";
+                    using (SqlCommand subCommand = new SqlCommand(sub2Query, conn))
+                    {
+                        conn.Open();
+                        SqlDataReader subReader = subCommand.ExecuteReader();
+                        if (subReader.Read())
+                        {
+                            int subscribers = subReader.GetInt32(0);
+                            subCount = subscribers;
+
+                            //message box for testing 
+                            MessageBox.Show(subCount.ToString());
+                            return subCount;
+                        }
+                    }
+                    break;
+                case 3:
+                    String sub3Query = "SELECT COUNT(email_address) FROM dbo.user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND location_id = 3";
+                    using (SqlCommand subCommand = new SqlCommand(sub3Query, conn))
+                    {
+                        conn.Open();
+                        SqlDataReader subReader = subCommand.ExecuteReader();
+                        if (subReader.Read())
+                        {
+                            int subscribers = subReader.GetInt32(0);
+                            subCount = subscribers;
+
+                            //message box for testing 
+                            MessageBox.Show(subCount.ToString());
+                            return subCount;
+                        }
+                    }
+                    break;
+                case 4:
+                    String sub4Query = "SELECT COUNT(email_address) FROM dbo.user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND location_id = 4";
+                    using (SqlCommand subCommand = new SqlCommand(sub4Query, conn))
+                    {
+                        conn.Open();
+                        SqlDataReader subReader = subCommand.ExecuteReader();
+                        if (subReader.Read())
+                        {
+                            int subscribers = subReader.GetInt32(0);
+                            subCount = subscribers;
+
+                            //message box for testing 
+                            MessageBox.Show(subCount.ToString());
+                            return subCount;
+                        }
+                    }
+                    break;
+            }
+            return subCount;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -251,32 +306,172 @@ namespace SendNotification
 
         private void viewLogButton_Click(object sender, EventArgs e)
         {
-            //button brings us to Notification Log form
+            NotificationLog.Form1 notf = new NotificationLog.Form1();
+            notf.ShowDialog();
         }
 
         private void locationComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {   
-            //assigns id numbers to the combobox items
-            string location = locationComboBox.SelectedItem.ToString();
-
-            switch (location)
+        {
+            try
             {
-                case "All Locations":
-                    locationLabel.Text = "0";
+                SqlConnection myConnection = new SqlConnection();
+                SqlCommand myCommand = new SqlCommand();
+                SqlDataReader myDataReader;
+                myConnection.ConnectionString = "Data Source=cisdbss.pcc.edu;Initial Catalog=234a_TeamApex;Persist Security Info=True;User ID=234a_TeamApex;Password=^&%_2020_Spring_TeamApex";
+                myConnection.Open();
+                myCommand.Connection = myConnection;
+                if (locationComboBox.SelectedIndex >= 0)
+                {
+                    string selected = locationComboBox.SelectedItem.ToString();
+                    if (locationComboBox.SelectedIndex > 0)
+                        myCommand.CommandText = "SELECT location_id FROM pantry_location WHERE location_name = '" + selected + "'";
+                    else
+                    {
+                        locationLabel.Text = "";
+                    }
+                    myDataReader = myCommand.ExecuteReader();
+                    while (myDataReader.Read())
+                        locationLabel.Text = myDataReader[0].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public string GetQuery(string eList)
+        {   //creates the connection
+            SqlConnection conn = new SqlConnection(connString);
+            conn.Open();
+            switch (locationComboBox.SelectedIndex) { 
+                case 0:
+                    //makes sure list string is empty
+                    eList = "";
+                    //queries the database
+                    string emailQuery = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 SELECT @listStr;";
+                    using (SqlCommand command = new SqlCommand(emailQuery, conn))
+                {
+
+                    //creates a data reader object
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    // If there is data to read, set it to string
+                    if (reader.Read())
+                    {
+
+                        string locList = reader.GetString(0);
+                        //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
+                        eList = locList;
+                    }
+                    else
+                    {
+                        MessageBox.Show("There was an error reading data");
+                    }
+                }
                     break;
-                case "Cascade":
-                    locationLabel.Text = "1";
+                case 1:
+                    //makes sure list string is empty
+                    eList = "";
+                    //queries the database
+                    string email1Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 1 SELECT @listStr;";
+                    using (SqlCommand command = new SqlCommand(email1Query, conn))
+                    {
+
+                        //creates a data reader object
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        // If there is data to read, set it to string
+                        if (reader.Read())
+                        {
+
+                            string locList = reader.GetString(0);
+                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
+                            eList = locList;
+                        }
+                        else
+                        {
+                            MessageBox.Show("There was an error reading data");
+                        }
+                    }
                     break;
-                case "Rock Creek":
-                    locationLabel.Text = "2";
+                case 2:
+                    //makes sure list string is empty
+                    eList = "";
+                    //queries the database
+                    string email2Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 2 SELECT @listStr;";
+                    using (SqlCommand command = new SqlCommand(email2Query, conn))
+                    {
+
+                        //creates a data reader object
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        // If there is data to read, set it to string
+                        if (reader.Read())
+                        {
+
+                            string locList = reader.GetString(0);
+                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
+                            eList = locList;
+                        }
+                        else
+                        {
+                            MessageBox.Show("There was an error reading data");
+                        }
+                    }
                     break;
-                case "Southeast":
-                    locationLabel.Text = "3";
+                case 3:
+                    //makes sure list string is empty
+                    eList = "";
+                    //queries the database
+                    string email3Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 3 SELECT @listStr;";
+                    using (SqlCommand command = new SqlCommand(email3Query, conn))
+                    {
+
+                        //creates a data reader object
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        // If there is data to read, set it to string
+                        if (reader.Read())
+                        {
+
+                            string locList = reader.GetString(0);
+                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
+                            eList = locList;
+                        }
+                        else
+                        {
+                            MessageBox.Show("There was an error reading data");
+                        }
+                    }
                     break;
-                case "Sylvania":
-                    locationLabel.Text = "4"; 
+                case 4:
+                    //makes sure list string is empty
+                    eList = "";
+                    //queries the database
+                    string email4Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 4 SELECT @listStr;";
+                    using (SqlCommand command = new SqlCommand(email4Query, conn))
+                    {
+
+                        //creates a data reader object
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        // If there is data to read, set it to string
+                        if (reader.Read())
+                        {
+
+                            string locList = reader.GetString(0);
+                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
+                            eList = locList;
+                        }
+                        else
+                        {
+                            MessageBox.Show("There was an error reading data");
+                        }
+                    }
                     break;
             }
+            return eList; 
         }
     }
 }
+

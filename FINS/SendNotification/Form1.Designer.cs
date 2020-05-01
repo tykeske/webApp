@@ -116,7 +116,6 @@
             this.locationLabel.Name = "locationLabel";
             this.locationLabel.Size = new System.Drawing.Size(0, 13);
             this.locationLabel.TabIndex = 7;
-            this.locationLabel.Visible = false;
             // 
             // tempLabel
             // 
