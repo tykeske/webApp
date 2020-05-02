@@ -55,11 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_234a_TeamApexDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_234a_TeamApexDataSet.xsd</DependentUpon>
-    </Compile>
+    
     <EmbeddedResource Include="templateCreationForm.resx">
       <DependentUpon>templateCreationForm.cs</DependentUpon>
     </EmbeddedResource>

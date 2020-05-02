@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tempNameLabel = new System.Windows.Forms.Label();
             this.tempNameTextBox = new System.Windows.Forms.TextBox();
-            this.aTeamApexDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._234a_TeamApexDataSet = new TemplateCreation._234a_TeamApexDataSet();
             this.tagTextBox3 = new System.Windows.Forms.TextBox();
             this.tagTextBox1 = new System.Windows.Forms.TextBox();
             this.tagTextBox2 = new System.Windows.Forms.TextBox();
@@ -51,24 +48,7 @@
             this.tempID_TextBox = new System.Windows.Forms.TextBox();
             this.tempID_Label = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.template_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.template_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.message_content = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.created_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updated_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.created_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updated_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.templateidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.templatenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.messagecontentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updatedbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.message_templateTableAdapter1 = new TemplateCreation._234a_TeamApexDataSetTableAdapters.message_templateTableAdapter();
             this.backButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).BeginInit();
             this.tagGroupBox.SuspendLayout();
             this.templatesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -86,22 +66,10 @@
             // 
             // tempNameTextBox
             // 
-            this.tempNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tempNameTextBox.Location = new System.Drawing.Point(111, 278);
             this.tempNameTextBox.Name = "tempNameTextBox";
             this.tempNameTextBox.Size = new System.Drawing.Size(177, 20);
             this.tempNameTextBox.TabIndex = 1;
-            // 
-            // aTeamApexDataSetBindingSource
-            // 
-            this.aTeamApexDataSetBindingSource.AllowNew = true;
-            this.aTeamApexDataSetBindingSource.DataMember = "message_template";
-            this.aTeamApexDataSetBindingSource.DataSource = this._234a_TeamApexDataSet;
-            // 
-            // _234a_TeamApexDataSet
-            // 
-            this._234a_TeamApexDataSet.DataSetName = "_234a_TeamApexDataSet";
-            this._234a_TeamApexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tagTextBox3
             // 
@@ -109,6 +77,7 @@
             this.tagTextBox3.Name = "tagTextBox3";
             this.tagTextBox3.Size = new System.Drawing.Size(114, 20);
             this.tagTextBox3.TabIndex = 2;
+            this.tagTextBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tagTextBox3_KeyPress);
             // 
             // tagTextBox1
             // 
@@ -130,7 +99,6 @@
             // 
             // msgBodyTextBox
             // 
-            this.msgBodyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "message_content", true));
             this.msgBodyTextBox.Location = new System.Drawing.Point(27, 441);
             this.msgBodyTextBox.Multiline = true;
             this.msgBodyTextBox.Name = "msgBodyTextBox";
@@ -262,7 +230,6 @@
             // 
             // tempID_TextBox
             // 
-            this.tempID_TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.aTeamApexDataSetBindingSource, "template_id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tempID_TextBox.Location = new System.Drawing.Point(111, 254);
             this.tempID_TextBox.Name = "tempID_TextBox";
             this.tempID_TextBox.ReadOnly = true;
@@ -281,146 +248,13 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.template_id,
-            this.template_name,
-            this.message_content,
-            this.created_date,
-            this.updated_date,
-            this.created_by,
-            this.updated_by,
-            this.templateidDataGridViewTextBoxColumn,
-            this.templatenameDataGridViewTextBoxColumn,
-            this.messagecontentDataGridViewTextBoxColumn,
-            this.createddateDataGridViewTextBoxColumn,
-            this.updateddateDataGridViewTextBoxColumn,
-            this.createdbyDataGridViewTextBoxColumn,
-            this.updatedbyDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.aTeamApexDataSetBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(48, 29);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(743, 174);
             this.dataGridView1.TabIndex = 9;
-            // 
-            // template_id
-            // 
-            this.template_id.DataPropertyName = "template_id";
-            this.template_id.HeaderText = "template_id";
-            this.template_id.Name = "template_id";
-            this.template_id.ReadOnly = true;
-            this.template_id.Width = 86;
-            // 
-            // template_name
-            // 
-            this.template_name.DataPropertyName = "template_name";
-            this.template_name.HeaderText = "template_name";
-            this.template_name.Name = "template_name";
-            this.template_name.ReadOnly = true;
-            this.template_name.Width = 104;
-            // 
-            // message_content
-            // 
-            this.message_content.DataPropertyName = "message_content";
-            this.message_content.HeaderText = "message_content";
-            this.message_content.Name = "message_content";
-            this.message_content.ReadOnly = true;
-            this.message_content.Width = 116;
-            // 
-            // created_date
-            // 
-            this.created_date.DataPropertyName = "created_date";
-            this.created_date.HeaderText = "created_date";
-            this.created_date.Name = "created_date";
-            this.created_date.ReadOnly = true;
-            this.created_date.Width = 95;
-            // 
-            // updated_date
-            // 
-            this.updated_date.DataPropertyName = "updated_date";
-            this.updated_date.HeaderText = "updated_date";
-            this.updated_date.Name = "updated_date";
-            this.updated_date.ReadOnly = true;
-            this.updated_date.Width = 98;
-            // 
-            // created_by
-            // 
-            this.created_by.DataPropertyName = "created_by";
-            this.created_by.HeaderText = "created_by";
-            this.created_by.Name = "created_by";
-            this.created_by.ReadOnly = true;
-            this.created_by.Width = 85;
-            // 
-            // updated_by
-            // 
-            this.updated_by.DataPropertyName = "updated_by";
-            this.updated_by.HeaderText = "updated_by";
-            this.updated_by.Name = "updated_by";
-            this.updated_by.ReadOnly = true;
-            this.updated_by.Width = 88;
-            // 
-            // templateidDataGridViewTextBoxColumn
-            // 
-            this.templateidDataGridViewTextBoxColumn.DataPropertyName = "template_id";
-            this.templateidDataGridViewTextBoxColumn.HeaderText = "template_id";
-            this.templateidDataGridViewTextBoxColumn.Name = "templateidDataGridViewTextBoxColumn";
-            this.templateidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.templateidDataGridViewTextBoxColumn.Width = 86;
-            // 
-            // templatenameDataGridViewTextBoxColumn
-            // 
-            this.templatenameDataGridViewTextBoxColumn.DataPropertyName = "template_name";
-            this.templatenameDataGridViewTextBoxColumn.HeaderText = "template_name";
-            this.templatenameDataGridViewTextBoxColumn.Name = "templatenameDataGridViewTextBoxColumn";
-            this.templatenameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.templatenameDataGridViewTextBoxColumn.Width = 104;
-            // 
-            // messagecontentDataGridViewTextBoxColumn
-            // 
-            this.messagecontentDataGridViewTextBoxColumn.DataPropertyName = "message_content";
-            this.messagecontentDataGridViewTextBoxColumn.HeaderText = "message_content";
-            this.messagecontentDataGridViewTextBoxColumn.Name = "messagecontentDataGridViewTextBoxColumn";
-            this.messagecontentDataGridViewTextBoxColumn.ReadOnly = true;
-            this.messagecontentDataGridViewTextBoxColumn.Width = 116;
-            // 
-            // createddateDataGridViewTextBoxColumn
-            // 
-            this.createddateDataGridViewTextBoxColumn.DataPropertyName = "created_date";
-            this.createddateDataGridViewTextBoxColumn.HeaderText = "created_date";
-            this.createddateDataGridViewTextBoxColumn.Name = "createddateDataGridViewTextBoxColumn";
-            this.createddateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.createddateDataGridViewTextBoxColumn.Width = 95;
-            // 
-            // updateddateDataGridViewTextBoxColumn
-            // 
-            this.updateddateDataGridViewTextBoxColumn.DataPropertyName = "updated_date";
-            this.updateddateDataGridViewTextBoxColumn.HeaderText = "updated_date";
-            this.updateddateDataGridViewTextBoxColumn.Name = "updateddateDataGridViewTextBoxColumn";
-            this.updateddateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.updateddateDataGridViewTextBoxColumn.Width = 98;
-            // 
-            // createdbyDataGridViewTextBoxColumn
-            // 
-            this.createdbyDataGridViewTextBoxColumn.DataPropertyName = "created_by";
-            this.createdbyDataGridViewTextBoxColumn.HeaderText = "created_by";
-            this.createdbyDataGridViewTextBoxColumn.Name = "createdbyDataGridViewTextBoxColumn";
-            this.createdbyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.createdbyDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // updatedbyDataGridViewTextBoxColumn
-            // 
-            this.updatedbyDataGridViewTextBoxColumn.DataPropertyName = "updated_by";
-            this.updatedbyDataGridViewTextBoxColumn.HeaderText = "updated_by";
-            this.updatedbyDataGridViewTextBoxColumn.Name = "updatedbyDataGridViewTextBoxColumn";
-            this.updatedbyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.updatedbyDataGridViewTextBoxColumn.Width = 88;
-            // 
-            // message_templateTableAdapter1
-            // 
-            this.message_templateTableAdapter1.ClearBeforeFill = true;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // backButton
             // 
@@ -444,8 +278,6 @@
             this.Name = "templateCreationForm";
             this.Text = "Template Creation";
             this.Load += new System.EventHandler(this.templateCreationForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.aTeamApexDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._234a_TeamApexDataSet)).EndInit();
             this.tagGroupBox.ResumeLayout(false);
             this.tagGroupBox.PerformLayout();
             this.templatesGroupBox.ResumeLayout(false);
@@ -475,26 +307,9 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.GroupBox templatesGroupBox;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private _234a_TeamApexDataSet _234a_TeamApexDataSet;
-        private System.Windows.Forms.BindingSource aTeamApexDataSetBindingSource;
-        private _234a_TeamApexDataSetTableAdapters.message_templateTableAdapter message_templateTableAdapter1;
         private System.Windows.Forms.TextBox tempID_TextBox;
         private System.Windows.Forms.Label tempID_Label;
         private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn template_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn template_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn message_content;
-        private System.Windows.Forms.DataGridViewTextBoxColumn created_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updated_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn created_by;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updated_by;
-        private System.Windows.Forms.DataGridViewTextBoxColumn templateidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn templatenameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn messagecontentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createddateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updateddateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdbyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updatedbyDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button backButton;
     }
 }

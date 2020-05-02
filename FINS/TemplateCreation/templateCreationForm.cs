@@ -32,8 +32,36 @@ namespace TemplateCreation
             InitializeComponent();
         }
 
+        //form load fills the datagrid
+        private void templateCreationForm_Load(object sender, EventArgs e)
+        {
+            loadData();
+        }
 
-        //saveButton click event calls saveCheck, a method for determining whethere save is new or an edit, also confirms with user
+        //loadData loads the datagrid and creates a dataset
+        private void loadData()
+        {
+            var select = "SELECT template_id, template_name, message_content, created_date, updated_date, created_by, updated_by FROM dbo.message_template";
+            var c = new SqlConnection("Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex"); // Your Connection String here
+            c.Open();
+            var dataAdapter = new SqlDataAdapter(select, c);
+            var commandBuilder = new SqlCommandBuilder(dataAdapter);
+            var ds = new DataSet();
+            dataAdapter.Fill(ds);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.DataSource = ds.Tables[0];
+            c.Close();
+        }
+
+        //loadDataGrid is called by template creation/modification methods after successful execution of sql commands, thus displaying new row or edits to user
+        private void loadDataGrid()
+        {
+            loadData();
+            dataGridView1.Update();
+            dataGridView1.Refresh();
+        }
+
+        //saveButton click event calls saveCheck, a method for determining whether save is new or an edit, also confirms with user
         private void saveButton_Click(object sender, EventArgs e)
         {
             saveCheck();
@@ -134,16 +162,18 @@ namespace TemplateCreation
                         command.Parameters.Add("@updated_date", SqlDbType.SmallDateTime, 19).Value = upDated;
                         command.Parameters.Add("@created_by", SqlDbType.Int, 50).Value = createdBy;
                         command.Parameters.Add("@updated_by", SqlDbType.Int, 50).Value = updatedBy;
-                        connection.Open();                      
+                        connection.Open();
                         int result = command.ExecuteNonQuery();
+                        connection.Close();
 
-                        // Check Error
+                        // Check Error                        
                         if (result < 0)
                             Console.WriteLine("Error inserting data into Database!");
-                        
+                        connection.Close();
                     }
                 }
                 MessageBox.Show("Template Created!");
+
                 loadDataGrid();
             }
             catch
@@ -171,34 +201,14 @@ namespace TemplateCreation
             msgBodyTextBox.AppendText(tagValue);
         }
 
-        //form load fills the datagrid
-        private void templateCreationForm_Load(object sender, EventArgs e)
-        {
-            this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);
-            dataGridView1.ClearSelection();
-        }
-        
-        //loadDataGrid is called by template creation/modification methods after successful execution of sql commands, thus displaying new row or edits to user
-        private void loadDataGrid()
-        {
-            this.message_templateTableAdapter1.Fill(this._234a_TeamApexDataSet.message_template);            
-            dataGridView1.ClearSelection();           
-        }
-
-        //clearButton calls the clear method, the primary mechanism for creating a brand new form
-        //the user sees a button called "New Template(clear)"
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            clearMethod();
-        }
 
         //clearMethod removes text values from all textboxes including tempID_TextBox
-        //once called, tempID_TextBox is set to string.Empty
-        private void clearMethod()
-        {            
+        //this allows user to create a new template
+        private void clearButton_Click(object sender, EventArgs e)
+        {
             tempID_TextBox.Text = string.Empty;
             tempNameTextBox.Text = string.Empty;
-            msgBodyTextBox.Text = string.Empty;           
+            msgBodyTextBox.Text = string.Empty;
         }
 
         private void deleteTagButton1_Click(object sender, EventArgs e)
@@ -206,9 +216,55 @@ namespace TemplateCreation
             MessageBox.Show("Must discuss with team what the functionality of this should be.");
         }
 
+        //navigates back to the main menu
         private void backButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        //keychar check for tagTextBox3, where user enters custom tags
+        //only allows alphabetical inputs
+        private void tagTextBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                string tempID = Convert.ToString(selectedRow.Cells["template_id"].Value);
+                tempID_TextBox.Text = tempID;
+
+                int selectedrowindex2 = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow2 = dataGridView1.Rows[selectedrowindex2];
+                string tempName = Convert.ToString(selectedRow2.Cells["template_name"].Value);
+                tempNameTextBox.Text = tempName;
+
+                int selectedrowindex3 = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow3 = dataGridView1.Rows[selectedrowindex3];
+                string msgContent = Convert.ToString(selectedRow3.Cells["message_content"].Value);
+                msgBodyTextBox.Text = msgContent;
+            }
+
+            /*
+            int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+            string tempID = Convert.ToString(selectedRow.Cells["template_id"].Value);
+            tempID_TextBox.Text = tempID;
+
+            int selectedrowindex2 = dataGridView1.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow2 = dataGridView1.Rows[selectedrowindex2];
+            string tempName = Convert.ToString(selectedRow2.Cells["template_name"].Value);
+            tempNameTextBox.Text = tempName;
+
+            int selectedrowindex3 = dataGridView1.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow3 = dataGridView1.Rows[selectedrowindex3];
+            string msgContent = Convert.ToString(selectedRow3.Cells["message_content"].Value);
+            msgBodyTextBox.Text = msgContent;
+            */
         }
     }
 }
