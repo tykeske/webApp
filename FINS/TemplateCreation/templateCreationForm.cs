@@ -213,7 +213,7 @@ namespace TemplateCreation
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This button will navigate user to previous form (in the future)");
+            MessageBox.Show("This button will navigate user to previous form (in the future)");            
         }
     }
 }

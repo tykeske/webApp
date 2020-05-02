@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="coreTemplateClass.cs" />
     <Compile Include="templateCreationForm.cs">
       <SubType>Form</SubType>
     </Compile>
