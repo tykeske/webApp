@@ -25,18 +25,21 @@ namespace SendNotification
         public Form1()
         {
             InitializeComponent();
+            
+            
         }
 
         //connection string
         private string connString = "Data Source=cisdbss.pcc.edu;Initial Catalog=234a_TeamApex;Persist Security Info=True;User ID=234a_TeamApex;Password=^&%_2020_Spring_TeamApex";
         public int subCount = 0;
-        public int createdBy = 0;
-        public int location = 0;
+        public int location;
         public string eList = "";
+        public int createdBy = 1;
+        public int templateID;
         private void submitButton_Click(object sender, EventArgs e)
         {
             //checks if message box is empty before proceeding
-            if (messageTextBox.Text != "")
+            if (messageTextBox.Text != "" && locationComboBox.SelectedIndex >= 0)
             {
 
                 try
@@ -64,9 +67,9 @@ namespace SendNotification
                     string createdDate = DateTime.Now.ToString();
                     msg.CC.Add(eList);
                     int count =  GetSubscribers(subCount);
-                    int locationID = Int32.Parse(locationLabel.Text);
+                   
                     //DATABASE ENTRY
-                    String insQuery = "INSERT INTO dbo.message_log (message_content, created_date, created_by, subscriber_count, location_id) VALUES (@messageContent, @createdDate, @createdBy, @subCount, @locationID)";
+                    String insQuery = "INSERT INTO dbo.message_log (message_content, template_id, created_date, created_by, subscriber_count, location_id) VALUES (@messageContent, @templateID, @createdDate, @createdBy, @subCount, @locationID)";
                     //reopens connection
                     conn.Open();
                     using (SqlCommand insCommand = new SqlCommand(insQuery, conn))
@@ -74,19 +77,19 @@ namespace SendNotification
                         try
                         { //inserts values into the correct fields
 
-                            //need to add template and location functionality as well as fix the subcount
                             insCommand.Parameters.Add("@messageContent", SqlDbType.NVarChar, 1000).Value = messageContent;
                             //still need to add template_id
                             insCommand.Parameters.Add("@createdDate", SqlDbType.SmallDateTime, 19).Value = createdDate;
                             insCommand.Parameters.Add("@createdBy", SqlDbType.Int).Value = createdBy;
                             insCommand.Parameters.Add("@subCount", SqlDbType.SmallInt).Value = count;
-                            if (locationID > 0)
+                            insCommand.Parameters.Add("@locationID", SqlDbType.Int).Value = location;
+                            if (templateID > 0)
                             {
-                                insCommand.Parameters.Add("@locationID", SqlDbType.Int).Value = locationID;
+                                insCommand.Parameters.Add("@templateID", SqlDbType.Int).Value = templateID;
                             }
                             else
                             {
-                                insCommand.Parameters.AddWithValue("@locationID", DBNull.Value);
+                                insCommand.Parameters.AddWithValue("@templateID", DBNull.Value);
                             }
                             int result = insCommand.ExecuteNonQuery();
 
@@ -127,6 +130,10 @@ namespace SendNotification
                     //displays error description
                     MessageBox.Show(ex.Message);
                 }
+            }
+            else if (locationComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select a location!");
             }
             else
             {
@@ -231,7 +238,6 @@ namespace SendNotification
         private void Form1_Load(object sender, EventArgs e)
         {   
             //adds option to select none or all for the comboboxes if they have not template or location preference
-            locationComboBox.Items.Add("All Locations");
             templateComboBox.Items.Add("No Template");
             try
             {   //adds templates to combo box
@@ -288,6 +294,18 @@ namespace SendNotification
                 }
                 conn.Close();
                 tempLabel.Text = templateComboBox.SelectedIndex.ToString();
+                conn.Open();
+                String tempQuery = "SELECT template_id FROM message_template WHERE template_name = '" + item + "'; ";
+                using (SqlCommand sqlCommand = new SqlCommand(tempQuery, conn))
+                {
+                    SqlDataReader readerTemp = sqlCommand.ExecuteReader();
+                    while(readerTemp.Read())
+                    {
+                        templateID = readerTemp.GetInt32(0);
+                    }
+
+                }
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -300,7 +318,8 @@ namespace SendNotification
         {   
             //clears the textbox and combo boxes
             messageTextBox.Text = string.Empty;
-            locationComboBox.SelectedIndex = 0;
+            locationComboBox.SelectedIndex = -1;
+            locationComboBox.Text = "Location";
             templateComboBox.SelectedIndex = 0;
         }
 
@@ -320,18 +339,15 @@ namespace SendNotification
                 myConnection.ConnectionString = "Data Source=cisdbss.pcc.edu;Initial Catalog=234a_TeamApex;Persist Security Info=True;User ID=234a_TeamApex;Password=^&%_2020_Spring_TeamApex";
                 myConnection.Open();
                 myCommand.Connection = myConnection;
-                if (locationComboBox.SelectedIndex >= 0)
+                if (locationComboBox.SelectedIndex > 0)
                 {
                     string selected = locationComboBox.SelectedItem.ToString();
-                    if (locationComboBox.SelectedIndex > 0)
-                        myCommand.CommandText = "SELECT location_id FROM pantry_location WHERE location_name = '" + selected + "'";
-                    else
-                    {
-                        locationLabel.Text = "";
-                    }
+                    myCommand.CommandText = "SELECT location_id FROM pantry_location WHERE location_name = '" + selected + "'";
                     myDataReader = myCommand.ExecuteReader();
                     while (myDataReader.Read())
-                        locationLabel.Text = myDataReader[0].ToString();
+                    {
+                        location = myDataReader.GetInt32(0); ;
+                    }
                 }
             }
             catch (Exception ex)
@@ -343,6 +359,7 @@ namespace SendNotification
         {   //creates the connection
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
+            //switch statement to differentiate  which users to select from database depending on location
             switch (locationComboBox.SelectedIndex) { 
                 case 0:
                     //makes sure list string is empty
@@ -350,24 +367,24 @@ namespace SendNotification
                     //queries the database
                     string emailQuery = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 SELECT @listStr;";
                     using (SqlCommand command = new SqlCommand(emailQuery, conn))
-                {
-
-                    //creates a data reader object
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    // If there is data to read, set it to string
-                    if (reader.Read())
                     {
 
-                        string locList = reader.GetString(0);
-                        //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
-                        eList = locList;
+                        //creates a data reader object
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        // If there is data to read, set it to string
+                        if (reader.Read())
+                        {
+
+                            string locList = reader.GetString(0);
+                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
+                            eList = locList;
+                        }
+                        else
+                        {
+                            MessageBox.Show("There was an error reading data");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("There was an error reading data");
-                    }
-                }
                     break;
                 case 1:
                     //makes sure list string is empty

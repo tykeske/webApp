@@ -56,12 +56,12 @@
             this.messageTextBox.MaxLength = 1000;
             this.messageTextBox.Multiline = true;
             this.messageTextBox.Name = "messageTextBox";
-            this.messageTextBox.Size = new System.Drawing.Size(578, 234);
+            this.messageTextBox.Size = new System.Drawing.Size(669, 310);
             this.messageTextBox.TabIndex = 1;
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(26, 403);
+            this.submitButton.Location = new System.Drawing.Point(29, 482);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 2;
@@ -72,7 +72,7 @@
             // locationComboBox
             // 
             this.locationComboBox.FormattingEnabled = true;
-            this.locationComboBox.Location = new System.Drawing.Point(32, 36);
+            this.locationComboBox.Location = new System.Drawing.Point(32, 33);
             this.locationComboBox.Name = "locationComboBox";
             this.locationComboBox.Size = new System.Drawing.Size(147, 21);
             this.locationComboBox.TabIndex = 3;
@@ -91,7 +91,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(284, 403);
+            this.cancelButton.Location = new System.Drawing.Point(314, 482);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 5;
@@ -101,7 +101,7 @@
             // 
             // viewLogButton
             // 
-            this.viewLogButton.Location = new System.Drawing.Point(505, 404);
+            this.viewLogButton.Location = new System.Drawing.Point(599, 482);
             this.viewLogButton.Name = "viewLogButton";
             this.viewLogButton.Size = new System.Drawing.Size(99, 23);
             this.viewLogButton.TabIndex = 6;
@@ -112,7 +112,7 @@
             // locationLabel
             // 
             this.locationLabel.AutoSize = true;
-            this.locationLabel.Location = new System.Drawing.Point(32, 36);
+            this.locationLabel.Location = new System.Drawing.Point(71, 36);
             this.locationLabel.Name = "locationLabel";
             this.locationLabel.Size = new System.Drawing.Size(0, 13);
             this.locationLabel.TabIndex = 7;
@@ -131,9 +131,9 @@
             this.selectLocLabel.AutoSize = true;
             this.selectLocLabel.Location = new System.Drawing.Point(32, 9);
             this.selectLocLabel.Name = "selectLocLabel";
-            this.selectLocLabel.Size = new System.Drawing.Size(131, 13);
+            this.selectLocLabel.Size = new System.Drawing.Size(145, 13);
             this.selectLocLabel.TabIndex = 11;
-            this.selectLocLabel.Text = "Select one or all locations:";
+            this.selectLocLabel.Text = "Select a Location (Required):";
             // 
             // selectTempLabel
             // 
@@ -148,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 450);
+            this.ClientSize = new System.Drawing.Size(726, 532);
             this.Controls.Add(this.selectTempLabel);
             this.Controls.Add(this.selectLocLabel);
             this.Controls.Add(this.tempLabel);
