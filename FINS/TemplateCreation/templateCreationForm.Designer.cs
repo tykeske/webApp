@@ -435,11 +435,11 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(636, 786);
+            this.backButton.Location = new System.Drawing.Point(597, 786);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(78, 23);
+            this.backButton.Size = new System.Drawing.Size(122, 23);
             this.backButton.TabIndex = 11;
-            this.backButton.Text = "Go &Back";
+            this.backButton.Text = "Go Back to Menu";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
