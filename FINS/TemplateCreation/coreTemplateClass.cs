@@ -12,8 +12,8 @@ namespace TemplateCreation
         private string _templateName;
         private string _createDate;
         private string _upDated;
-        private string _createdBy;
-        private string _updatedBy;
+        private int _createdBy;
+        private int _updatedBy;
 
         public string templateID
         {

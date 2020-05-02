@@ -206,14 +206,9 @@ namespace TemplateCreation
             MessageBox.Show("Must discuss with team what the functionality of this should be.");
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void backButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This button will navigate user to previous form (in the future)");            
+            Application.Exit();
         }
     }
 }
