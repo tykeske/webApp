@@ -44,7 +44,7 @@
             // messageLabel
             // 
             this.messageLabel.AutoSize = true;
-            this.messageLabel.Location = new System.Drawing.Point(96, 134);
+            this.messageLabel.Location = new System.Drawing.Point(32, 130);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(269, 13);
             this.messageLabel.TabIndex = 0;
@@ -52,16 +52,16 @@
             // 
             // messageTextBox
             // 
-            this.messageTextBox.Location = new System.Drawing.Point(99, 150);
+            this.messageTextBox.Location = new System.Drawing.Point(26, 150);
             this.messageTextBox.MaxLength = 1000;
             this.messageTextBox.Multiline = true;
             this.messageTextBox.Name = "messageTextBox";
-            this.messageTextBox.Size = new System.Drawing.Size(436, 234);
+            this.messageTextBox.Size = new System.Drawing.Size(578, 234);
             this.messageTextBox.TabIndex = 1;
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(99, 404);
+            this.submitButton.Location = new System.Drawing.Point(26, 403);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 2;
@@ -72,7 +72,7 @@
             // locationComboBox
             // 
             this.locationComboBox.FormattingEnabled = true;
-            this.locationComboBox.Location = new System.Drawing.Point(99, 40);
+            this.locationComboBox.Location = new System.Drawing.Point(32, 36);
             this.locationComboBox.Name = "locationComboBox";
             this.locationComboBox.Size = new System.Drawing.Size(147, 21);
             this.locationComboBox.TabIndex = 3;
@@ -82,7 +82,7 @@
             // templateComboBox
             // 
             this.templateComboBox.FormattingEnabled = true;
-            this.templateComboBox.Location = new System.Drawing.Point(99, 101);
+            this.templateComboBox.Location = new System.Drawing.Point(32, 97);
             this.templateComboBox.Name = "templateComboBox";
             this.templateComboBox.Size = new System.Drawing.Size(147, 21);
             this.templateComboBox.TabIndex = 4;
@@ -101,18 +101,18 @@
             // 
             // viewLogButton
             // 
-            this.viewLogButton.Location = new System.Drawing.Point(460, 403);
+            this.viewLogButton.Location = new System.Drawing.Point(505, 404);
             this.viewLogButton.Name = "viewLogButton";
-            this.viewLogButton.Size = new System.Drawing.Size(75, 23);
+            this.viewLogButton.Size = new System.Drawing.Size(99, 23);
             this.viewLogButton.TabIndex = 6;
-            this.viewLogButton.Text = "View Sent";
+            this.viewLogButton.Text = "Go Back to Menu";
             this.viewLogButton.UseVisualStyleBackColor = true;
             this.viewLogButton.Click += new System.EventHandler(this.viewLogButton_Click);
             // 
             // locationLabel
             // 
             this.locationLabel.AutoSize = true;
-            this.locationLabel.Location = new System.Drawing.Point(281, 40);
+            this.locationLabel.Location = new System.Drawing.Point(32, 36);
             this.locationLabel.Name = "locationLabel";
             this.locationLabel.Size = new System.Drawing.Size(0, 13);
             this.locationLabel.TabIndex = 7;
@@ -120,7 +120,7 @@
             // tempLabel
             // 
             this.tempLabel.AutoSize = true;
-            this.tempLabel.Location = new System.Drawing.Point(281, 109);
+            this.tempLabel.Location = new System.Drawing.Point(32, 105);
             this.tempLabel.Name = "tempLabel";
             this.tempLabel.Size = new System.Drawing.Size(0, 13);
             this.tempLabel.TabIndex = 9;
@@ -129,7 +129,7 @@
             // selectLocLabel
             // 
             this.selectLocLabel.AutoSize = true;
-            this.selectLocLabel.Location = new System.Drawing.Point(99, 13);
+            this.selectLocLabel.Location = new System.Drawing.Point(32, 9);
             this.selectLocLabel.Name = "selectLocLabel";
             this.selectLocLabel.Size = new System.Drawing.Size(131, 13);
             this.selectLocLabel.TabIndex = 11;
@@ -138,7 +138,7 @@
             // selectTempLabel
             // 
             this.selectTempLabel.AutoSize = true;
-            this.selectTempLabel.Location = new System.Drawing.Point(99, 73);
+            this.selectTempLabel.Location = new System.Drawing.Point(32, 69);
             this.selectTempLabel.Name = "selectTempLabel";
             this.selectTempLabel.Size = new System.Drawing.Size(96, 13);
             this.selectTempLabel.TabIndex = 12;
