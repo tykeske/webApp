@@ -25,14 +25,14 @@ namespace TemplateCreation
             InitializeComponent();
         }
 
-        //form load formats datagrid and calls the loadData method
+        //form load formats datagrid 
+        //datagrid set to read only, multiselect disabled
+        //calls loadData
         private void templateCreationForm_Load(object sender, EventArgs e)
-        {
-            
-            //datagrid set to read only, multiselect disabled
+        {                       
             dataGridView1.ReadOnly = true;
             dataGridView1.MultiSelect = false;           
-            loadData(); //calls method to populate the grid
+            loadData(); 
         }
 
         //loadData method loads data from dbo.message_template into the datagrid 
@@ -54,8 +54,7 @@ namespace TemplateCreation
                     dataAdapter.Fill(ds);                    
                     dataGridView1.DataSource = ds.Tables[0];
                     c.Close();
-                }
-                //sets datagrid column max and min width
+                }                
                
               
             }
@@ -225,7 +224,7 @@ namespace TemplateCreation
 
         private void deleteTagButton1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Must discuss with team what the functionality of this should be.");
+            MessageBox.Show("Likely remove");
         }
 
         //navigates back to the main menu
