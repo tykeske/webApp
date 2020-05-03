@@ -147,23 +147,6 @@ namespace SendNotification
             switch (locationComboBox.SelectedIndex) 
             {
                 case 0:
-            String subQuery = "SELECT COUNT(email_address) FROM dbo.user_account WHERE role_id = 1";
-            using (SqlCommand subCommand = new SqlCommand(subQuery, conn))
-            {
-                conn.Open();
-                SqlDataReader subReader = subCommand.ExecuteReader();
-                if (subReader.Read())
-                {
-                    int subscribers = subReader.GetInt32(0);
-                    subCount = subscribers;
-
-                    //message box for testing 
-                    MessageBox.Show(subCount.ToString());
-                    return subCount;
-                }
-            }
-                    break;
-                case 1:
                     String sub1Query = "SELECT COUNT(email_address) FROM dbo.user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND location_id = 1";
                     using (SqlCommand subCommand = new SqlCommand(sub1Query, conn))
                     {
@@ -173,14 +156,11 @@ namespace SendNotification
                         {
                             int subscribers = subReader.GetInt32(0);
                             subCount = subscribers;
-
-                            //message box for testing 
-                            MessageBox.Show(subCount.ToString());
                             return subCount;
                         }
                     }
                     break;
-                case 2:
+                case 1:
                     String sub2Query = "SELECT COUNT(email_address) FROM dbo.user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND location_id = 2";
                     using (SqlCommand subCommand = new SqlCommand(sub2Query, conn))
                     {
@@ -190,14 +170,11 @@ namespace SendNotification
                         {
                             int subscribers = subReader.GetInt32(0);
                             subCount = subscribers;
-
-                            //message box for testing 
-                            MessageBox.Show(subCount.ToString());
                             return subCount;
                         }
                     }
                     break;
-                case 3:
+                case 2:
                     String sub3Query = "SELECT COUNT(email_address) FROM dbo.user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND location_id = 3";
                     using (SqlCommand subCommand = new SqlCommand(sub3Query, conn))
                     {
@@ -207,14 +184,11 @@ namespace SendNotification
                         {
                             int subscribers = subReader.GetInt32(0);
                             subCount = subscribers;
-
-                            //message box for testing 
-                            MessageBox.Show(subCount.ToString());
                             return subCount;
                         }
                     }
                     break;
-                case 4:
+                case 3:
                     String sub4Query = "SELECT COUNT(email_address) FROM dbo.user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND location_id = 4";
                     using (SqlCommand subCommand = new SqlCommand(sub4Query, conn))
                     {
@@ -224,9 +198,6 @@ namespace SendNotification
                         {
                             int subscribers = subReader.GetInt32(0);
                             subCount = subscribers;
-
-                            //message box for testing 
-                            MessageBox.Show(subCount.ToString());
                             return subCount;
                         }
                     }
@@ -338,16 +309,12 @@ namespace SendNotification
                 SqlDataReader myDataReader;
                 myConnection.ConnectionString = "Data Source=cisdbss.pcc.edu;Initial Catalog=234a_TeamApex;Persist Security Info=True;User ID=234a_TeamApex;Password=^&%_2020_Spring_TeamApex";
                 myConnection.Open();
-                myCommand.Connection = myConnection;
-                if (locationComboBox.SelectedIndex > 0)
+                myCommand.Connection = myConnection; string selected = locationComboBox.SelectedItem.ToString();
+                myCommand.CommandText = "SELECT location_id FROM pantry_location WHERE location_name = '" + selected + "'";
+                myDataReader = myCommand.ExecuteReader();
+                while (myDataReader.Read())
                 {
-                    string selected = locationComboBox.SelectedItem.ToString();
-                    myCommand.CommandText = "SELECT location_id FROM pantry_location WHERE location_name = '" + selected + "'";
-                    myDataReader = myCommand.ExecuteReader();
-                    while (myDataReader.Read())
-                    {
-                        location = myDataReader.GetInt32(0); ;
-                    }
+                    location = myDataReader.GetInt32(0); ;
                 }
             }
             catch (Exception ex)
@@ -365,7 +332,7 @@ namespace SendNotification
                     //makes sure list string is empty
                     eList = "";
                     //queries the database
-                    string emailQuery = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 SELECT @listStr;";
+                    string emailQuery = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 1 SELECT @listStr;";
                     using (SqlCommand command = new SqlCommand(emailQuery, conn))
                     {
 
@@ -390,7 +357,7 @@ namespace SendNotification
                     //makes sure list string is empty
                     eList = "";
                     //queries the database
-                    string email1Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 1 SELECT @listStr;";
+                    string email1Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 2 SELECT @listStr;";
                     using (SqlCommand command = new SqlCommand(email1Query, conn))
                     {
 
@@ -415,7 +382,7 @@ namespace SendNotification
                     //makes sure list string is empty
                     eList = "";
                     //queries the database
-                    string email2Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 2 SELECT @listStr;";
+                    string email2Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 3 SELECT @listStr;";
                     using (SqlCommand command = new SqlCommand(email2Query, conn))
                     {
 
@@ -440,33 +407,8 @@ namespace SendNotification
                     //makes sure list string is empty
                     eList = "";
                     //queries the database
-                    string email3Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 3 SELECT @listStr;";
+                    string email3Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 4 SELECT @listStr;";
                     using (SqlCommand command = new SqlCommand(email3Query, conn))
-                    {
-
-                        //creates a data reader object
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        // If there is data to read, set it to string
-                        if (reader.Read())
-                        {
-
-                            string locList = reader.GetString(0);
-                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
-                            eList = locList;
-                        }
-                        else
-                        {
-                            MessageBox.Show("There was an error reading data");
-                        }
-                    }
-                    break;
-                case 4:
-                    //makes sure list string is empty
-                    eList = "";
-                    //queries the database
-                    string email4Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 4 SELECT @listStr;";
-                    using (SqlCommand command = new SqlCommand(email4Query, conn))
                     {
 
                         //creates a data reader object
