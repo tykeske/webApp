@@ -102,7 +102,7 @@
             this.msgBodyTextBox.Location = new System.Drawing.Point(27, 441);
             this.msgBodyTextBox.Multiline = true;
             this.msgBodyTextBox.Name = "msgBodyTextBox";
-            this.msgBodyTextBox.Size = new System.Drawing.Size(836, 292);
+            this.msgBodyTextBox.Size = new System.Drawing.Size(821, 292);
             this.msgBodyTextBox.TabIndex = 5;
             // 
             // tagGroupBox
@@ -116,16 +116,16 @@
             this.tagGroupBox.Controls.Add(this.tagTextBox2);
             this.tagGroupBox.Controls.Add(this.tagTextBox1);
             this.tagGroupBox.Controls.Add(this.tagTextBox3);
-            this.tagGroupBox.Location = new System.Drawing.Point(429, 217);
+            this.tagGroupBox.Location = new System.Drawing.Point(412, 217);
             this.tagGroupBox.Name = "tagGroupBox";
-            this.tagGroupBox.Size = new System.Drawing.Size(362, 134);
+            this.tagGroupBox.Size = new System.Drawing.Size(352, 134);
             this.tagGroupBox.TabIndex = 6;
             this.tagGroupBox.TabStop = false;
             this.tagGroupBox.Text = "Tags";
             // 
             // deleteTagButton1
             // 
-            this.deleteTagButton1.Location = new System.Drawing.Point(274, 29);
+            this.deleteTagButton1.Location = new System.Drawing.Point(253, 29);
             this.deleteTagButton1.Name = "deleteTagButton1";
             this.deleteTagButton1.Size = new System.Drawing.Size(75, 23);
             this.deleteTagButton1.TabIndex = 10;
@@ -145,7 +145,7 @@
             // 
             // deleteTagButton2
             // 
-            this.deleteTagButton2.Location = new System.Drawing.Point(274, 58);
+            this.deleteTagButton2.Location = new System.Drawing.Point(253, 59);
             this.deleteTagButton2.Name = "deleteTagButton2";
             this.deleteTagButton2.Size = new System.Drawing.Size(75, 23);
             this.deleteTagButton2.TabIndex = 8;
@@ -154,7 +154,7 @@
             // 
             // deleteTagButton3
             // 
-            this.deleteTagButton3.Location = new System.Drawing.Point(274, 87);
+            this.deleteTagButton3.Location = new System.Drawing.Point(253, 87);
             this.deleteTagButton3.Name = "deleteTagButton3";
             this.deleteTagButton3.Size = new System.Drawing.Size(75, 23);
             this.deleteTagButton3.TabIndex = 7;
@@ -213,7 +213,7 @@
             this.templatesGroupBox.Controls.Add(this.tempNameLabel);
             this.templatesGroupBox.Location = new System.Drawing.Point(27, 31);
             this.templatesGroupBox.Name = "templatesGroupBox";
-            this.templatesGroupBox.Size = new System.Drawing.Size(836, 366);
+            this.templatesGroupBox.Size = new System.Drawing.Size(821, 366);
             this.templatesGroupBox.TabIndex = 9;
             this.templatesGroupBox.TabStop = false;
             this.templatesGroupBox.Text = "Templates";
@@ -248,18 +248,17 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(48, 29);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(743, 174);
+            this.dataGridView1.Size = new System.Drawing.Size(716, 174);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(741, 787);
+            this.backButton.Location = new System.Drawing.Point(726, 756);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(122, 23);
             this.backButton.TabIndex = 11;
@@ -271,7 +270,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 835);
+            this.ClientSize = new System.Drawing.Size(880, 806);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.templatesGroupBox);
             this.Controls.Add(this.messageLabel);
