@@ -47,11 +47,14 @@ namespace TemplateCreation
                     var dataAdapter = new SqlDataAdapter(select, c);
                     var commandBuilder = new SqlCommandBuilder(dataAdapter);
                     var ds = new DataSet();
-                    dataAdapter.Fill(ds);
-                    dataGridView1.ReadOnly = true;
+                    dataAdapter.Fill(ds);                    
                     dataGridView1.DataSource = ds.Tables[0];
                     c.Close();
                 }
+
+                //sets datagrid to read only and disables MultiSelect
+                dataGridView1.ReadOnly = true;
+                dataGridView1.MultiSelect = false;
 
                 //sets datagrid column max and min width
                 int maxWidth = 170;
@@ -90,8 +93,8 @@ namespace TemplateCreation
         }
 
         //saveCheck evalutes whether the user is trying to save a new template or edit an existing template based on the text length of tempID_TextBox.Text
-        //if there is a value present in tempID_TextBox, the user is asked to confirm that they want to save changes
-        //if there is no value present in tempID_TextBox then the program simply creates a new template/row
+        //if value present in tempID_TextBox, the user is asked to confirm that they want to save changes, if confirmed modifyTemplate is called
+        //if value not present in tempID_TextBox then createTemplate is called and a new template is created
         private void saveCheck()
         {
             if (tempID_TextBox.TextLength > 0 && tempNameTextBox.TextLength < 51 && tempNameTextBox.TextLength > 0 && msgBodyTextBox.TextLength < 1001)
