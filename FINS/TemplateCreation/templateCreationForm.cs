@@ -54,7 +54,7 @@ namespace TemplateCreation
                 }
 
                 //sets datagrid column max and min width
-                int maxWidth = 130;
+                int maxWidth = 170;
                 int minWidth = 70;
                 foreach(DataGridViewColumn c in dataGridView1.Columns)                 
                 if (c.Width > maxWidth)
