@@ -25,9 +25,28 @@ namespace TemplateCreation
             InitializeComponent();
         }
 
-        //form load fills the datagrid
+        //form load formats datagrid and calls the loadData method
         private void templateCreationForm_Load(object sender, EventArgs e)
         {
+            //sets datagrid to read only and disables MultiSelect
+            dataGridView1.ReadOnly = true;
+            dataGridView1.MultiSelect = false;
+
+            //sets datagrid column max and min width
+            int maxWidth = 170;
+            int minWidth = 70;
+            foreach (DataGridViewColumn c in dataGridView1.Columns)
+                if (c.Width > maxWidth)
+                {
+                    c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    c.Width = maxWidth;
+                }
+                else if (c.Width < minWidth)
+                {
+                    c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    c.Width = minWidth;
+                }
+            //loads calls the loadData method
             loadData();
         }
 
@@ -51,26 +70,7 @@ namespace TemplateCreation
                     dataGridView1.DataSource = ds.Tables[0];
                     c.Close();
                 }
-
-                //sets datagrid to read only and disables MultiSelect
-                dataGridView1.ReadOnly = true;
-                dataGridView1.MultiSelect = false;
-
-                //sets datagrid column max and min width
-                int maxWidth = 170;
-                int minWidth = 70;
-                foreach(DataGridViewColumn c in dataGridView1.Columns)                 
-                if (c.Width > maxWidth)
-                    {
-                        c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                        c.Width = maxWidth;
-                    }
-                else if (c.Width < minWidth)
-                    {
-                        c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                        c.Width = minWidth;
-                    }
-
+             
             }
             catch
             {
