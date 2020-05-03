@@ -52,6 +52,22 @@ namespace TemplateCreation
                     dataGridView1.DataSource = ds.Tables[0];
                     c.Close();
                 }
+
+                //sets datagrid column max and min width
+                int maxWidth = 130;
+                int minWidth = 70;
+                foreach(DataGridViewColumn c in dataGridView1.Columns)                 
+                if (c.Width > maxWidth)
+                    {
+                        c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        c.Width = maxWidth;
+                    }
+                else if (c.Width < minWidth)
+                    {
+                        c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        c.Width = minWidth;
+                    }
+
             }
             catch
             {
@@ -102,8 +118,7 @@ namespace TemplateCreation
         }
 
 
-        //modifyTemplate is  similar to createTemplate however it uses the update command to edit rows based on template_id 
-        //the template_id  value a read-only textbox and that is pulled in as a parameter in the WHERE clause of the Sql command text
+        //modifyTemplate uses the update command to edit only rows where template_id matches the text value in tempID_TextBox
         //this method only adds content to template_name, message_content, updated_date and updated_by
         private void modifyTemplate()
         {
@@ -144,7 +159,7 @@ namespace TemplateCreation
 
 
         //create template creates a brand new row in dbo.message_template
-        //try-catch statement for exceptions
+        //once created loadDataGrid method is called to refresh that datagrid
         private void createTemplate()
         {
             try
