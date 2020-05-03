@@ -28,7 +28,7 @@ namespace TemplateCreation
         //form load formats datagrid and calls the loadData method
         private void templateCreationForm_Load(object sender, EventArgs e)
         {
-            //sets datagrid to read only and disables MultiSelect
+            //datagrid set to read only, multiselect disabled
             dataGridView1.ReadOnly = true;
             dataGridView1.MultiSelect = false;
 
@@ -45,12 +45,11 @@ namespace TemplateCreation
                 {
                     c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                     c.Width = minWidth;
-                }
-            //loads calls the loadData method
-            loadData();
+                }          
+            loadData(); //calls method to populate the grid
         }
 
-        //loadData loads data from dbo.message_template into the datagrid 
+        //loadData method loads data from dbo.message_template into the datagrid 
         private void loadData()
         {
             string connectionString = "Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex";
@@ -78,7 +77,7 @@ namespace TemplateCreation
             }
         }
 
-        //loadDataGrid refreshes that datagrid after a save
+        //loadDataGrid refreshes datagrid after a save
         private void loadDataGrid()
         {
             loadData();
@@ -139,7 +138,7 @@ namespace TemplateCreation
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "UPDATE dbo.message_template SET template_name=@templateName, message_content=@msgContent, updated_date=@upDated, updated_by=@upDatedBy WHERE template_id = @template_ID";
-                    command.Parameters.Add("@template_ID", SqlDbType.Int).Value = templateID; //adds templateID variable as a parameter for the WHERE clause
+                    command.Parameters.Add("@template_ID", SqlDbType.Int).Value = templateID; //adds templateID variable command parameter for commandtext WHERE clause
                     command.Parameters.AddWithValue("@templateName", templateName);
                     command.Parameters.AddWithValue("@msgContent", msgContent);
                     command.Parameters.AddWithValue("@upDated", upDated);
@@ -162,7 +161,7 @@ namespace TemplateCreation
 
 
         //create template creates a brand new row in dbo.message_template
-        //once created loadDataGrid method is called to refresh that datagrid
+        //once created the user is notified and loadDataGrid method is called to refresh the datagrid
         private void createTemplate()
         {
             try
