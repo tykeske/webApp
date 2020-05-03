@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 
 /*
@@ -23,7 +17,6 @@ Bugs:
 
 namespace TemplateCreation
 {
-   
 
     public partial class templateCreationForm : Form
     {
@@ -38,22 +31,35 @@ namespace TemplateCreation
             loadData();
         }
 
-        //loadData loads the datagrid and creates a dataset
+        //loadData loads data from dbo.message_template into the datagrid 
         private void loadData()
         {
-            var select = "SELECT template_id, template_name, message_content, created_date, updated_date, created_by, updated_by FROM dbo.message_template";
-            var c = new SqlConnection("Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex"); // Your Connection String here
-            c.Open();
-            var dataAdapter = new SqlDataAdapter(select, c);
-            var commandBuilder = new SqlCommandBuilder(dataAdapter);
-            var ds = new DataSet();
-            dataAdapter.Fill(ds);
-            dataGridView1.ReadOnly = true;
-            dataGridView1.DataSource = ds.Tables[0];
-            c.Close();
+            string connectionString = "Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex";
+            
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    var select = "SELECT template_id, template_name, message_content, created_date, updated_date, created_by, updated_by FROM dbo.message_template";
+                    var c = new SqlConnection("Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex"); // Your Connection String here
+                    c.Open();
+                    var dataAdapter = new SqlDataAdapter(select, c);
+                    var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                    var ds = new DataSet();
+                    dataAdapter.Fill(ds);
+                    dataGridView1.ReadOnly = true;
+                    dataGridView1.DataSource = ds.Tables[0];
+                    c.Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong");
+            }
         }
 
-        //loadDataGrid is called by template creation/modification methods after successful execution of sql commands, thus displaying new row or edits to user
+        //loadDataGrid refreshes that datagrid after a save
         private void loadDataGrid()
         {
             loadData();
@@ -92,20 +98,20 @@ namespace TemplateCreation
             else
             {
                 MessageBox.Show("You must enter a template name, 1-50 characters.  Msg body field has 1000 character limit.");
-            }            
+            }
         }
 
 
-        //modifyTemplate is very similar to createTemplate however it uses the update command to edit rows based on template_id value
-        //the template_id  valueis stored in a read-only textbox and that is pulled in as a parameter in the WHERE clause
+        //modifyTemplate is  similar to createTemplate however it uses the update command to edit rows based on template_id 
+        //the template_id  value a read-only textbox and that is pulled in as a parameter in the WHERE clause of the Sql command text
         //this method only adds content to template_name, message_content, updated_date and updated_by
         private void modifyTemplate()
         {
             try
-            {   
-                int templateID = int.Parse(tempID_TextBox.Text); 
+            {
+                int templateID = int.Parse(tempID_TextBox.Text);
                 string templateName = tempNameTextBox.Text;
-                string msgContent = msgBodyTextBox.Text;                
+                string msgContent = msgBodyTextBox.Text;
                 string upDated = DateTime.Now.ToString();
                 int upDatedBy = 1;
 
@@ -113,27 +119,27 @@ namespace TemplateCreation
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 using (SqlCommand command = connection.CreateCommand())
-                { 
-                command.CommandText = "UPDATE dbo.message_template SET template_name=@templateName, message_content=@msgContent, updated_date=@upDated, updated_by=@upDatedBy WHERE template_id = @template_ID";                
-                command.Parameters.Add("@template_ID", SqlDbType.Int).Value = templateID; //adds templateID variable as a parameter for the WHERE clause
-                command.Parameters.AddWithValue("@templateName",  templateName);
-                command.Parameters.AddWithValue("@msgContent", msgContent);
-                command.Parameters.AddWithValue("@upDated", upDated);
-                command.Parameters.AddWithValue("@upDatedBy", upDatedBy); 
-                
-                connection.Open();
+                {
+                    command.CommandText = "UPDATE dbo.message_template SET template_name=@templateName, message_content=@msgContent, updated_date=@upDated, updated_by=@upDatedBy WHERE template_id = @template_ID";
+                    command.Parameters.Add("@template_ID", SqlDbType.Int).Value = templateID; //adds templateID variable as a parameter for the WHERE clause
+                    command.Parameters.AddWithValue("@templateName", templateName);
+                    command.Parameters.AddWithValue("@msgContent", msgContent);
+                    command.Parameters.AddWithValue("@upDated", upDated);
+                    command.Parameters.AddWithValue("@upDatedBy", upDatedBy);
 
-                command.ExecuteNonQuery();
+                    connection.Open();
 
-                connection.Close();
+                    command.ExecuteNonQuery();
+
+                    connection.Close();
                 }
-             loadDataGrid();
+                loadDataGrid();
             }
             catch
             {
-            MessageBox.Show("Something went wrong");
+                MessageBox.Show("Something went wrong");
             }
-            
+
         }
 
 
@@ -229,42 +235,30 @@ namespace TemplateCreation
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
 
+        //binds textbox for template_id, template_name and message_content to the datagrid
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedCells.Count > 0)
             {
+                //tempID for template_id
                 int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
                 string tempID = Convert.ToString(selectedRow.Cells["template_id"].Value);
                 tempID_TextBox.Text = tempID;
-
+                
+                //tempName for template_name
                 int selectedrowindex2 = dataGridView1.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow2 = dataGridView1.Rows[selectedrowindex2];
                 string tempName = Convert.ToString(selectedRow2.Cells["template_name"].Value);
                 tempNameTextBox.Text = tempName;
 
+                //msgContent for message_content
                 int selectedrowindex3 = dataGridView1.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow3 = dataGridView1.Rows[selectedrowindex3];
                 string msgContent = Convert.ToString(selectedRow3.Cells["message_content"].Value);
                 msgBodyTextBox.Text = msgContent;
             }
-
-            /*
-            int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-            string tempID = Convert.ToString(selectedRow.Cells["template_id"].Value);
-            tempID_TextBox.Text = tempID;
-
-            int selectedrowindex2 = dataGridView1.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow2 = dataGridView1.Rows[selectedrowindex2];
-            string tempName = Convert.ToString(selectedRow2.Cells["template_name"].Value);
-            tempNameTextBox.Text = tempName;
-
-            int selectedrowindex3 = dataGridView1.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow3 = dataGridView1.Rows[selectedrowindex3];
-            string msgContent = Convert.ToString(selectedRow3.Cells["message_content"].Value);
-            msgBodyTextBox.Text = msgContent;
-            */
+            
         }
     }
 }
