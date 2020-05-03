@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 
 /*
 Author: Becca Menefee-Scheets
-Date: 4/30/20
+Date: 5/3/20
 Class: CIS 234A
 Assignment: 5
 Bugs: none
@@ -31,6 +31,8 @@ namespace SendNotification
 
         //connection string
         private string connString = "Data Source=cisdbss.pcc.edu;Initial Catalog=234a_TeamApex;Persist Security Info=True;User ID=234a_TeamApex;Password=^&%_2020_Spring_TeamApex";
+
+        //initializing some global variables
         public int subCount = 0;
         public int location;
         public string eList = "";
@@ -52,9 +54,6 @@ namespace SendNotification
                     eList = GetQuery(eList);
                     //creates the connection
                     SqlConnection conn = new SqlConnection(connString);
-
-                    //creates a query string to search the database
-                    string emailQuery = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 1 SELECT @listStr;";
 
                     //opens the connection
                     conn.Open();
@@ -78,7 +77,6 @@ namespace SendNotification
                         { //inserts values into the correct fields
 
                             insCommand.Parameters.Add("@messageContent", SqlDbType.NVarChar, 1000).Value = messageContent;
-                            //still need to add template_id
                             insCommand.Parameters.Add("@createdDate", SqlDbType.SmallDateTime, 19).Value = createdDate;
                             insCommand.Parameters.Add("@createdBy", SqlDbType.Int).Value = createdBy;
                             insCommand.Parameters.Add("@subCount", SqlDbType.SmallInt).Value = count;
@@ -143,7 +141,7 @@ namespace SendNotification
         }
         public int GetSubscribers(int subCount)
         {   SqlConnection conn = new SqlConnection(connString);
-            // method doesnt work as I intended will be fixing
+            // switch statement to grab the count of users in each location
             switch (locationComboBox.SelectedIndex) 
             {
                 case 0:
@@ -296,12 +294,11 @@ namespace SendNotification
 
         private void viewLogButton_Click(object sender, EventArgs e)
         {
-            NotificationLog.Form1 notf = new NotificationLog.Form1();
-            notf.ShowDialog();
+           //will open Main Menu
         }
 
         private void locationComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {   //finds the location ID for the location selected
             try
             {
                 SqlConnection myConnection = new SqlConnection();
