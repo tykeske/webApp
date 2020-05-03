@@ -28,6 +28,7 @@ namespace TemplateCreation
         //form load formats datagrid and calls the loadData method
         private void templateCreationForm_Load(object sender, EventArgs e)
         {
+            
             //datagrid set to read only, multiselect disabled
             dataGridView1.ReadOnly = true;
             dataGridView1.MultiSelect = false;           
@@ -54,12 +55,15 @@ namespace TemplateCreation
                     dataGridView1.DataSource = ds.Tables[0];
                     c.Close();
                 }
-             
+                //sets datagrid column max and min width
+               
+              
             }
             catch
             {
                 MessageBox.Show("Something went wrong");
             }
+            
         }
 
         //loadDataGrid refreshes datagrid after a save
@@ -227,7 +231,7 @@ namespace TemplateCreation
         //navigates back to the main menu
         private void backButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         //keychar check for tagTextBox3, where user enters custom tags
