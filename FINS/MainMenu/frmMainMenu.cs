@@ -22,36 +22,36 @@ namespace MainMenu
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnTemplate_Click(object sender, EventArgs e)
         {
+            // Create new instance of Template Creation form
+            templateCreationForm ft = new templateCreationForm(userID);
 
-            templateCreationForm ft = new templateCreationForm();
-
+            // Launch the Template Creation form as a modal
             ft.ShowDialog();
-            // should be ft.ShowDialog(userID);
-            // to add parameter to the form: public templateCreationForm(int userID)
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSend_Click(object sender, EventArgs e)
         {
-            SendNotification.Form1 fs = new SendNotification.Form1();
+            // Create new instance of Send Notification form
+            SendNotification.Form1 fs = new SendNotification.Form1(userID);
 
+            // Launch the Send Notification form as a modal
             fs.ShowDialog();
-            // should be fs.ShowDialog(userID);
-            // to add parameter to the form: public Form1(int userID)
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnReview_Click(object sender, EventArgs e)
         {
-            NotificationLog.Form1 fn = new NotificationLog.Form1();
+            // Create new instance of Review Notification form
+            NotificationLog.Form1 fn = new NotificationLog.Form1(userID);
 
+            // Launch the Review Notification form as a modal
             fn.ShowDialog();
-            // should be fn.ShowDialog(userID);
-            // to add parameter to the form: public Form1(int userID)
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
+        private void btnLogout_Click_1(object sender, EventArgs e)
         {
+            // Logout and exit the application
             Application.Exit();
         }
     }
