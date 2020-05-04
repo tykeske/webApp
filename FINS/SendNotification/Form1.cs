@@ -294,7 +294,8 @@ namespace SendNotification
 
         private void viewLogButton_Click(object sender, EventArgs e)
         {
-           //will open Main Menu
+            //will open Main Menu
+            this.Close();
         }
 
         private void locationComboBox_SelectedIndexChanged(object sender, EventArgs e)

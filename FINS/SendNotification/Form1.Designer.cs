@@ -34,7 +34,7 @@
             this.locationComboBox = new System.Windows.Forms.ComboBox();
             this.templateComboBox = new System.Windows.Forms.ComboBox();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.viewLogButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.tempLabel = new System.Windows.Forms.Label();
             this.selectLocLabel = new System.Windows.Forms.Label();
             this.selectTempLabel = new System.Windows.Forms.Label();
@@ -98,15 +98,15 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // viewLogButton
+            // backButton
             // 
-            this.viewLogButton.Location = new System.Drawing.Point(599, 482);
-            this.viewLogButton.Name = "viewLogButton";
-            this.viewLogButton.Size = new System.Drawing.Size(99, 23);
-            this.viewLogButton.TabIndex = 6;
-            this.viewLogButton.Text = "Go Back to Menu";
-            this.viewLogButton.UseVisualStyleBackColor = true;
-            this.viewLogButton.Click += new System.EventHandler(this.viewLogButton_Click);
+            this.backButton.Location = new System.Drawing.Point(599, 482);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(99, 23);
+            this.backButton.TabIndex = 6;
+            this.backButton.Text = "Go Back to Menu";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.viewLogButton_Click);
             // 
             // tempLabel
             // 
@@ -143,7 +143,7 @@
             this.Controls.Add(this.selectTempLabel);
             this.Controls.Add(this.selectLocLabel);
             this.Controls.Add(this.tempLabel);
-            this.Controls.Add(this.viewLogButton);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.templateComboBox);
             this.Controls.Add(this.locationComboBox);
@@ -166,7 +166,7 @@
         private System.Windows.Forms.ComboBox locationComboBox;
         private System.Windows.Forms.ComboBox templateComboBox;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.Button viewLogButton;
+        private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label tempLabel;
         private System.Windows.Forms.Label selectLocLabel;
         private System.Windows.Forms.Label selectTempLabel;
