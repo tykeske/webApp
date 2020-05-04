@@ -20,13 +20,11 @@ Bugs: none
 */
 namespace SendNotification
 {
-    public partial class Form1 : Form
+    public partial class sendNotificationForm : Form
     {
-        public Form1()
+        public sendNotificationForm()
         {
             InitializeComponent();
-            
-            
         }
 
         //connection string
@@ -36,8 +34,9 @@ namespace SendNotification
         public int subCount = 0;
         public int location;
         public string eList = "";
-        public int createdBy = 1;
         public int templateID;
+        public int createdBy = 1;
+
         private void submitButton_Click(object sender, EventArgs e)
         {
             //checks if message box is empty before proceeding
@@ -209,10 +208,13 @@ namespace SendNotification
             //adds option to select none or all for the comboboxes if they have not template or location preference
             templateComboBox.Items.Add("No Template");
             try
-            {   //adds templates to combo box
-                String tempQuery = "SELECT template_name FROM message_template ORDER BY template_name ASC; ";
+            {   
                 SqlConnection conn = new SqlConnection(connString);
                 conn.Open();
+
+                //adds templates to combo box
+                String tempQuery = "SELECT template_name FROM message_template ORDER BY template_name ASC; ";
+                //opens a data reader to fill template combo box
                 using (SqlCommand tempComm = new SqlCommand(tempQuery, conn))
                 {
                     SqlDataReader dataReader = tempComm.ExecuteReader();
@@ -224,6 +226,8 @@ namespace SendNotification
                 }
                 //searches database for locatins and adds them to the comboBox
                 String locQuery = "SELECT location_name FROM pantry_location; ";
+
+                //opens a data reader to fill location combo box
                 using (SqlCommand locComm = new SqlCommand(locQuery, conn))
                 {
                     conn.Open();
@@ -232,7 +236,6 @@ namespace SendNotification
                     {
                         //adds locations to combobox
                         locationComboBox.Items.Add(dataReaderLoc.GetString(0));
-
                     }
                 }
                 conn.Close();
@@ -242,7 +245,6 @@ namespace SendNotification
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void templateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -280,9 +282,7 @@ namespace SendNotification
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
-
         private void cancelButton_Click(object sender, EventArgs e)
         {   
             //clears the textbox and combo boxes
@@ -320,6 +320,7 @@ namespace SendNotification
                 Console.WriteLine(ex.Message);
             }
         }
+
         public string GetQuery(string eList)
         {   //creates the connection
             SqlConnection conn = new SqlConnection(connString);

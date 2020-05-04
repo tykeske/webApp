@@ -1,6 +1,6 @@
 ﻿namespace SendNotification
 {
-    partial class Form1
+    partial class sendNotificationForm
     {
         /// <summary>
         /// Required designer variable.

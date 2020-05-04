@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="sendNotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="sendNotificationForm.Designer.cs">
+      <DependentUpon>sendNotificationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="sendNotificationForm.resx">
+      <DependentUpon>sendNotificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,6 +80,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibBecca\ClassLibBecca.csproj">
+      <Project>{4333c169-2bf0-43f8-bc7e-59743f51fc31}</Project>
+      <Name>ClassLibBecca</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NotificationLog\NotificationLog.csproj">
       <Project>{01b55171-021b-4057-868e-44b0f8b03b4a}</Project>
       <Name>NotificationLog</Name>
