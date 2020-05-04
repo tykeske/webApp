@@ -17,10 +17,15 @@ GO
 
 -- Role
 INSERT INTO [dbo].[user_role]
-           ([role_name])
+           ([role_name]
+           ,[can_create_template]
+           ,[can_send_notification]
+           ,[can_view_log])
      VALUES
            ('Subscriber'
-           ,NULL);
+           ,0
+           ,0
+           ,0);
 GO
 
 INSERT INTO [dbo].[user_role]
@@ -37,11 +42,12 @@ GO
 
 INSERT INTO [dbo].[user_role]
            ([role_name]
-           ,[permission]
+           ,[can_create_template]
            ,[can_send_notification]
            ,[can_view_log])
      VALUES
            ('Staff Member'
+           ,0
            ,1
            ,1);
 GO

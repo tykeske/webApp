@@ -1,0 +1,37 @@
+﻿@{
+/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This razor page presents user logout form for confirmation
+*/
+}
+
+@model AccountManagement.ViewModels.userLogin
+
+@{
+    ViewData["Title"] = "Logout";
+}
+
+<h1>Logout</h1>
+<br />
+<h4>Are you sure you want to log out?.</h4>
+
+<hr />
+<div class="row">
+    <div class="col-sm-10">
+        <form asp-controller="Account" asp-action="Logout">
+            <div class="form-group row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <input type="submit" value="Logout" class="btn btn-primary" />
+                    <a href="javascript:history.back();" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
