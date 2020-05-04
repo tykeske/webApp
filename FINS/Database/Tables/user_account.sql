@@ -6,10 +6,14 @@
     [email_address] VARCHAR (50)  NOT NULL,
     [role_id]       INT           NOT NULL,
     [is_active]     BIT           NOT NULL,
-    [created_date] SMALLDATETIME NOT NULL, 
+    [created_date] SMALLDATETIME NOT NULL DEFAULT GETDATE(), 
     [updated_date] SMALLDATETIME NULL, 
     [phone_number] VARCHAR(20) NULL, 
     PRIMARY KEY CLUSTERED ([user_id] ASC),
     CONSTRAINT [FK_User_RoleID] FOREIGN KEY ([role_id]) REFERENCES [dbo].[user_role] ([role_id])
 );
 
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [UNQ_Account_UserName]
+    ON [dbo].[user_account]([user_name] ASC);
