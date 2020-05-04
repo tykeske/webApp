@@ -34,7 +34,7 @@ namespace MainMenu
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SendNotification.Form1 fs = new SendNotification.Form1(userID);
+            SendNotification.Form1 fs = new SendNotification.Form1();
 
             fs.ShowDialog();
             // should be fs.ShowDialog(userID);
