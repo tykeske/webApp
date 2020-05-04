@@ -224,7 +224,7 @@ namespace TemplateCreation
 
         private void deleteTagButton1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Likely remove");
+            MessageBox.Show("gonna keep it safe");
         }
 
         //navigates back to the main menu
