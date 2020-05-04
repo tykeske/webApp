@@ -16,7 +16,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AccountManagement.Models
 {
     // Model for manage user account entity
-    [Table("user_account")]
     public class userAccount
     {
         [Column("user_id"), Key]

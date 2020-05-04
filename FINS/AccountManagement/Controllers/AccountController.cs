@@ -180,9 +180,6 @@ namespace AccountManagement.Controllers
         }
 
         // GET: userAccounts/Register
-
-        // TODO: Add model validation for unique username
-        // https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-3.1
         public IActionResult Register()
         {
             return View();
@@ -194,7 +191,6 @@ namespace AccountManagement.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(userRegistration userRegistration)
         {
-
             // Get service class to use for password hashing
             utilityService util = new utilityService();
 

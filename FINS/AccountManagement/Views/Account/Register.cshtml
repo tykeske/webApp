@@ -1,10 +1,10 @@
 ﻿@{
-/*
-    Author:         Nick Dechativong
-    Created Date:   04/23/2020
-    Class:          CIS 234A
-    Objective:      This razor page presents registration form for the user to fill out and submit
-*/
+    /*
+        Author:         Nick Dechativong
+        Created Date:   04/23/2020
+        Class:          CIS 234A
+        Objective:      This razor page presents registration form for the user to fill out and submit
+    */
 }
 
 @model AccountManagement.ViewModels.userRegistration
@@ -44,7 +44,7 @@
             <div class="form-group row">
                 <label asp-for="phoneNumber" class="col-sm-3 col-form-label font-weight-bold text-right"></label>
                 <div class="col-sm-6">
-                    <input asp-for="phoneNumber" class="form-control" placeholder="555-555-5555" />
+                    <input asp-for="phoneNumber" class="form-control" placeholder="(###)###-####" />
                     <span asp-validation-for="phoneNumber" class="text-danger"></span>
                 </div>
             </div>
@@ -78,6 +78,7 @@
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <input type="submit" value="Register" class="btn btn-primary" />
+                    <a href="Register" class="btn btn-secondary" role="button" aria-pressed="true">Clear</a>
                     <a href="../Home/Index" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
                 </div>
             </div>
@@ -88,4 +89,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }

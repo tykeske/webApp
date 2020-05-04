@@ -18,10 +18,14 @@ namespace AccountManagement.Models
     // Model for manage user-pantry location assignment entity
     public class userLocation
     {
+        // Composite key is set in Fluent API
         [Column("user_id"), Key]
         public int userId { get; set; }
-
-        [Column("location_id"), Key]
+        [Column("location_id"), Required]
         public int locationId { get; set; }
+
+        // Navigation
+        public userAccount userAccount { get; set; }
+        public pantryLocation pantryLocation { get; set; }
     }
 }
