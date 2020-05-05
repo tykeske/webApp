@@ -19,7 +19,7 @@ namespace notificationLogTylerKeske
 {
     public partial class NotificationLog : Form
     {
-        public NotificationLog(int userID)
+        public NotificationLog()
         {
             InitializeComponent();
         }
