@@ -160,7 +160,7 @@ namespace TemplateCreation
                 string msgContent = msgBodyTextBox.Text;
                 string createDate = DateTime.Now.ToString();
                 string upDated = DateTime.Now.ToString();
-                int createdBy = 1;
+                int createdBy = userID;
                 int updatedBy = userID;
 
                 using (SqlConnection connection = new SqlConnection("Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex"))
