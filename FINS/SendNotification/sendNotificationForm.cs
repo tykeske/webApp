@@ -22,7 +22,7 @@ namespace SendNotification
 {
     public partial class sendNotificationForm : Form
     {
-        public sendNotificationForm()
+        public sendNotificationForm(int userID)
         {
             InitializeComponent();
         }
@@ -65,7 +65,7 @@ namespace SendNotification
                     string createdDate = DateTime.Now.ToString();
                     msg.CC.Add(eList);
                     int count =  GetSubscribers(subCount);
-                   
+
                     //DATABASE ENTRY
                     String insQuery = "INSERT INTO dbo.message_log (message_content, template_id, created_date, created_by, subscriber_count, location_id) VALUES (@messageContent, @templateID, @createdDate, @createdBy, @subCount, @locationID)";
                     //reopens connection
@@ -203,16 +203,20 @@ namespace SendNotification
             return subCount;
         }
 
+        /*
+         * When the form loads, the combo boxes are filled with the values grabbed from the database
+         * as well as adds an option for no template
+         * the first query grabs template names and inserts them into the template combo box
+         * the second grabs location names and stores  them in the location combo box
+         */
         private void Form1_Load(object sender, EventArgs e)
         {   
-            //adds option to select none or all for the comboboxes if they have not template or location preference
             templateComboBox.Items.Add("No Template");
             try
             {   
                 SqlConnection conn = new SqlConnection(connString);
                 conn.Open();
 
-                //adds templates to combo box
                 String tempQuery = "SELECT template_name FROM message_template ORDER BY template_name ASC; ";
                 //opens a data reader to fill template combo box
                 using (SqlCommand tempComm = new SqlCommand(tempQuery, conn))
@@ -224,7 +228,6 @@ namespace SendNotification
                     }
                     conn.Close();
                 }
-                //searches database for locatins and adds them to the comboBox
                 String locQuery = "SELECT location_name FROM pantry_location; ";
 
                 //opens a data reader to fill location combo box
@@ -234,7 +237,6 @@ namespace SendNotification
                     SqlDataReader dataReaderLoc = locComm.ExecuteReader();
                     while (dataReaderLoc.Read())
                     {
-                        //adds locations to combobox
                         locationComboBox.Items.Add(dataReaderLoc.GetString(0));
                     }
                 }
@@ -245,6 +247,12 @@ namespace SendNotification
                 MessageBox.Show(ex.Message);
             }
         }
+        /* 
+         * THIS IS NOT the same code as is under Form_Load. They are different queries that do different things. :)
+         * 
+         * This selects the message content and puts it into the text box and also grabs the template 
+         * ID from the database to store in the message log
+         */
         private void templateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -264,7 +272,6 @@ namespace SendNotification
                     }
                 }
                 conn.Close();
-                tempLabel.Text = templateComboBox.SelectedIndex.ToString();
                 conn.Open();
                 String tempQuery = "SELECT template_id FROM message_template WHERE template_name = '" + item + "'; ";
                 using (SqlCommand sqlCommand = new SqlCommand(tempQuery, conn))
@@ -283,18 +290,19 @@ namespace SendNotification
                 MessageBox.Show(ex.Message);
             }
         }
+
+        // Clears the combo boxes and text box
         private void cancelButton_Click(object sender, EventArgs e)
         {   
-            //clears the textbox and combo boxes
             messageTextBox.Text = string.Empty;
             locationComboBox.SelectedIndex = -1;
             locationComboBox.Text = "Location";
             templateComboBox.SelectedIndex = 0;
         }
 
-        private void viewLogButton_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
-            //will open Main Menu
+            //will close the form
             this.Close();
         }
 

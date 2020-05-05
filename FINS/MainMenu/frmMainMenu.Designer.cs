@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTemplate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.btnReview = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btnTemplate
             // 
-            this.button1.Location = new System.Drawing.Point(173, 130);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Template Creation";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnTemplate.Location = new System.Drawing.Point(173, 130);
+            this.btnTemplate.Name = "btnTemplate";
+            this.btnTemplate.Size = new System.Drawing.Size(159, 23);
+            this.btnTemplate.TabIndex = 0;
+            this.btnTemplate.Text = "Template Creation";
+            this.btnTemplate.UseVisualStyleBackColor = true;
+            this.btnTemplate.Click += new System.EventHandler(this.btnTemplate_Click);
             // 
             // label1
             // 
@@ -67,47 +67,47 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "User: Panther Pantry";
             // 
-            // button2
+            // btnSend
             // 
-            this.button2.Location = new System.Drawing.Point(173, 182);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Send Notification";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSend.Location = new System.Drawing.Point(173, 182);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(159, 23);
+            this.btnSend.TabIndex = 3;
+            this.btnSend.Text = "Send Notification";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
-            // button3
+            // btnReview
             // 
-            this.button3.Location = new System.Drawing.Point(173, 234);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Review Notification";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnReview.Location = new System.Drawing.Point(173, 234);
+            this.btnReview.Name = "btnReview";
+            this.btnReview.Size = new System.Drawing.Size(159, 23);
+            this.btnReview.TabIndex = 4;
+            this.btnReview.Text = "Review Notification";
+            this.btnReview.UseVisualStyleBackColor = true;
+            this.btnReview.Click += new System.EventHandler(this.btnReview_Click);
             // 
-            // button4
+            // btnLogout
             // 
-            this.button4.Location = new System.Drawing.Point(173, 286);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(159, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Log Out";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            this.btnLogout.Location = new System.Drawing.Point(173, 286);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(159, 23);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Log Out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
             // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 374);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnReview);
+            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnTemplate);
             this.Name = "frmMainMenu";
             this.Text = "Main Menu";
             this.ResumeLayout(false);
@@ -117,12 +117,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTemplate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Button btnReview;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
 

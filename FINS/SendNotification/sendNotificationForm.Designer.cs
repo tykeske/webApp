@@ -35,7 +35,6 @@
             this.templateComboBox = new System.Windows.Forms.ComboBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
-            this.tempLabel = new System.Windows.Forms.Label();
             this.selectLocLabel = new System.Windows.Forms.Label();
             this.selectTempLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -43,7 +42,7 @@
             // messageLabel
             // 
             this.messageLabel.AutoSize = true;
-            this.messageLabel.Location = new System.Drawing.Point(23, 134);
+            this.messageLabel.Location = new System.Drawing.Point(26, 125);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(269, 13);
             this.messageLabel.TabIndex = 0;
@@ -71,7 +70,7 @@
             // locationComboBox
             // 
             this.locationComboBox.FormattingEnabled = true;
-            this.locationComboBox.Location = new System.Drawing.Point(26, 50);
+            this.locationComboBox.Location = new System.Drawing.Point(29, 41);
             this.locationComboBox.Name = "locationComboBox";
             this.locationComboBox.Size = new System.Drawing.Size(147, 21);
             this.locationComboBox.TabIndex = 3;
@@ -81,7 +80,7 @@
             // templateComboBox
             // 
             this.templateComboBox.FormattingEnabled = true;
-            this.templateComboBox.Location = new System.Drawing.Point(26, 100);
+            this.templateComboBox.Location = new System.Drawing.Point(26, 91);
             this.templateComboBox.Name = "templateComboBox";
             this.templateComboBox.Size = new System.Drawing.Size(147, 21);
             this.templateComboBox.TabIndex = 4;
@@ -106,21 +105,12 @@
             this.backButton.TabIndex = 6;
             this.backButton.Text = "Go Back to Menu";
             this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.viewLogButton_Click);
-            // 
-            // tempLabel
-            // 
-            this.tempLabel.AutoSize = true;
-            this.tempLabel.Location = new System.Drawing.Point(44, 108);
-            this.tempLabel.Name = "tempLabel";
-            this.tempLabel.Size = new System.Drawing.Size(0, 13);
-            this.tempLabel.TabIndex = 9;
-            this.tempLabel.Visible = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // selectLocLabel
             // 
             this.selectLocLabel.AutoSize = true;
-            this.selectLocLabel.Location = new System.Drawing.Point(23, 34);
+            this.selectLocLabel.Location = new System.Drawing.Point(26, 25);
             this.selectLocLabel.Name = "selectLocLabel";
             this.selectLocLabel.Size = new System.Drawing.Size(145, 13);
             this.selectLocLabel.TabIndex = 11;
@@ -129,20 +119,19 @@
             // selectTempLabel
             // 
             this.selectTempLabel.AutoSize = true;
-            this.selectTempLabel.Location = new System.Drawing.Point(23, 84);
+            this.selectTempLabel.Location = new System.Drawing.Point(26, 75);
             this.selectTempLabel.Name = "selectTempLabel";
             this.selectTempLabel.Size = new System.Drawing.Size(96, 13);
             this.selectTempLabel.TabIndex = 12;
             this.selectTempLabel.Text = "Select a Template:";
             // 
-            // Form1
+            // sendNotificationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 532);
             this.Controls.Add(this.selectTempLabel);
             this.Controls.Add(this.selectLocLabel);
-            this.Controls.Add(this.tempLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.templateComboBox);
@@ -150,7 +139,7 @@
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.messageTextBox);
             this.Controls.Add(this.messageLabel);
-            this.Name = "Form1";
+            this.Name = "sendNotificationForm";
             this.Text = "Send Notification";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -167,7 +156,6 @@
         private System.Windows.Forms.ComboBox templateComboBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.Label tempLabel;
         private System.Windows.Forms.Label selectLocLabel;
         private System.Windows.Forms.Label selectTempLabel;
     }

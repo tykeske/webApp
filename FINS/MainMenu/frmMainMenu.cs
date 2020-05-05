@@ -22,36 +22,40 @@ namespace MainMenu
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnTemplate_Click(object sender, EventArgs e)
         {
-
+            // Create new instance of Template Creation form
             templateCreationForm ft = new templateCreationForm();
 
+            // Launch the Template Creation form as a modal
+
             ft.ShowDialog();
-            // should be ft.ShowDialog(userID);
-            // to add parameter to the form: public templateCreationForm(int userID)
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSend_Click(object sender, EventArgs e)
         {
-            SendNotification.sendNotificationForm fs = new SendNotification.sendNotificationForm();
+            // Create new instance of Send Notification form
+            SendNotification.sendNotificationForm fs = new SendNotification.sendNotificationForm(userID);
+
+            // Launch the Send Notificaion form as a modal
 
             fs.ShowDialog();
-            // should be fs.ShowDialog(userID);
-            // to add parameter to the form: public Form1(int userID)
+            
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnReview_Click(object sender, EventArgs e)
         {
+            // Create new instance of Notification Log Form
             NotificationLog.Form1 fn = new NotificationLog.Form1();
 
+            // Launch the Notification Log form as a modal
+
             fn.ShowDialog();
-            // should be fn.ShowDialog(userID);
-            // to add parameter to the form: public Form1(int userID)
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
+        private void btnLogout_Click_1(object sender, EventArgs e)
         {
+            // Logout and exit the application
             Application.Exit();
         }
     }
