@@ -25,6 +25,8 @@ namespace SendNotification
         public sendNotificationForm(int userID)
         {
             InitializeComponent();
+            //still need to fully incorporate userID parameter when entire team project is compiled together.
+            //for now it works for testing purposes
         }
 
         //connection string
