@@ -45,35 +45,59 @@ namespace SendNotification
 
                 try
                 {
-                    //tries to create a mail message object 
+                    /* Tries to create a MailMessage object
+                     * email address with which to be sent from
+                     * eList is a list of email addresses comma-separated to be sent 
+                     * msg.cc allows for multiple addresses to be specified at once
+                     * message box text is inserted into email body
+                     * smtp credentials to send email through smtp client
+                     */
                     MailMessage msg = new MailMessage();
-
-                    //address to be sent by
                     msg.From = new MailAddress("PortlandCCPantry@gmail.com");
                     eList = GetQuery(eList);
+                    msg.CC.Add(eList);
+                    msg.Subject = "Test";
+                    msg.Body = messageTextBox.Text;
+
+                    //creates a new smtpClient class
+                    SmtpClient smt = new SmtpClient();
+                    smt.Host = "smtp.gmail.com";
+                    NetworkCredential ntcd = new NetworkCredential();
+                    //login information for email to be sent from and port information
+                    ntcd.UserName = "PortlandCCPantry@gmail.com";
+                    ntcd.Password = "Panther20!";
+                    smt.Credentials = ntcd;
+                    smt.EnableSsl = true;
+                    smt.Port = 587;
+                    //send the message
+                    smt.Send(msg);
+                    MessageBox.Show("Email was sent!");
+
+
+
                     //creates the connection
                     SqlConnection conn = new SqlConnection(connString);
-
-                    //opens the connection
-                    conn.Open();
-                    //command to execute query
                    
-                    //closes the connection
-                    conn.Close();
+
                     //assigning variables
                     string messageContent = messageTextBox.Text;
                     string createdDate = DateTime.Now.ToString();
-                    msg.CC.Add(eList);
                     int count =  GetSubscribers(subCount);
 
                     //DATABASE ENTRY
                     String insQuery = "INSERT INTO dbo.message_log (message_content, template_id, created_date, created_by, subscriber_count, location_id) VALUES (@messageContent, @templateID, @createdDate, @createdBy, @subCount, @locationID)";
-                    //reopens connection
+                    
+                    // Opens connection
                     conn.Open();
+
+                    /* Tries to insert values into the database according to the value in their variable
+                     * If no template is selected, template ID is entered Null
+                     * catch statement with message box to show error for reference
+                     */
                     using (SqlCommand insCommand = new SqlCommand(insQuery, conn))
                     {
                         try
-                        { //inserts values into the correct fields
+                        { 
 
                             insCommand.Parameters.Add("@messageContent", SqlDbType.NVarChar, 1000).Value = messageContent;
                             insCommand.Parameters.Add("@createdDate", SqlDbType.SmallDateTime, 19).Value = createdDate;
@@ -93,7 +117,7 @@ namespace SendNotification
                             // Check Error
                             if (result < 0)
                             {
-                                Console.WriteLine("Error inserting data into Database!");
+                                MessageBox.Show("Error inserting data into Message Log!");
                             }
                         }
                         catch (Exception ex)
@@ -102,24 +126,7 @@ namespace SendNotification
                         }
                     }
                     conn.Close();
-                    //message subject
-                    msg.Subject = "Test";
-                    //message body
-                    msg.Body = messageTextBox.Text;
-
-                    //creates a new smtpClient class
-                    SmtpClient smt = new SmtpClient();
-                    smt.Host = "smtp.gmail.com";
-                    NetworkCredential ntcd = new NetworkCredential();
-                    //login information for email to be sent from and port information
-                    ntcd.UserName = "PortlandCCPantry@gmail.com";
-                    ntcd.Password = "Panther20!";
-                    smt.Credentials = ntcd;
-                    smt.EnableSsl = true;
-                    smt.Port = 587;
-                    //send the message
-                    smt.Send(msg);
-                    MessageBox.Show("Email was sent!");
+                   
 
                 }
                 catch (Exception ex)
@@ -138,9 +145,13 @@ namespace SendNotification
                 MessageBox.Show("Cannot send blank email. Please enter Text.");
             }
         }
+
+        /*
+         * Method which returns the subscriber count for each location based off locatonID
+         * Switch statement to determine which location has been chosen
+         */
         public int GetSubscribers(int subCount)
         {   SqlConnection conn = new SqlConnection(connString);
-            // switch statement to grab the count of users in each location
             switch (locationComboBox.SelectedIndex) 
             {
                 case 0:
@@ -298,6 +309,7 @@ namespace SendNotification
             locationComboBox.SelectedIndex = -1;
             locationComboBox.Text = "Location";
             templateComboBox.SelectedIndex = 0;
+            
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -306,14 +318,15 @@ namespace SendNotification
             this.Close();
         }
 
+
+        // Finds the locationID for the specified location in the combo box
         private void locationComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {   //finds the location ID for the location selected
+        {  
             try
             {
-                SqlConnection myConnection = new SqlConnection();
+                SqlConnection myConnection = new SqlConnection(connString);
                 SqlCommand myCommand = new SqlCommand();
                 SqlDataReader myDataReader;
-                myConnection.ConnectionString = "Data Source=cisdbss.pcc.edu;Initial Catalog=234a_TeamApex;Persist Security Info=True;User ID=234a_TeamApex;Password=^&%_2020_Spring_TeamApex";
                 myConnection.Open();
                 myCommand.Connection = myConnection; string selected = locationComboBox.SelectedItem.ToString();
                 myCommand.CommandText = "SELECT location_id FROM pantry_location WHERE location_name = '" + selected + "'";
@@ -329,29 +342,31 @@ namespace SendNotification
             }
         }
 
+        /* Method that queries the database declaring a string listStr and 
+         * returning listStr with a comma separated string of email addresses in correct 
+         * format to be sent in msg.CC up above
+         * 
+         */
         public string GetQuery(string eList)
-        {   //creates the connection
+        {   
+            //creates the connection
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
             //switch statement to differentiate  which users to select from database depending on location
-            switch (locationComboBox.SelectedIndex) { 
+            switch (locationComboBox.SelectedIndex) 
+            { 
                 case 0:
-                    //makes sure list string is empty
+                    //makes sure string is empty
                     eList = "";
-                    //queries the database
                     string emailQuery = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 1 SELECT @listStr;";
                     using (SqlCommand command = new SqlCommand(emailQuery, conn))
                     {
 
                         //creates a data reader object
                         SqlDataReader reader = command.ExecuteReader();
-
-                        // If there is data to read, set it to string
                         if (reader.Read())
                         {
-
                             string locList = reader.GetString(0);
-                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
                             eList = locList;
                         }
                         else
@@ -363,20 +378,16 @@ namespace SendNotification
                 case 1:
                     //makes sure list string is empty
                     eList = "";
-                    //queries the database
                     string email1Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 2 SELECT @listStr;";
                     using (SqlCommand command = new SqlCommand(email1Query, conn))
                     {
 
                         //creates a data reader object
                         SqlDataReader reader = command.ExecuteReader();
-
-                        // If there is data to read, set it to string
                         if (reader.Read())
                         {
 
                             string locList = reader.GetString(0);
-                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
                             eList = locList;
                         }
                         else
@@ -388,20 +399,16 @@ namespace SendNotification
                 case 2:
                     //makes sure list string is empty
                     eList = "";
-                    //queries the database
                     string email2Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 3 SELECT @listStr;";
                     using (SqlCommand command = new SqlCommand(email2Query, conn))
                     {
 
                         //creates a data reader object
                         SqlDataReader reader = command.ExecuteReader();
-
-                        // If there is data to read, set it to string
                         if (reader.Read())
                         {
 
                             string locList = reader.GetString(0);
-                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
                             eList = locList;
                         }
                         else
@@ -413,20 +420,16 @@ namespace SendNotification
                 case 3:
                     //makes sure list string is empty
                     eList = "";
-                    //queries the database
                     string email3Query = "DECLARE @listStr VARCHAR(MAX) SELECT @listStr = COALESCE(@listStr+', ' , '') + email_address FROM user_account AS table1 JOIN user_location AS table2 ON table1.user_id = table2.user_id WHERE role_id = 1 AND table2.location_id = 4 SELECT @listStr;";
                     using (SqlCommand command = new SqlCommand(email3Query, conn))
                     {
 
                         //creates a data reader object
                         SqlDataReader reader = command.ExecuteReader();
-
-                        // If there is data to read, set it to string
                         if (reader.Read())
                         {
 
                             string locList = reader.GetString(0);
-                            //adds list of emails as single concantenated string to be sent with comma delimiters as per the CC format
                             eList = locList;
                         }
                         else

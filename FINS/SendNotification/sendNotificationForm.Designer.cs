@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sendNotificationForm));
             this.messageLabel = new System.Windows.Forms.Label();
             this.messageTextBox = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
@@ -139,6 +140,7 @@
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.messageTextBox);
             this.Controls.Add(this.messageLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "sendNotificationForm";
             this.Text = "Send Notification";
             this.Load += new System.EventHandler(this.Form1_Load);
