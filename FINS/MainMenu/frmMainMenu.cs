@@ -30,7 +30,7 @@ namespace MainMenu
             templateCreationForm ft = new templateCreationForm(userID);
 
             // Launch the Template Creation form as a modal
-           // ft.ShowDialog();
+            ft.ShowDialog();
         }
 
         private void btnSend_Click(object sender, EventArgs e)
