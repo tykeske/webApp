@@ -17,6 +17,8 @@ Date: 5/3/20
 Class: CIS 234A
 Assignment: 5
 Bugs: none
+
+    For Testing and/ or grading purposes: Gmail account: PortlandCCFoodPantry@gmail.com Password: Panther20!
 */
 namespace SendNotification
 {
