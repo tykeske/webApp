@@ -25,7 +25,7 @@ namespace MainMenu
         private void button1_Click(object sender, EventArgs e)
         {
 
-            templateCreationForm ft = new templateCreationForm();
+            templateCreationForm ft = new templateCreationForm(userID);
 
             ft.ShowDialog();
             // should be ft.ShowDialog(userID);
