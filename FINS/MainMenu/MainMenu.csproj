@@ -80,6 +80,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\notificationLogTylerKeske\notificationLogTylerKeske\notificationLogTylerKeske.csproj">
+      <Project>{fbb5ec88-23cb-46b2-9112-798f23eef6ed}</Project>
+      <Name>notificationLogTylerKeske</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NotificationLog\NotificationLog.csproj">
       <Project>{01b55171-021b-4057-868e-44b0f8b03b4a}</Project>
       <Name>NotificationLog</Name>

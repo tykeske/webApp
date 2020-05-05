@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using TemplateCreation;
 using SendNotification;
 using NotificationLog;
+using notificationLogTylerKeske;
+
 
 namespace MainMenu
 {
@@ -28,7 +30,7 @@ namespace MainMenu
             templateCreationForm ft = new templateCreationForm(userID);
 
             // Launch the Template Creation form as a modal
-            ft.ShowDialog();
+           // ft.ShowDialog();
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -43,7 +45,7 @@ namespace MainMenu
         private void btnReview_Click(object sender, EventArgs e)
         {
             // Create new instance of Review Notification form
-            NotificationLog.Form1 fn = new NotificationLog.Form1(userID);
+            notificationLogTylerKeske.NotificationLog fn = new notificationLogTylerKeske.NotificationLog(userID);
 
             // Launch the Review Notification form as a modal
             fn.ShowDialog();
