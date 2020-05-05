@@ -26,7 +26,6 @@ namespace MainMenu
         {
 
             templateCreationForm ft = new templateCreationForm(userID);
-
             ft.ShowDialog();
             // should be ft.ShowDialog(userID);
             // to add parameter to the form: public templateCreationForm(int userID)
