@@ -110,6 +110,7 @@
             this.Controls.Add(this.btnTemplate);
             this.Name = "frmMainMenu";
             this.Text = "Main Menu";
+            this.Load += new System.EventHandler(this.FrmMainMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

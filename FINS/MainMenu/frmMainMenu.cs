@@ -56,5 +56,10 @@ namespace MainMenu
             // Logout and exit the application
             Application.Exit();
         }
+
+        private void FrmMainMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -23,7 +23,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibVince", "ClassLibVi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainMenu", "MainMenu\MainMenu.csproj", "{327E9D18-A4A2-4D85-9FDB-CB7B6BEDD4B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagementTest", "AccountManagementTest\AccountManagementTest.csproj", "{CBD2939F-C840-4390-8EAC-C445A220029E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountManagementTest", "AccountManagementTest\AccountManagementTest.csproj", "{CBD2939F-C840-4390-8EAC-C445A220029E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "notificationLogTylerKeske", "notificationLogTylerKeske\notificationLogTylerKeske\notificationLogTylerKeske.csproj", "{FBB5EC88-23CB-46B2-9112-798F23EEF6ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{CBD2939F-C840-4390-8EAC-C445A220029E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD2939F-C840-4390-8EAC-C445A220029E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD2939F-C840-4390-8EAC-C445A220029E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB5EC88-23CB-46B2-9112-798F23EEF6ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB5EC88-23CB-46B2-9112-798F23EEF6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB5EC88-23CB-46B2-9112-798F23EEF6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB5EC88-23CB-46B2-9112-798F23EEF6ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
