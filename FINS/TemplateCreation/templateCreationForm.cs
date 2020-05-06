@@ -9,10 +9,11 @@ Author: Vince Amela
 Date: 4/29/20
 Class: CIS 234A
 Assignment: 4
-Bugs: 
-        * None that I'm aware of however I have experienced so many IDE issues on this assignment it's really hard to be sure. 
-        * I wanted to use classes but I haven't had time to address the VS2019 Caret bug, yet. 
-      
+Notes: 
+        * i wanted to utilize a class but by the time I saw that feedback I had used most of my time budget
+        * coreTemplateClass has been created and will be used next time.
+        * i am not sure why the messagebox isn't showing after save for others, it shows up just fine on my client 
+        
 */
 
 namespace TemplateCreation
@@ -56,9 +57,7 @@ namespace TemplateCreation
                     dataAdapter.Fill(ds);                    
                     dataGridView1.DataSource = ds.Tables[0];
                     c.Close();
-                }                
-               
-              
+                }                                          
             }
             catch
             {
@@ -82,7 +81,7 @@ namespace TemplateCreation
         }
 
         //saveCheck evalutes whether the user is trying to save a new template or edit an existing template based on the text length of tempID_TextBox.Text
-        //if value present in tempID_TextBox, the user is asked to confirm that they want to save changes, if confirmed modifyTemplate is called
+        //if value present in tempID_TextBox, if user confirms save, modifyTemplate is called
         //if value not present in tempID_TextBox then createTemplate is called and a new template is created
         private void saveCheck()
         {
@@ -149,7 +148,6 @@ namespace TemplateCreation
 
         }
 
-
         //create template creates a brand new row in dbo.message_template
         //once created the user is notified and loadDataGrid method is called to refresh the datagrid
         private void createTemplate()
@@ -213,7 +211,6 @@ namespace TemplateCreation
             string tagValue = "<" + tagTextBox3.Text + ">";
             msgBodyTextBox.AppendText(tagValue);
         }
-
 
         //clearMethod removes text values from all textboxes including tempID_TextBox
         //this allows user to create a new template
