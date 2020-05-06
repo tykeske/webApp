@@ -40,6 +40,6 @@ namespace AccountManagement.Data
                 .HasKey(c => new { c.userId, c.locationId });
         }
 
-        public DbSet<AccountManagement.ViewModels.userSubscription> userSubscription { get; set; }
+        public DbSet<userSubscription> userSubscription { get; set; }
     }
 }

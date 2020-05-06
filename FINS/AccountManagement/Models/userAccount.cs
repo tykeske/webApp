@@ -54,5 +54,8 @@ namespace AccountManagement.Models
         [Display(Name = "Phone Number")]
         [Phone]
         public string telePhone { get; set; }
+
+        // Navigation
+        public ICollection<userLocation> userLocations { get; set; }
     }
 }

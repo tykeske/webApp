@@ -1,10 +1,10 @@
 ﻿@{
-    /*
-        Author:         Nick Dechativong
-        Created Date:   04/23/2020
-        Class:          CIS 234A
-        Objective:      This razor page presents registration form for the user to fill out and submit
-    */
+/*
+    Author:         Nick Dechativong
+    Created Date:   04/23/2020
+    Class:          CIS 234A
+    Objective:      This razor page presents registration form for the user to fill out and submit
+*/
 }
 
 @model AccountManagement.ViewModels.userRegistration
@@ -44,10 +44,11 @@
             <div class="form-group row">
                 <label asp-for="phoneNumber" class="col-sm-3 col-form-label font-weight-bold text-right"></label>
                 <div class="col-sm-6">
-                    <input asp-for="phoneNumber" class="form-control" placeholder="(###)###-####" />
+                    <input asp-for="phoneNumber" class="form-control" placeholder="(###) ###-####" />
                     <span asp-validation-for="phoneNumber" class="text-danger"></span>
                 </div>
             </div>
+
             <hr />
             <div class="form-group row">
                 <label asp-for="userName" class="col-sm-3 col-form-label font-weight-bold text-right"></label>
@@ -72,6 +73,29 @@
                     <input asp-for="confirmPassword" class="form-control" placeholder="(must be identical)" />
                     <span asp-validation-for="confirmPassword" class="text-danger"></span>
                 </div>
+            </div>
+
+            <hr />
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bold text-right">Subscribe to Location(s)</label>
+                <div class="col-sm-6">
+
+                    @{
+                        foreach (var pantry in Model.userSubscriptions)
+                        {
+                            @:<div class="form-check">
+                                <input class="form-check-input"
+                                       type="checkbox"
+                                       name="selectedLocations"
+                                       value="@pantry.locationId">
+                                <label class="form-check-label">
+                                    @pantry.locationName
+                                </label>
+                            @:</div>
+                        }
+                    }
+                </div>
+                <span class="text-danger"></span>
             </div>
 
             <div class="form-group row">

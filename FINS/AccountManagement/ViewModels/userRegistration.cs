@@ -58,5 +58,8 @@ namespace AccountManagement.ViewModels
         [StringLength(12, ErrorMessage = "The {0} must include between {2} to {1} characters.", MinimumLength = 10)]
         [RegularExpression(@"^[0-9]{3}[-]?[0-9]{3}[-]?[0-9]{4}$", ErrorMessage = "Please enter a valid phone number.")]
         public string phoneNumber { get; set; }
+
+        // Navigation
+        public ICollection<userSubscription> userSubscriptions { get; set; }
     }
 }

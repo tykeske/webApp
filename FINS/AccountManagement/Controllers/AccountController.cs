@@ -29,6 +29,9 @@ namespace AccountManagement.Controllers
     {
         private readonly accountContext _context;
 
+        public List<userSubscription> userSubscriptionList;
+        public List<userLocation> userLocationList;
+
         public AccountController(accountContext context)
         {
             _context = context;
@@ -38,24 +41,6 @@ namespace AccountManagement.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.userAccount.ToListAsync());
-        }
-
-        // GET: userAccounts/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var userAccount = await _context.userAccount
-                .FirstOrDefaultAsync(m => m.userId == id);
-            if (userAccount == null)
-            {
-                return NotFound();
-            }
-
-            return View(userAccount);
         }
 
         // GET: userAccounts/Create
@@ -78,118 +63,158 @@ namespace AccountManagement.Controllers
             return View(userAccount);
         }
 
-        // GET: userAccounts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var userAccount = await _context.userAccount.FindAsync(id);
-            if (userAccount == null)
-            {
-                return NotFound();
-            }
-            return View(userAccount);
-        }
-
-        // POST: userAccounts/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("userId,userName,passwordHash,fullName,emailAddress,isActive,roleId,telePhone")] userAccount userAccount)
-        {
-            if (id != userAccount.userId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(userAccount);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!userAccountExists(userAccount.userId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(userAccount);
-        }
-
-        // GET: userAccounts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var userAccount = await _context.userAccount
-                .FirstOrDefaultAsync(m => m.userId == id);
-            if (userAccount == null)
-            {
-                return NotFound();
-            }
-
-            return View(userAccount);
-        }
-
-        // POST: userAccounts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var userAccount = await _context.userAccount.FindAsync(id);
-            _context.userAccount.Remove(userAccount);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
         private bool userAccountExists(int id)
         {
             return _context.userAccount.Any(e => e.userId == id);
         }
 
         // GET: userAccounts/Profile/5
-        public async Task<IActionResult> Profile(int? id)
+        public async Task<IActionResult> Profile(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            // TODO: Check for URL tampering
 
+            // Find user record based on userId
             var userAccount = await _context.userAccount
+                .Include(u => u.userLocations)
                 .FirstOrDefaultAsync(m => m.userId == id);
+
+            // If user record cannot be found
             if (userAccount == null)
             {
                 return NotFound();
             }
 
-            return View(userAccount);
+            // Assign attributes from account model to registration view model
+            var thisRegistration = new userRegistration
+            {
+                userName = userAccount.userName,
+                password = userAccount.passwordHash,
+                fullName = userAccount.fullName,
+                emailAddress = userAccount.emailAddress,
+                phoneNumber = userAccount.telePhone
+            };
+
+            // Create hashset for lookup registered location
+            var registeredLocation = new HashSet<int>(
+                    userAccount.userLocations.Select(l => l.locationId));
+
+            userSubscriptionList = new List<userSubscription>();
+
+            // Iterate through each pantry location and set subscribed flag accordingly
+            foreach (var pantry in _context.pantryLocation) 
+            {
+                userSubscriptionList.Add(new userSubscription
+                    {
+                        locationId = pantry.locationId,
+                        locationName = pantry.locationName,
+                        subscribed = registeredLocation.Contains(pantry.locationId)
+                    });
+            }
+
+            thisRegistration.userSubscriptions = userSubscriptionList;
+
+            return View(thisRegistration);
         }
 
         // GET: userAccounts/Register
         public IActionResult Register()
         {
-            return View();
+            // Assign attributes from account model to registration view model
+            var thisRegistration = new userRegistration
+            {
+                userName = "",
+                password = "",
+                fullName = "",
+                emailAddress = "",
+                phoneNumber = ""
+            };
+
+            userSubscriptionList = new List<userSubscription>();
+
+            // Iterate through each pantry location and add them for selection
+            foreach (var pantry in _context.pantryLocation)
+            {
+                userSubscriptionList.Add(new userSubscription
+                {
+                    locationId = pantry.locationId,
+                    locationName = pantry.locationName,
+                    subscribed = false
+                });
+            }
+
+            // Assign the subccription list to the new user account
+            thisRegistration.userSubscriptions = userSubscriptionList;
+
+            return View(thisRegistration);
         }
 
-        // POST: userAccounts/Register
+        public void updateSubscriptions(string[] selectedLocations, userAccount userToUpdate)
+        { 
+            if (selectedLocations == null)
+            {
+                userToUpdate.userLocations = new List<userLocation>();
+                return;
+            }
 
+            var selectedLocationsHS = new HashSet<string>(selectedLocations);
+
+            // New user account
+            if (userToUpdate.userLocations == null)
+            {
+                userLocationList = new List<userLocation>();
+
+                // Iterate through each pantry location and assigned based on user selection
+                foreach (var location in _context.pantryLocation)
+                {
+                    if (selectedLocationsHS.Contains(location.locationId.ToString()))
+                    {
+                        userLocationList.Add(new userLocation
+                        {
+                            locationId = location.locationId,
+                            userId = userToUpdate.userId
+                        });
+                    }
+                }
+
+                // Assign the subccription list to the new user account
+                userToUpdate.userLocations = userLocationList;
+            }
+            else  // Existing users
+            {
+                var userSubscriptions = new HashSet<int>(userToUpdate.userLocations.Select(l => l.pantryLocation.locationId));
+
+                foreach (var location in _context.pantryLocation)
+                {
+                    if (selectedLocationsHS.Contains(location.locationId.ToString()))
+                    {
+                        // Location not subscribed before, add new one
+                        if (!userSubscriptions.Contains(location.locationId))
+                        {
+                            userToUpdate.userLocations.Add(
+                                new userLocation
+                                {
+                                    userId = userToUpdate.userId,
+                                    locationId = location.locationId
+                                });
+                        }
+                    }
+                    else
+                    {   // Location was unsubscribed, remove it
+                        if (userSubscriptions.Contains(location.locationId))
+                        {
+                            userLocation locationToRemove = userToUpdate.userLocations.SingleOrDefault(i => i.locationId == location.locationId);
+                            _context.Remove(locationToRemove);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // POST: userAccounts/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(userRegistration userRegistration)
+        public async Task<IActionResult> Register(userRegistration userRegistration, string[] selectedLocations)
         {
             // Get service class to use for password hashing
             utilityService util = new utilityService();
@@ -211,13 +236,19 @@ namespace AccountManagement.Controllers
             // Commit the new accont data
             if (ModelState.IsValid)
             {
+                // Store new user account
                 _context.Add(newAccount);
                 await _context.SaveChangesAsync();
+
+                // Store user location assignment
+                updateSubscriptions(selectedLocations, newAccount);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(newAccount);
         }
-
 
         //
         // GET: /Account/Login
@@ -252,10 +283,10 @@ namespace AccountManagement.Controllers
                     if (pwdHasher.VerifyHashedPassword(null, userAccount.passwordHash, userLogin.password) == PasswordVerificationResult.Success)
                     {
                         // Claim the identity of the user
-                        var claims = new List<Claim>
-                        {
-                            new Claim(ClaimTypes.Name, userLogin.userName)
-                        };
+                        var claims = new List<Claim>();
+
+                        claims.Add(new Claim(ClaimTypes.Name, userAccount.userName));
+                        claims.Add(new Claim(ClaimTypes.Sid, userAccount.userId.ToString()));
 
                         var claimsIdentity = new ClaimsIdentity(
                             claims, CookieAuthenticationDefaults.AuthenticationScheme);
