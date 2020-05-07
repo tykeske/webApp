@@ -27,19 +27,19 @@ namespace MainMenu
         private void btnTemplate_Click(object sender, EventArgs e)
         {
             // Create new instance of Template Creation form
-            templateCreationForm ft = new templateCreationForm(userID);
+            //templateCreationForm ft = new templateCreationForm(userID);
 
             // Launch the Template Creation form as a modal
-            ft.ShowDialog();
+            //ft.ShowDialog();
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
             // Create new instance of Send Notification form
-            SendNotification.Form1 fs = new SendNotification.Form1(userID);
+            //SendNotification.Form1 fs = new SendNotification.Form1(userID);
 
             // Launch the Send Notification form as a modal
-            fs.ShowDialog();
+            //fs.ShowDialog();
         }
 
         private void btnReview_Click(object sender, EventArgs e)
