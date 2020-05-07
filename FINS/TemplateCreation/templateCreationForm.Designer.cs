@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(templateCreationForm));
             this.tempNameLabel = new System.Windows.Forms.Label();
             this.tempNameTextBox = new System.Windows.Forms.TextBox();
             this.tagTextBox3 = new System.Windows.Forms.TextBox();
@@ -151,7 +152,7 @@
             // 
             this.messageLabel.AutoSize = true;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageLabel.Location = new System.Drawing.Point(24, 393);
+            this.messageLabel.Location = new System.Drawing.Point(24, 386);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(156, 15);
             this.messageLabel.TabIndex = 7;
@@ -177,7 +178,7 @@
             this.templatesGroupBox.Controls.Add(this.saveButton);
             this.templatesGroupBox.Controls.Add(this.tempNameTextBox);
             this.templatesGroupBox.Controls.Add(this.tempNameLabel);
-            this.templatesGroupBox.Location = new System.Drawing.Point(27, 58);
+            this.templatesGroupBox.Location = new System.Drawing.Point(27, 27);
             this.templatesGroupBox.Name = "templatesGroupBox";
             this.templatesGroupBox.Size = new System.Drawing.Size(674, 332);
             this.templatesGroupBox.TabIndex = 9;
@@ -225,7 +226,7 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(593, 731);
+            this.backButton.Location = new System.Drawing.Point(579, 742);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(122, 23);
             this.backButton.TabIndex = 11;
@@ -237,11 +238,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 766);
+            this.ClientSize = new System.Drawing.Size(734, 791);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.templatesGroupBox);
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.msgBodyTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "templateCreationForm";
             this.Text = "Template Creation";
             this.Load += new System.EventHandler(this.templateCreationForm_Load);
