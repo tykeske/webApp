@@ -43,26 +43,6 @@ namespace AccountManagement.Controllers
             return View(await _context.userAccount.ToListAsync());
         }
 
-        // GET: userAccounts/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: userAccounts/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("userId,userName,passwordHash,fullName,emailAddress,isActive,roleId,telePhone")] userAccount userAccount)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(userAccount);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(userAccount);
-        }
-
         private bool userAccountExists(int id)
         {
             return _context.userAccount.Any(e => e.userId == id);
@@ -71,7 +51,7 @@ namespace AccountManagement.Controllers
         // GET: userAccounts/Profile/5
         public async Task<IActionResult> Profile(int id)
         {
-            // TODO: Check for URL tampering
+            // TODO: Improvement to check for URL tampering
 
             // Find user record based on userId
             var userAccount = await _context.userAccount

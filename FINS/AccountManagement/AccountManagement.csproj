@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Subscription\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

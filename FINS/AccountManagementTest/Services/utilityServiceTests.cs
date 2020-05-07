@@ -16,6 +16,8 @@ namespace AccountManagement.Services.Tests
     [TestClass()]
     public class utilityServiceTests
     {
+        // Test for non-original password, 
+        // password should be hashed and should not be the same as the original one
         [TestMethod()]
         [Timeout(2000)]  // Milliseconds
         public void passwordHasher_NotEqual()
@@ -31,6 +33,8 @@ namespace AccountManagement.Services.Tests
             Assert.AreNotEqual(passWord, passWordHash);
         }
 
+        // Test for non-empty password hash,
+        // the password hash should not be empty
         [TestMethod()]
         [Timeout(2000)]  // Milliseconds
         public void passwordHasher_NotEmpty()

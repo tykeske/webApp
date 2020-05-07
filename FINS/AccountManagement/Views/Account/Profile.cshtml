@@ -50,13 +50,19 @@
             @Html.DisplayFor(model => model.phoneNumber)
         </dd>
     </dl>
-    <label class="col-sm-3 col-form-label font-weight-bold text-right">Subscribe to Location(s)</label>
-    <dl class="row">
 
-        @{
-            foreach (var pantry in Model.userSubscriptions)
-            {
-                @:<dt class="col-sm-2"></dt>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Subscribe to Location(s)
+        </dt>
+        <dd class="col-sm-10"></dd>
+
+            @{
+                foreach (var pantry in Model.userSubscriptions)
+                {
+                    @:
+                <dt class="col-sm-2"></dt>
                 <dd class="col-sm-10">
                     <input type="checkbox"
                            name="selectedLocations"
@@ -65,8 +71,8 @@
                     @pantry.locationName
                 </dd>
             }
-        }
-    </dl>
+            }
+        </dl>
 </div>
 
 
