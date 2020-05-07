@@ -6,13 +6,14 @@ using System.Windows.Forms;
 
 /*
 Author: Vince Amela
-Date: 4/29/20
+Date: 5/6/20
 Class: CIS 234A
-Assignment: 4
+Assignment: 5
 Notes: 
         * i wanted to utilize a class but by the time I saw that feedback I had used most of my time budget
-        * coreTemplateClass has been created and will be used next time.
-        * i am not sure why the messagebox isn't showing after save for others, it shows up just fine on my client 
+        * coreTemplateClass has been created though I'm unsure of how to share this correctly with the team library
+        * i am not sure why the messagebox isn't confirming save for others, it shows up just fine on my client 
+        * i haven't been able to replace the datagrid with something more elegant but i have adjusted the sizing some
         
 */
 
@@ -33,8 +34,8 @@ namespace TemplateCreation
         //calls loadData
         private void templateCreationForm_Load(object sender, EventArgs e)
         {                       
-            dataGridView1.ReadOnly = true;
-            dataGridView1.MultiSelect = false;           
+            templateGridView.ReadOnly = true;
+            templateGridView.MultiSelect = false;           
             loadData(); 
         }
 
@@ -55,7 +56,7 @@ namespace TemplateCreation
                     var commandBuilder = new SqlCommandBuilder(dataAdapter);
                     var ds = new DataSet();
                     dataAdapter.Fill(ds);                    
-                    dataGridView1.DataSource = ds.Tables[0];
+                    templateGridView.DataSource = ds.Tables[0];
                     c.Close();
                 }                                          
             }
@@ -70,8 +71,8 @@ namespace TemplateCreation
         private void loadDataGrid()
         {
             loadData();
-            dataGridView1.Update();
-            dataGridView1.Refresh();
+            templateGridView.Update();
+            templateGridView.Refresh();
         }
 
         //saveButton click event calls saveCheck, a method for determining whether save is new or an edit, also confirms with user
@@ -242,27 +243,38 @@ namespace TemplateCreation
         //binds textbox for template_id, template_name and message_content to the datagrid
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedCells.Count > 0)
+            if (templateGridView.SelectedCells.Count > 0)
             {
                 //tempID for template_id
-                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                int selectedrowindex = templateGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = templateGridView.Rows[selectedrowindex];
                 string tempID = Convert.ToString(selectedRow.Cells["template_id"].Value);
                 tempID_TextBox.Text = tempID;
                 
                 //tempName for template_name
-                int selectedrowindex2 = dataGridView1.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow2 = dataGridView1.Rows[selectedrowindex2];
+                int selectedrowindex2 = templateGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow2 = templateGridView.Rows[selectedrowindex2];
                 string tempName = Convert.ToString(selectedRow2.Cells["template_name"].Value);
                 tempNameTextBox.Text = tempName;
 
                 //msgContent for message_content
-                int selectedrowindex3 = dataGridView1.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow3 = dataGridView1.Rows[selectedrowindex3];
+                int selectedrowindex3 = templateGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow3 = templateGridView.Rows[selectedrowindex3];
                 string msgContent = Convert.ToString(selectedRow3.Cells["message_content"].Value);
                 msgBodyTextBox.Text = msgContent;
             }
             
+        }
+
+        private void tagGroupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resizeButton_Click(object sender, EventArgs e)
+        {
+           
+
         }
     }
 }

@@ -35,10 +35,7 @@
             this.tagTextBox2 = new System.Windows.Forms.TextBox();
             this.msgBodyTextBox = new System.Windows.Forms.TextBox();
             this.tagGroupBox = new System.Windows.Forms.GroupBox();
-            this.deleteTagButton1 = new System.Windows.Forms.Button();
             this.insertTagButton2 = new System.Windows.Forms.Button();
-            this.deleteTagButton2 = new System.Windows.Forms.Button();
-            this.deleteTagButton3 = new System.Windows.Forms.Button();
             this.insertTagButton3 = new System.Windows.Forms.Button();
             this.insertTagButton1 = new System.Windows.Forms.Button();
             this.messageLabel = new System.Windows.Forms.Label();
@@ -47,18 +44,18 @@
             this.clearButton = new System.Windows.Forms.Button();
             this.tempID_TextBox = new System.Windows.Forms.TextBox();
             this.tempID_Label = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.templateGridView = new System.Windows.Forms.DataGridView();
             this.backButton = new System.Windows.Forms.Button();
             this.tagGroupBox.SuspendLayout();
             this.templatesGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.templateGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tempNameLabel
             // 
             this.tempNameLabel.AutoSize = true;
             this.tempNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempNameLabel.Location = new System.Drawing.Point(6, 283);
+            this.tempNameLabel.Location = new System.Drawing.Point(6, 212);
             this.tempNameLabel.Name = "tempNameLabel";
             this.tempNameLabel.Size = new System.Drawing.Size(99, 15);
             this.tempNameLabel.TabIndex = 0;
@@ -66,7 +63,7 @@
             // 
             // tempNameTextBox
             // 
-            this.tempNameTextBox.Location = new System.Drawing.Point(111, 278);
+            this.tempNameTextBox.Location = new System.Drawing.Point(121, 207);
             this.tempNameTextBox.Name = "tempNameTextBox";
             this.tempNameTextBox.Size = new System.Drawing.Size(177, 20);
             this.tempNameTextBox.TabIndex = 1;
@@ -99,39 +96,26 @@
             // 
             // msgBodyTextBox
             // 
-            this.msgBodyTextBox.Location = new System.Drawing.Point(27, 441);
+            this.msgBodyTextBox.Location = new System.Drawing.Point(27, 421);
             this.msgBodyTextBox.Multiline = true;
             this.msgBodyTextBox.Name = "msgBodyTextBox";
-            this.msgBodyTextBox.Size = new System.Drawing.Size(821, 292);
+            this.msgBodyTextBox.Size = new System.Drawing.Size(674, 292);
             this.msgBodyTextBox.TabIndex = 5;
             // 
             // tagGroupBox
             // 
-            this.tagGroupBox.Controls.Add(this.deleteTagButton1);
             this.tagGroupBox.Controls.Add(this.insertTagButton2);
-            this.tagGroupBox.Controls.Add(this.deleteTagButton2);
-            this.tagGroupBox.Controls.Add(this.deleteTagButton3);
             this.tagGroupBox.Controls.Add(this.insertTagButton3);
             this.tagGroupBox.Controls.Add(this.insertTagButton1);
             this.tagGroupBox.Controls.Add(this.tagTextBox2);
             this.tagGroupBox.Controls.Add(this.tagTextBox1);
             this.tagGroupBox.Controls.Add(this.tagTextBox3);
-            this.tagGroupBox.Location = new System.Drawing.Point(412, 217);
+            this.tagGroupBox.Location = new System.Drawing.Point(362, 162);
             this.tagGroupBox.Name = "tagGroupBox";
-            this.tagGroupBox.Size = new System.Drawing.Size(352, 134);
+            this.tagGroupBox.Size = new System.Drawing.Size(272, 127);
             this.tagGroupBox.TabIndex = 6;
             this.tagGroupBox.TabStop = false;
             this.tagGroupBox.Text = "Tags";
-            // 
-            // deleteTagButton1
-            // 
-            this.deleteTagButton1.Location = new System.Drawing.Point(253, 29);
-            this.deleteTagButton1.Name = "deleteTagButton1";
-            this.deleteTagButton1.Size = new System.Drawing.Size(75, 23);
-            this.deleteTagButton1.TabIndex = 10;
-            this.deleteTagButton1.Text = "Delete Tag";
-            this.deleteTagButton1.UseVisualStyleBackColor = true;
-            this.deleteTagButton1.Click += new System.EventHandler(this.deleteTagButton1_Click);
             // 
             // insertTagButton2
             // 
@@ -142,24 +126,6 @@
             this.insertTagButton2.Text = "Insert Tag";
             this.insertTagButton2.UseVisualStyleBackColor = true;
             this.insertTagButton2.Click += new System.EventHandler(this.insertTagButton2_Click);
-            // 
-            // deleteTagButton2
-            // 
-            this.deleteTagButton2.Location = new System.Drawing.Point(253, 59);
-            this.deleteTagButton2.Name = "deleteTagButton2";
-            this.deleteTagButton2.Size = new System.Drawing.Size(75, 23);
-            this.deleteTagButton2.TabIndex = 8;
-            this.deleteTagButton2.Text = "Delete Tag";
-            this.deleteTagButton2.UseVisualStyleBackColor = true;
-            // 
-            // deleteTagButton3
-            // 
-            this.deleteTagButton3.Location = new System.Drawing.Point(253, 87);
-            this.deleteTagButton3.Name = "deleteTagButton3";
-            this.deleteTagButton3.Size = new System.Drawing.Size(75, 23);
-            this.deleteTagButton3.TabIndex = 7;
-            this.deleteTagButton3.Text = "Delete Tag";
-            this.deleteTagButton3.UseVisualStyleBackColor = true;
             // 
             // insertTagButton3
             // 
@@ -185,7 +151,7 @@
             // 
             this.messageLabel.AutoSize = true;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageLabel.Location = new System.Drawing.Point(24, 400);
+            this.messageLabel.Location = new System.Drawing.Point(24, 393);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(156, 15);
             this.messageLabel.TabIndex = 7;
@@ -193,7 +159,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(177, 318);
+            this.saveButton.Location = new System.Drawing.Point(223, 266);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 8;
@@ -207,20 +173,20 @@
             this.templatesGroupBox.Controls.Add(this.tagGroupBox);
             this.templatesGroupBox.Controls.Add(this.tempID_TextBox);
             this.templatesGroupBox.Controls.Add(this.tempID_Label);
-            this.templatesGroupBox.Controls.Add(this.dataGridView1);
+            this.templatesGroupBox.Controls.Add(this.templateGridView);
             this.templatesGroupBox.Controls.Add(this.saveButton);
             this.templatesGroupBox.Controls.Add(this.tempNameTextBox);
             this.templatesGroupBox.Controls.Add(this.tempNameLabel);
-            this.templatesGroupBox.Location = new System.Drawing.Point(27, 31);
+            this.templatesGroupBox.Location = new System.Drawing.Point(27, 58);
             this.templatesGroupBox.Name = "templatesGroupBox";
-            this.templatesGroupBox.Size = new System.Drawing.Size(821, 366);
+            this.templatesGroupBox.Size = new System.Drawing.Size(674, 332);
             this.templatesGroupBox.TabIndex = 9;
             this.templatesGroupBox.TabStop = false;
             this.templatesGroupBox.Text = "Templates";
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(6, 318);
+            this.clearButton.Location = new System.Drawing.Point(9, 266);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(153, 23);
             this.clearButton.TabIndex = 13;
@@ -230,7 +196,7 @@
             // 
             // tempID_TextBox
             // 
-            this.tempID_TextBox.Location = new System.Drawing.Point(111, 254);
+            this.tempID_TextBox.Location = new System.Drawing.Point(121, 162);
             this.tempID_TextBox.Name = "tempID_TextBox";
             this.tempID_TextBox.ReadOnly = true;
             this.tempID_TextBox.Size = new System.Drawing.Size(54, 20);
@@ -240,25 +206,26 @@
             // 
             this.tempID_Label.AutoSize = true;
             this.tempID_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tempID_Label.Location = new System.Drawing.Point(6, 254);
+            this.tempID_Label.Location = new System.Drawing.Point(6, 162);
             this.tempID_Label.Name = "tempID_Label";
             this.tempID_Label.Size = new System.Drawing.Size(74, 15);
             this.tempID_Label.TabIndex = 10;
             this.tempID_Label.Text = "Template ID";
             // 
-            // dataGridView1
+            // templateGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(48, 29);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(716, 174);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.templateGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.templateGridView.Location = new System.Drawing.Point(22, 33);
+            this.templateGridView.Name = "templateGridView";
+            this.templateGridView.RowHeadersVisible = false;
+            this.templateGridView.ShowCellErrors = false;
+            this.templateGridView.Size = new System.Drawing.Size(612, 90);
+            this.templateGridView.TabIndex = 9;
+            this.templateGridView.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(726, 756);
+            this.backButton.Location = new System.Drawing.Point(593, 731);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(122, 23);
             this.backButton.TabIndex = 11;
@@ -270,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 806);
+            this.ClientSize = new System.Drawing.Size(748, 766);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.templatesGroupBox);
             this.Controls.Add(this.messageLabel);
@@ -282,7 +249,7 @@
             this.tagGroupBox.PerformLayout();
             this.templatesGroupBox.ResumeLayout(false);
             this.templatesGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.templateGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,16 +264,13 @@
         private System.Windows.Forms.TextBox tagTextBox2;
         private System.Windows.Forms.TextBox msgBodyTextBox;
         private System.Windows.Forms.GroupBox tagGroupBox;
-        private System.Windows.Forms.Button deleteTagButton1;
         private System.Windows.Forms.Button insertTagButton2;
-        private System.Windows.Forms.Button deleteTagButton2;
-        private System.Windows.Forms.Button deleteTagButton3;
         private System.Windows.Forms.Button insertTagButton3;
         private System.Windows.Forms.Button insertTagButton1;
         private System.Windows.Forms.Label messageLabel;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.GroupBox templatesGroupBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView templateGridView;
         private System.Windows.Forms.TextBox tempID_TextBox;
         private System.Windows.Forms.Label tempID_Label;
         private System.Windows.Forms.Button clearButton;
