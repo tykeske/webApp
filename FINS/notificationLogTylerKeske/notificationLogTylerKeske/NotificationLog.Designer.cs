@@ -148,11 +148,11 @@
             // 
             // menuButton
             // 
-            this.menuButton.Location = new System.Drawing.Point(677, 415);
+            this.menuButton.Location = new System.Drawing.Point(656, 415);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(83, 23);
+            this.menuButton.Size = new System.Drawing.Size(104, 23);
             this.menuButton.TabIndex = 10;
-            this.menuButton.Text = "Back to Menu";
+            this.menuButton.Text = "Go Back to Menu";
             this.menuButton.UseVisualStyleBackColor = true;
             this.menuButton.Click += new System.EventHandler(this.MenuButton_Click);
             // 
