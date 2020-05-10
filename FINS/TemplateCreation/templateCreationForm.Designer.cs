@@ -71,7 +71,7 @@
             // 
             // tagTextBox3
             // 
-            this.tagTextBox3.Location = new System.Drawing.Point(565, 36);
+            this.tagTextBox3.Location = new System.Drawing.Point(568, 36);
             this.tagTextBox3.Name = "tagTextBox3";
             this.tagTextBox3.Size = new System.Drawing.Size(100, 20);
             this.tagTextBox3.TabIndex = 2;
@@ -97,7 +97,7 @@
             // 
             // msgBodyTextBox
             // 
-            this.msgBodyTextBox.Location = new System.Drawing.Point(27, 396);
+            this.msgBodyTextBox.Location = new System.Drawing.Point(27, 400);
             this.msgBodyTextBox.Multiline = true;
             this.msgBodyTextBox.Name = "msgBodyTextBox";
             this.msgBodyTextBox.Size = new System.Drawing.Size(695, 278);
@@ -120,7 +120,7 @@
             // 
             // insertTagButton2
             // 
-            this.insertTagButton2.Location = new System.Drawing.Point(471, 36);
+            this.insertTagButton2.Location = new System.Drawing.Point(240, 36);
             this.insertTagButton2.Name = "insertTagButton2";
             this.insertTagButton2.Size = new System.Drawing.Size(75, 20);
             this.insertTagButton2.TabIndex = 9;
@@ -130,7 +130,7 @@
             // 
             // insertTagButton3
             // 
-            this.insertTagButton3.Location = new System.Drawing.Point(240, 36);
+            this.insertTagButton3.Location = new System.Drawing.Point(471, 36);
             this.insertTagButton3.Name = "insertTagButton3";
             this.insertTagButton3.Size = new System.Drawing.Size(75, 20);
             this.insertTagButton3.TabIndex = 6;
@@ -152,7 +152,7 @@
             // 
             this.messageLabel.AutoSize = true;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageLabel.Location = new System.Drawing.Point(24, 356);
+            this.messageLabel.Location = new System.Drawing.Point(27, 356);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(156, 15);
             this.messageLabel.TabIndex = 7;
@@ -225,7 +225,7 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(587, 721);
+            this.backButton.Location = new System.Drawing.Point(600, 704);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(122, 23);
             this.backButton.TabIndex = 11;
@@ -237,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 809);
+            this.ClientSize = new System.Drawing.Size(751, 758);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.tagGroupBox);
             this.Controls.Add(this.templatesGroupBox);
