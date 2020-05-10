@@ -227,7 +227,7 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(600, 704);
+            this.backButton.Location = new System.Drawing.Point(586, 701);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(122, 23);
             this.backButton.TabIndex = 11;
@@ -239,7 +239,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 758);
+            this.ClientSize = new System.Drawing.Size(740, 742);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.tagGroupBox);
             this.Controls.Add(this.templatesGroupBox);
