@@ -64,6 +64,7 @@
             // 
             // tempNameTextBox
             // 
+            this.tempNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tempNameTextBox.Location = new System.Drawing.Point(121, 93);
             this.tempNameTextBox.Name = "tempNameTextBox";
             this.tempNameTextBox.Size = new System.Drawing.Size(177, 20);
@@ -71,7 +72,7 @@
             // 
             // tagTextBox3
             // 
-            this.tagTextBox3.Location = new System.Drawing.Point(568, 36);
+            this.tagTextBox3.Location = new System.Drawing.Point(103, 62);
             this.tagTextBox3.Name = "tagTextBox3";
             this.tagTextBox3.Size = new System.Drawing.Size(100, 20);
             this.tagTextBox3.TabIndex = 2;
@@ -80,7 +81,7 @@
             // tagTextBox1
             // 
             this.tagTextBox1.Enabled = false;
-            this.tagTextBox1.Location = new System.Drawing.Point(103, 36);
+            this.tagTextBox1.Location = new System.Drawing.Point(103, 21);
             this.tagTextBox1.Name = "tagTextBox1";
             this.tagTextBox1.Size = new System.Drawing.Size(100, 20);
             this.tagTextBox1.TabIndex = 3;
@@ -89,7 +90,7 @@
             // tagTextBox2
             // 
             this.tagTextBox2.Enabled = false;
-            this.tagTextBox2.Location = new System.Drawing.Point(334, 36);
+            this.tagTextBox2.Location = new System.Drawing.Point(334, 21);
             this.tagTextBox2.Name = "tagTextBox2";
             this.tagTextBox2.Size = new System.Drawing.Size(100, 20);
             this.tagTextBox2.TabIndex = 4;
@@ -97,10 +98,10 @@
             // 
             // msgBodyTextBox
             // 
-            this.msgBodyTextBox.Location = new System.Drawing.Point(27, 400);
+            this.msgBodyTextBox.Location = new System.Drawing.Point(27, 393);
             this.msgBodyTextBox.Multiline = true;
             this.msgBodyTextBox.Name = "msgBodyTextBox";
-            this.msgBodyTextBox.Size = new System.Drawing.Size(695, 278);
+            this.msgBodyTextBox.Size = new System.Drawing.Size(681, 278);
             this.msgBodyTextBox.TabIndex = 5;
             // 
             // tagGroupBox
@@ -111,16 +112,16 @@
             this.tagGroupBox.Controls.Add(this.tagTextBox2);
             this.tagGroupBox.Controls.Add(this.tagTextBox1);
             this.tagGroupBox.Controls.Add(this.tagTextBox3);
-            this.tagGroupBox.Location = new System.Drawing.Point(27, 246);
+            this.tagGroupBox.Location = new System.Drawing.Point(27, 247);
             this.tagGroupBox.Name = "tagGroupBox";
-            this.tagGroupBox.Size = new System.Drawing.Size(695, 88);
+            this.tagGroupBox.Size = new System.Drawing.Size(447, 106);
             this.tagGroupBox.TabIndex = 6;
             this.tagGroupBox.TabStop = false;
             this.tagGroupBox.Text = "Tags";
             // 
             // insertTagButton2
             // 
-            this.insertTagButton2.Location = new System.Drawing.Point(240, 36);
+            this.insertTagButton2.Location = new System.Drawing.Point(236, 21);
             this.insertTagButton2.Name = "insertTagButton2";
             this.insertTagButton2.Size = new System.Drawing.Size(75, 20);
             this.insertTagButton2.TabIndex = 9;
@@ -130,17 +131,17 @@
             // 
             // insertTagButton3
             // 
-            this.insertTagButton3.Location = new System.Drawing.Point(471, 36);
+            this.insertTagButton3.Location = new System.Drawing.Point(9, 62);
             this.insertTagButton3.Name = "insertTagButton3";
             this.insertTagButton3.Size = new System.Drawing.Size(75, 20);
             this.insertTagButton3.TabIndex = 6;
-            this.insertTagButton3.Text = "Insert Tag";
+            this.insertTagButton3.Text = "Custom Tag";
             this.insertTagButton3.UseVisualStyleBackColor = true;
             this.insertTagButton3.Click += new System.EventHandler(this.insertTagButton3_Click);
             // 
             // insertTagButton1
             // 
-            this.insertTagButton1.Location = new System.Drawing.Point(9, 36);
+            this.insertTagButton1.Location = new System.Drawing.Point(9, 21);
             this.insertTagButton1.Name = "insertTagButton1";
             this.insertTagButton1.Size = new System.Drawing.Size(75, 20);
             this.insertTagButton1.TabIndex = 5;
@@ -152,7 +153,7 @@
             // 
             this.messageLabel.AutoSize = true;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageLabel.Location = new System.Drawing.Point(27, 356);
+            this.messageLabel.Location = new System.Drawing.Point(24, 366);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(156, 15);
             this.messageLabel.TabIndex = 7;
@@ -179,7 +180,7 @@
             this.templatesGroupBox.Controls.Add(this.tempNameLabel);
             this.templatesGroupBox.Location = new System.Drawing.Point(27, 27);
             this.templatesGroupBox.Name = "templatesGroupBox";
-            this.templatesGroupBox.Size = new System.Drawing.Size(695, 200);
+            this.templatesGroupBox.Size = new System.Drawing.Size(681, 200);
             this.templatesGroupBox.TabIndex = 9;
             this.templatesGroupBox.TabStop = false;
             this.templatesGroupBox.Text = "Templates";
@@ -196,6 +197,7 @@
             // 
             // tempID_TextBox
             // 
+            this.tempID_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tempID_TextBox.Location = new System.Drawing.Point(121, 34);
             this.tempID_TextBox.Name = "tempID_TextBox";
             this.tempID_TextBox.ReadOnly = true;
@@ -215,11 +217,11 @@
             // templateGridView
             // 
             this.templateGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.templateGridView.Location = new System.Drawing.Point(347, 34);
+            this.templateGridView.Location = new System.Drawing.Point(334, 32);
             this.templateGridView.Name = "templateGridView";
             this.templateGridView.RowHeadersVisible = false;
             this.templateGridView.ShowCellErrors = false;
-            this.templateGridView.Size = new System.Drawing.Size(318, 150);
+            this.templateGridView.Size = new System.Drawing.Size(314, 150);
             this.templateGridView.TabIndex = 9;
             this.templateGridView.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
