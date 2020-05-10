@@ -36,7 +36,21 @@ namespace TemplateCreation
         {                       
             templateGridView.ReadOnly = true;
             templateGridView.MultiSelect = false;           
-            loadData(); 
+            loadData();
+            formatGrid();
+        }
+
+        private void formatGrid()
+        {
+            DataGridViewColumn column0 = templateGridView.Columns[0];
+            column0.Width = 25;
+            column0.HeaderText = "ID";
+            DataGridViewColumn column1 = templateGridView.Columns[1];
+            column1.Width = 120;
+            column1.HeaderText = "Template Name";
+            DataGridViewColumn column2 = templateGridView.Columns[2];
+            column2.Width = 150;
+            column2.HeaderText = "Message Content";
         }
 
         //loadData method loads data from dbo.message_template into the datagrid 
