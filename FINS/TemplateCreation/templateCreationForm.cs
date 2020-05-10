@@ -40,6 +40,7 @@ namespace TemplateCreation
             formatGrid();
         }
 
+        //formats templateGridView datagrid
         private void formatGrid()
         {
             DataGridViewColumn column0 = templateGridView.Columns[0];
