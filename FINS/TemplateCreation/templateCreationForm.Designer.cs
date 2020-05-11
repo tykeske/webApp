@@ -64,10 +64,10 @@
             // 
             // tempNameTextBox
             // 
-            this.tempNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tempNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tempNameTextBox.Location = new System.Drawing.Point(121, 93);
             this.tempNameTextBox.Name = "tempNameTextBox";
-            this.tempNameTextBox.Size = new System.Drawing.Size(177, 20);
+            this.tempNameTextBox.Size = new System.Drawing.Size(190, 20);
             this.tempNameTextBox.TabIndex = 1;
             // 
             // tagTextBox3
@@ -161,7 +161,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(223, 159);
+            this.saveButton.Location = new System.Drawing.Point(236, 149);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 8;
@@ -187,7 +187,7 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(9, 159);
+            this.clearButton.Location = new System.Drawing.Point(9, 149);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(153, 23);
             this.clearButton.TabIndex = 13;
@@ -197,7 +197,7 @@
             // 
             // tempID_TextBox
             // 
-            this.tempID_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tempID_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tempID_TextBox.Location = new System.Drawing.Point(121, 34);
             this.tempID_TextBox.Name = "tempID_TextBox";
             this.tempID_TextBox.ReadOnly = true;
