@@ -45,7 +45,7 @@ namespace MainMenu
 
         private void btnReview_Click(object sender, EventArgs e)
         {
-            // Create new instance of Notification Log Form
+            // Create new instance of Notification Form
             NotificationLog.Form1 fn = new NotificationLog.Form1();
 
             // Launch the Notification Log form as a modal
@@ -53,7 +53,7 @@ namespace MainMenu
             fn.ShowDialog();
         }
 
-        private void btnLogout_Click_1(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
             // Logout and exit the application
             Application.Exit();
