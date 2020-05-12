@@ -15,7 +15,7 @@ namespace MainMenu
 {
     public partial class frmMainMenu : Form
     {
-        private readonly int userID = 1;  // TODO: hard-coded for testing
+        private readonly int userID = 1;  // TODO: To get actual userID from the to-be-created Login form
 
         public frmMainMenu()
         {
@@ -28,7 +28,6 @@ namespace MainMenu
             templateCreationForm ft = new templateCreationForm(userID);
 
             // Launch the Template Creation form as a modal
-
             ft.ShowDialog();
         }
 
@@ -37,15 +36,15 @@ namespace MainMenu
             // Create new instance of Send Notification form
             SendNotification.sendNotificationForm fs = new SendNotification.sendNotificationForm(userID);
 
-            // Launch the Send Notificaion form as a modal
+            // Launch the Send Notification form as a modal
             fs.ShowDialog();
-            
         }
 
         private void btnReview_Click(object sender, EventArgs e)
         {
-            // Create new instance of Notification Form
+            // Create new instance of Review Notification form
             NotificationLog.Form1 fn = new NotificationLog.Form1(userID);
+
             // Launch the Review Notification form as a modal
             fn.ShowDialog();
         }
