@@ -25,7 +25,7 @@ namespace MainMenu
         private void btnTemplate_Click(object sender, EventArgs e)
         {
             // Create new instance of Template Creation form
-            templateCreationForm ft = new templateCreationForm();
+            templateCreationForm ft = new templateCreationForm(userID);
 
             // Launch the Template Creation form as a modal
 
@@ -46,7 +46,7 @@ namespace MainMenu
         private void btnReview_Click(object sender, EventArgs e)
         {
             // Create new instance of Notification Form
-            NotificationLog.Form1 fn = new NotificationLog.Form1();
+            NotificationLog.Form1 fn = new NotificationLog.Form1(userID);
 
             // Launch the Notification Log form as a modal
 
