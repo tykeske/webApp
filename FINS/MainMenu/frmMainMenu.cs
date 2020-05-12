@@ -1,11 +1,4 @@
-﻿/*
-    Author:         Nick Dechativong
-    Created Date:   04/29/2020
-    Class:          CIS 234A
-    Objective:      The main class to drive the events in the main menu form
-*/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,7 +34,7 @@ namespace MainMenu
         private void btnSend_Click(object sender, EventArgs e)
         {
             // Create new instance of Send Notification form
-            SendNotification.Form1 fs = new SendNotification.Form1(userID);
+            SendNotification.sendNotificationForm fs = new SendNotification.sendNotificationForm(userID);
 
             // Launch the Send Notification form as a modal
             fs.ShowDialog();
