@@ -22,6 +22,7 @@ namespace AccountManagement.ViewModels
     { 
         [Required]
         [Display(Name = "Username")]
+        [StringLength(25, ErrorMessage = "The {0} must include between {2} to {1} characters.", MinimumLength = 3)]
         [Remote(action: "VerifyUsername", controller: "Account")]
         public string userName { get; set; }
 
@@ -29,7 +30,7 @@ namespace AccountManagement.ViewModels
         [Required]
         [Display(Name = "Password")]
         [StringLength(25, ErrorMessage = "The {0} must include between {2} to {1} characters.", MinimumLength = 9)]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&^_])[A-Za-z\d$@$!%*?&^_]{9,25}", ErrorMessage = "Please enter a valid password.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#^_])[A-Za-z\d$@$!%*?&#^_]{9,25}", ErrorMessage = "Please enter a valid password.")]
         [DataType(DataType.Password)]
         public string password { get; set; }
 
@@ -59,5 +60,7 @@ namespace AccountManagement.ViewModels
         [RegularExpression(@"^[0-9]{3}[-]?[0-9]{3}[-]?[0-9]{4}$", ErrorMessage = "Please enter a valid phone number.")]
         public string phoneNumber { get; set; }
 
+        // Navigation
+        public ICollection<userSubscription> userSubscriptions { get; set; }
     }
 }

@@ -19,10 +19,10 @@
 <br />
 <h4>Please fill out the form below.</h4>
 
-<hr />
 <div class="row">
     <div class="col-sm-10">
         <form asp-controller="Account" asp-action="Register">
+            <hr />
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bold text-right"></label>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -48,6 +48,7 @@
                     <span asp-validation-for="phoneNumber" class="text-danger"></span>
                 </div>
             </div>
+
             <hr />
             <div class="form-group row">
                 <label asp-for="userName" class="col-sm-3 col-form-label font-weight-bold text-right"></label>
@@ -74,10 +75,34 @@
                 </div>
             </div>
 
+            <hr />
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bold text-right">Subscribe to Location(s)</label>
+                <div class="col-sm-6">
+
+                    @{
+                        foreach (var pantry in Model.userSubscriptions)
+                        {
+                            @:<div class="form-check">
+                                <input class="form-check-input"
+                                       type="checkbox"
+                                       name="selectedLocations"
+                                       value="@pantry.locationId">
+                                <label class="form-check-label">
+                                    @pantry.locationName
+                                </label>
+                            @:</div>
+                        }
+                    }
+                </div>
+                <span class="text-danger"></span>
+            </div>
+
             <div class="form-group row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <input type="submit" value="Register" class="btn btn-primary" />
+                    <a href="Register" class="btn btn-secondary" role="button" aria-pressed="true">Clear</a>
                     <a href="../Home/Index" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
                 </div>
             </div>
@@ -88,4 +113,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }

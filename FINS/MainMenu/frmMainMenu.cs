@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+    Author:         Nick Dechativong
+    Created Date:   04/29/2020
+    Class:          CIS 234A
+    Objective:      The main class to drive the events in the main menu form
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +22,7 @@ namespace MainMenu
 {
     public partial class frmMainMenu : Form
     {
-        private readonly int userID = 1;  // TODO: hard-coded for testing
+        private readonly int userID = 1;  // TODO: To get actual userID from the to-be-created Login form
 
         public frmMainMenu()
         {
