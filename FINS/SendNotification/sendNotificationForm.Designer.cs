@@ -43,7 +43,7 @@
             // messageLabel
             // 
             this.messageLabel.AutoSize = true;
-            this.messageLabel.Location = new System.Drawing.Point(26, 125);
+            this.messageLabel.Location = new System.Drawing.Point(23, 125);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(269, 13);
             this.messageLabel.TabIndex = 0;
@@ -71,7 +71,7 @@
             // locationComboBox
             // 
             this.locationComboBox.FormattingEnabled = true;
-            this.locationComboBox.Location = new System.Drawing.Point(29, 41);
+            this.locationComboBox.Location = new System.Drawing.Point(26, 41);
             this.locationComboBox.Name = "locationComboBox";
             this.locationComboBox.Size = new System.Drawing.Size(147, 21);
             this.locationComboBox.TabIndex = 3;
@@ -111,7 +111,7 @@
             // selectLocLabel
             // 
             this.selectLocLabel.AutoSize = true;
-            this.selectLocLabel.Location = new System.Drawing.Point(26, 25);
+            this.selectLocLabel.Location = new System.Drawing.Point(23, 25);
             this.selectLocLabel.Name = "selectLocLabel";
             this.selectLocLabel.Size = new System.Drawing.Size(145, 13);
             this.selectLocLabel.TabIndex = 11;
@@ -120,7 +120,7 @@
             // selectTempLabel
             // 
             this.selectTempLabel.AutoSize = true;
-            this.selectTempLabel.Location = new System.Drawing.Point(26, 75);
+            this.selectTempLabel.Location = new System.Drawing.Point(23, 75);
             this.selectTempLabel.Name = "selectTempLabel";
             this.selectTempLabel.Size = new System.Drawing.Size(96, 13);
             this.selectTempLabel.TabIndex = 12;
