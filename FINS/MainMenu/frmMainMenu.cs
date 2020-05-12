@@ -38,7 +38,6 @@ namespace MainMenu
             SendNotification.sendNotificationForm fs = new SendNotification.sendNotificationForm(userID);
 
             // Launch the Send Notificaion form as a modal
-
             fs.ShowDialog();
             
         }
@@ -47,13 +46,11 @@ namespace MainMenu
         {
             // Create new instance of Notification Form
             NotificationLog.Form1 fn = new NotificationLog.Form1(userID);
-
-            // Launch the Notification Log form as a modal
-
+            // Launch the Review Notification form as a modal
             fn.ShowDialog();
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnLogout_Click_1(object sender, EventArgs e)
         {
             // Logout and exit the application
             Application.Exit();
