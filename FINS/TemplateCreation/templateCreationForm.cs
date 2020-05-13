@@ -24,10 +24,12 @@ namespace TemplateCreation
     {
         public templateCreationForm(int userID)
         {
-            InitializeComponent();            
+            InitializeComponent();
+            int formUserID = userID;
         }
 
-        public int userID;
+        public int formUserID; 
+     
         
         //form load formats datagrid 
         //datagrid set to read only, multiselect disabled
@@ -135,7 +137,7 @@ namespace TemplateCreation
                 string templateName = tempNameTextBox.Text;
                 string msgContent = msgBodyTextBox.Text;
                 string upDated = DateTime.Now.ToString();
-                int upDatedBy = userID;
+                int upDatedBy = formUserID;
 
                 string connectionString = "Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex";
 
@@ -174,8 +176,8 @@ namespace TemplateCreation
                 string msgContent = msgBodyTextBox.Text;
                 string createDate = DateTime.Now.ToString();
                 string upDated = DateTime.Now.ToString();
-                int createdBy = userID;
-                int updatedBy = userID;
+                int createdBy = formUserID;
+                int updatedBy = formUserID;
 
                 using (SqlConnection connection = new SqlConnection("Data Source=cisdbss.pcc.edu; Initial Catalog=234a_TeamApex; User id=234a_TeamApex; Password=^&%_2020_Spring_TeamApex"))
                 {
