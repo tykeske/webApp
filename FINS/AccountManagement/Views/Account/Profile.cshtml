@@ -7,7 +7,7 @@
 */
 }
 
-@model AccountManagement.Models.userAccount
+@model AccountManagement.ViewModels.userRegistration
 
 @{
     ViewData["Title"] = "Profile";
@@ -26,10 +26,10 @@
             @Html.DisplayFor(model => model.userName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.passwordHash)
+            @Html.DisplayNameFor(model => model.password)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.passwordHash)
+            @Html.DisplayFor(model => model.password)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.fullName)
@@ -44,25 +44,37 @@
             @Html.DisplayFor(model => model.emailAddress)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.isActive)
+            @Html.DisplayNameFor(model => model.phoneNumber)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.isActive)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.roleId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.roleId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.telePhone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.telePhone)
+            @Html.DisplayFor(model => model.phoneNumber)
         </dd>
     </dl>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Subscribe to Location(s)
+        </dt>
+        <dd class="col-sm-10"></dd>
+
+            @{
+                foreach (var pantry in Model.userSubscriptions)
+                {
+                    @:
+                <dt class="col-sm-2"></dt>
+                <dd class="col-sm-10">
+                    <input type="checkbox"
+                           name="selectedLocations"
+                           value="@pantry.locationId"
+                           @(Html.Raw(pantry.subscribed ? "checked=\"checked\"" : "")) disabled />
+                    @pantry.locationName
+                </dd>
+            }
+            }
+        </dl>
 </div>
+
 
 @{ // TODO: Sprint 2 - add form submission logic for updating user profile
 }
