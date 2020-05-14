@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="coreTemplateClass.cs" />
     <Compile Include="templateCreationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,11 +55,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_234a_TeamApexDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_234a_TeamApexDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="templateCreationForm.resx">
       <DependentUpon>templateCreationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,17 +76,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="_234a_TeamApexDataSet.xsc">
-      <DependentUpon>_234a_TeamApexDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_234a_TeamApexDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_234a_TeamApexDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_234a_TeamApexDataSet.xss">
-      <DependentUpon>_234a_TeamApexDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

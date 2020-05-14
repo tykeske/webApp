@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace TemplateCreation
 {
-
-    public class coreTemplate
+    public class coreTemplateClass
     {
         private string _templateID;
         private string _templateName;
         private string _createDate;
         private string _upDated;
-        private string _createdBy;
-        private string _updatedBy;
+        private int _createdBy;
+        private int _updatedBy;
 
         public string templateID
         {
@@ -52,7 +50,5 @@ namespace TemplateCreation
             get { return _updatedBy; }
             set { _updatedBy = value; }
         }
-
     }
-
 }
