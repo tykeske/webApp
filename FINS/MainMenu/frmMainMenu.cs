@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TemplateCreation;
 using SendNotification;
-using NotificationLog;
+using notificationLogTylerKeske;
 
 namespace MainMenu
 {
@@ -34,7 +34,7 @@ namespace MainMenu
         private void btnSend_Click(object sender, EventArgs e)
         {
             // Create new instance of Send Notification form
-            SendNotification.sendNotificationForm fs = new SendNotification.sendNotificationForm(userID);
+            SendNotification.sendNotificationForm fs = new sendNotificationForm(userID);
 
             // Launch the Send Notification form as a modal
             fs.ShowDialog();
@@ -43,7 +43,7 @@ namespace MainMenu
         private void btnReview_Click(object sender, EventArgs e)
         {
             // Create new instance of Review Notification form
-            NotificationLog.Form1 fn = new NotificationLog.Form1(userID);
+            notificationLogTylerKeske.NotificationLog fn = new notificationLogTylerKeske.NotificationLog(userID);
 
             // Launch the Review Notification form as a modal
             fn.ShowDialog();
